@@ -1,13 +1,13 @@
-@extends('master')
+@extends('layout/master') 
 @section('content')
     <div class="site-section">
-      
+      <base href="{{asset('public/public/')}}">
       <div class="container">
           <h1 class="mb-2">Nhà Đất Đà Nẵng</h1>
         
         <div class="row">
           <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{ asset('images/about.jpg')}}" alt="Image" class="img-fluid">
+            <img src="images/about.jpg" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-5 ml-auto"  data-aos="fade-up" data-aos-delay="200">
             <div class="site-section-title">

@@ -1,4 +1,4 @@
-@extends('master') 
+@extends('layout/master') 
 @section('content')
   <div class="site-loader"></div>
   <div class="site-wrap">
@@ -6,9 +6,9 @@
       @include('pages.choice')
     </div>
 
+    <base href="{{asset('public/public/')}}">
     <div class="site-section site-section-sm bg-light">
       <div class="container">
-      
         <div class="row mb-5">
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="property-entry h-100">

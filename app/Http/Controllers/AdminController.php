@@ -104,7 +104,6 @@ class AdminController extends Controller
                 'password'=>'required|min:6|max:20',
                 'username'=>'required',
                 're_password'=>'required|same:password'
-
             ],
             [
                 'email.required'=>'Vui lòng nhập email',

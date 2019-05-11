@@ -17,8 +17,8 @@
         <div class="container py-1">
           <div class="row align-items-center">
             <div class="col-8 col-md-8 col-lg-4">
-             	<h1 class="mb-0"><a href="{{route('user/index')}}" class="text-white h2 mb-0"><strong>Nhà Đất</strong></a></h1>
-              	<h1 class="mb-0"><a href="{{route('user/index')}}" class="text-white h2 mb-0"><strong>Đà Nẵng</strong></a></h1>
+              <h1 class="mb-0"><a href="{{route('user/index')}}" class="text-white h2 mb-0"><strong>Nhà Đất</strong></a></h1>
+                <h1 class="mb-0"><a href="{{route('user/index')}}" class="text-white h2 mb-0"><strong>Đà Nẵng</strong></a></h1>
             </div>
             <div class="col-4 col-md-4 col-lg-8">
               <nav class="site-navigation text-right text-md-right" role="navigation">
@@ -52,60 +52,60 @@
     </div>
 
     <div class="slide-one-item home-slider owl-carousel">
-      <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="site-blocks-cover overlay" style="background-image: url({{asset('public/images/hero_bg_1.jpg')}});" data-aos="fade" data-stellar-background-ratio="0.5">
         <div class="container">
           <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-10">
             <div class="limiter">
-			    <div class="container-login100">
-			      <div class="wrap-login100">
-			        <div class="login100-pic js-tilt" data-tilt>
-			          <img src="images/img-01.png" alt="IMG">
-			        </div>
+          <div class="container-login100">
+            <div class="wrap-login100">
+              <div class="login100-pic js-tilt" data-tilt>
+                <img src="images/img-01.png" alt="IMG">
+              </div>
 
-			        <form class="login100-form validate-form">
-			          <span class="login100-form-title">
-						Kính Chào Khách Hàng
-			          </span>
-			          <div class="wrap-input100 validate-input" data-validate = "Valid username is required">
-			            <input class="input100" type="text" name="Username" placeholder="Tên tài khoản">
-			            <span class="focus-input100"></span>
-			            <span class="symbol-input100">
-			            </span>
-			          </div>
+              <form class="login100-form validate-form">
+                <span class="login100-form-title">
+            Kính Chào Khách Hàng
+                </span>
+                <div class="wrap-input100 validate-input" data-validate = "Valid username is required">
+                  <input class="input100" type="text" name="Username" placeholder="Tên tài khoản">
+                  <span class="focus-input100"></span>
+                  <span class="symbol-input100">
+                  </span>
+                </div>
 
-			          <div class="wrap-input100 validate-input" data-validate = "Password is required">
-			            <input class="input100" type="password" name="password" placeholder="Mật Khẩu">
-			            <span class="focus-input100"></span>
-			            <span class="symbol-input100">
-			              <i class="fa fa-lock" aria-hidden="true"></i>
-			            </span>
-			          </div>
-			          
-			          <div class="container-login100-form-btn">
-			            <button class="login100-form-btn">
-			              Đăng Nhập
-			            </button>
-			          </div>
+                <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                  <input class="input100" type="password" name="password" placeholder="Mật Khẩu">
+                  <span class="focus-input100"></span>
+                  <span class="symbol-input100">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  </span>
+                </div>
+                
+                <div class="container-login100-form-btn">
+                  <button class="login100-form-btn">
+                    Đăng Nhập
+                  </button>
+                </div>
 
-			          <div class="text-center p-t-12">
-			            <span class="txt1">
-			              Quên
-			            </span>
-			            <a class="txt2" href="#">
-			              Mật Khẩu?
-			            </a>
-			            <br>
-			            <a class="txt2" href="{{route('user/register')}}">
-			              Tạo Tài Khoản
-			              <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-			            </a>
-			          </div>
-			        </form>
-			      </div>
-			    </div>
-    		</div>
-  			</div>
+                <div class="text-center p-t-12">
+                  <span class="txt1">
+                    Quên
+                  </span>
+                  <a class="txt2" href="#">
+                    Mật Khẩu?
+                  </a>
+                  <br>
+                  <a class="txt2" href="{{route('user/register')}}">
+                    Tạo Tài Khoản
+                    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
 
           </div>
         </div>

@@ -1,9 +1,9 @@
-@extends('master') 
+@extends('layout/master') 
 @section('content')
     <div class="site-section site-section-sm pb-0">
       @include('pages/choice')
     </div>
-
+    <base href="{{asset('public/public/')}}">
     <div class="site-section site-section-sm bg-light">
       <div class="container">
         <div class="row mb-5">
@@ -14,7 +14,7 @@
                   <span class="offer-type bg-danger">Bán</span>
                   <span class="offer-type bg-success">Cho Thuê</span>
                 </div>
-                <img src="{{ asset('images/img_1.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_1.jpg" alt="Image" class="img-fluid">
                 
               </a>
               <div class="p-4 property-body">
@@ -51,7 +51,7 @@
                   <span class="offer-type bg-danger">Sale</span>
                   <span class="offer-type bg-success">Rent</span>
                 </div>
-                <img src="{{ asset('images/img_2.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_2.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -86,7 +86,7 @@
                 <div class="offer-type-wrap">
                   <span class="offer-type bg-info">Lease</span>
                 </div>
-                <img src="{{ asset('images/img_3.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_3.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -122,7 +122,7 @@
                   <span class="offer-type bg-danger">Sale</span>
                   <span class="offer-type bg-success">Rent</span>
                 </div>
-                <img src="{{ asset('images/img_4.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_4.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -158,7 +158,7 @@
                   <span class="offer-type bg-danger">Sale</span>
                   <span class="offer-type bg-success">Rent</span>
                 </div>
-                <img src="{{ asset('images/img_5.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_5.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -193,7 +193,7 @@
                 <div class="offer-type-wrap">
                   <span class="offer-type bg-info">Lease</span>
                 </div>
-                <img src="{{ asset('images/img_6.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_6.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -229,7 +229,7 @@
                   <span class="offer-type bg-danger">Sale</span>
                   <span class="offer-type bg-success">Rent</span>
                 </div>
-                <img src="{{ asset('images/img_7.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_7.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -265,7 +265,7 @@
                   <span class="offer-type bg-danger">Sale</span>
                   <span class="offer-type bg-success">Rent</span>
                 </div>
-                <img src="{{ asset('images/img_7.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_7.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -300,7 +300,7 @@
                 <div class="offer-type-wrap">
                   <span class="offer-type bg-info">Lease</span>
                 </div>
-                <img src="{{ asset('images/img_1.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_1.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -359,7 +359,7 @@
         </div>
         <div class="row">
           <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="100">
-            <a href="#"><img src="{{ asset('images/img_4.jpg')}}" alt="Image" class="img-fluid"></a>
+            <a href="#"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
             <div class="p-4 bg-white">
               <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
               <h2 class="h5 text-black mb-3"><a href="#">PHÚ YÊN: ĐÁNH THỨC TIỀM NĂNG BỊ LÃNG QUÊN</a></h2>
@@ -367,7 +367,7 @@
             </div>
           </div>
           <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="200">
-            <a href="#"><img src="{{ asset('images/img_2.jpg')}}" alt="Image" class="img-fluid"></a>
+            <a href="#"><img src="images/img_2.jpg" alt="Image" class="img-fluid"></a>
             <div class="p-4 bg-white">
               <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
               <h2 class="h5 text-black mb-3"><a href="#">NHÀ ĐÂT ĐÀ NẴNG RA MẮT "ĐÓA HỒNG CHÂU ÂU" TẠI THỊ TRƯỜNG PHÚ YÊN </a></h2>
@@ -375,7 +375,7 @@
             </div>
           </div>
           <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="300">
-            <a href="#"><img src="{{ asset('images/img_3.jpg')}}" alt="Image" class="img-fluid"></a>
+            <a href="#"><img src="images/img_3.jpg" alt="Image" class="img-fluid"></a>
             <div class="p-4 bg-white">
               <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
               <h2 class="h5 text-black mb-3"><a href="#">NHÀ ĐÂT ĐÀ NẴNG RA MẮT "ĐÓA HỒNG CHÂU ÂU" TẠI THỊ TRƯỜNG PHÚ YÊN </a></h2>

@@ -88,11 +88,11 @@ Include the above in your HEAD tag
 	.divider-text {
     position: relative;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 100px;
     margin-bottom: 150px;
 }
 .divider-text span {
-    padding: 7px;
+    padding: 2px;
     font-size: 12px;
     position: relative;   
     z-index: 2;

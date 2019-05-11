@@ -15,8 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 Route::group(['prefix' => 'user'], function () {
 	Route::get('index', [
 		'as' 	=> 'user/index',
@@ -50,12 +48,19 @@ Route::group(['prefix' => 'user'], function () {
 		'as' 	=> 'user/login',
 		'uses' 	=> 'PageController@login',
 	]);
+	Route::post('login', [
+		'as' 	=> 'user/login',
+		'uses' 	=> 'PageController@postlogin',
+	]);
 	Route::get('register', [
 		'as' 	=> 'user/register',
 		'uses' 	=> 'PageController@register',
 	]);
+	Route::post('register',[
+		'as'=>'user/register',
+		'uses'=>'PageController@postRegister'
+	]);
 }); 
-
 
 Route::group(['prefix' => 'admin'], function () {
 

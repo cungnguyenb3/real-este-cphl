@@ -12,9 +12,6 @@
                   <li><a href="#">BĐS Tìm Nhiều Nhất</a></li>
                 </ul>
             </div>
-
-            
-            
           </div>
           <div class="col-lg-4 mb-5 mb-lg-0">
             <div class="row mb-5">

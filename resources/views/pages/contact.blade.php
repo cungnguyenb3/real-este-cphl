@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layout/master') 
 @section('content')
     <div class="site-section">
       <div class="container">

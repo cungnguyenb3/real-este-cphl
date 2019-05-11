@@ -1,8 +1,9 @@
-@extends('master') 
+@extends('layout/master') 
 @section('content')
   <div class="site-loader">
   	
   </div>
+    <base href="{{asset('public/public/')}}">
     <div class="site-section">
       <div class="container">
       	<h1 class="mb-2">THÔNG TIN NỔI BẬT</h1>
