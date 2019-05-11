@@ -17,9 +17,7 @@
                   <span class="offer-type bg-danger">Sale</span>
                   <span class="offer-type bg-success">Rent</span>
                 </div>
-
-
-                <img src="{{asset('public/images/img_1.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_1.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -55,7 +53,7 @@
                   <span class="offer-type bg-danger">Sale</span>
                   <span class="offer-type bg-success">Rent</span>
                 </div>
-                <img src="{{asset('public/images/img_2.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_2.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite active"><span class="icon-heart-o"></span></a>
@@ -90,7 +88,7 @@
                 <div class="offer-type-wrap">
                   <span class="offer-type bg-info">Lease</span>
                 </div>
-                <img src="{{asset('public/images/img_3.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_3.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -126,7 +124,7 @@
                   <span class="offer-type bg-danger">Sale</span>
                   <span class="offer-type bg-success">Rent</span>
                 </div>
-                <img src="{{asset('public/images/img_4.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_4.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -162,7 +160,7 @@
                   <span class="offer-type bg-danger">Sale</span>
                   <span class="offer-type bg-success">Rent</span>
                 </div>
-                <img src="{{asset('public/images/img_5.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_5.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -197,7 +195,7 @@
                 <div class="offer-type-wrap">
                   <span class="offer-type bg-info">Lease</span>
                 </div>
-                <img src="{{asset('public/images/img_6.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_6.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -233,7 +231,7 @@
                   <span class="offer-type bg-danger">Sale</span>
                   <span class="offer-type bg-success">Rent</span>
                 </div>
-                <img src="{{asset('public/images/img_7.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_7.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -269,7 +267,7 @@
                   <span class="offer-type bg-danger">Sale</span>
                   <span class="offer-type bg-success">Rent</span>
                 </div>
-                <img src="{{asset('public/images/img_8.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_8.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
@@ -304,7 +302,7 @@
                 <div class="offer-type-wrap">
                   <span class="offer-type bg-info">Lease</span>
                 </div>
-                <img src="{{asset('public/images/img_1.jpg')}}" alt="Image" class="img-fluid">
+                <img src="images/img_1.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
                 <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>

@@ -108,4 +108,28 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('create',[
     'as' => 'adminCreate',
     'uses' =>'AdminController@postCreate'])->middleware('adminlogin');
+
+	Route::get('createBLog',[
+    'as' => 'createBLog',
+    'uses' =>'AdminController@getBlog'])->middleware('login');
+
+    Route::post('createBLog',[
+    'as' => 'createBLog',
+    'uses' =>'AdminController@postBlog'])->middleware('login');
+
+    Route::get('showblog',[
+    'as' => 'adminshowblog',
+    'uses' =>'AdminController@getShowblog'])->middleware('login');
+
+    Route::get('deleteblog/{id}',[
+    'as' => 'admindeleteblog',
+    'uses' =>'AdminController@getDeleteBlog'])->middleware('login');
+
+    Route::get('editblog/{id}',[
+    'as' => 'admineditblog',
+    'uses' =>'AdminController@getEditBlog'])->middleware('adminlogin');
+
+    Route::post('editblog/{id}',[
+    'as' => 'admineditblog',
+    'uses' =>'AdminController@postEditBlog'])->middleware('adminlogin');
 });

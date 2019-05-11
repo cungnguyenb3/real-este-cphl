@@ -20,18 +20,18 @@ Include the above in your HEAD tag
 		
 
 	
-	<form action="{{route('register')}}" method="post" >
+	<form action="{{route('adminCreate')}}" method="post" >
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		@if(count($errors)>0)
-    		<div class="alert alert-danger">
-    			@foreach($errors->all() as $err)
-    			{{$err}}
-    			@endforeach
-    		</div>
-    	@endif
-    	@if(Session::has('thanhcong'))
-    		<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
-    	@endif
+						<div class="alert alert-danger">
+							@foreach($errors->all() as $err)
+							{{$err}}
+							@endforeach
+						</div>
+					@endif
+					@if(Session::has('thanhcong'))
+						<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
+					@endif
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>

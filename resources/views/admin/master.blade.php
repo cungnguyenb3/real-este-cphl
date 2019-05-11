@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <base href="{{asset('public/public/')}}"></base>
+    <base href="{{asset('')}}"></base>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <title>CPH</title>
@@ -87,9 +87,9 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center">
+            <!-- <footer class="footer text-center">
                 All Rights Reserved by Xtreme Admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
-            </footer>
+            </footer> -->
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->

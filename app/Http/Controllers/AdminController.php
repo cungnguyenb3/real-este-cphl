@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Hash;
 use Auth;
+use App\blog;
 use App\User;
+use Carbon\Carbon;
 use Session;
-
 
 class AdminController extends Controller
 {
@@ -51,7 +52,7 @@ class AdminController extends Controller
         $user->email = $req->email;
         $user->password = Hash::make($req->password);
         $user->phone = $req->phone;
-       $user->role_id=2;
+        $user->role_id=2;
         $user->save();
         return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
@@ -119,6 +120,61 @@ class AdminController extends Controller
         $user->phone = $req->phone;
        
         $user->save();
-        return redirect('admin/index')->with('thanhcong','Tạo tài khoản thành công');
+        return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
+    public function getBlog(){
+    	return view('admin.createBlog');
+    }
+    public function postBlog(Request $req){
+        $this->validate($req,
+            [
+               
+                'content'=>'required|min:10',
+                'image' => 'required' 
+            ],
+            [          
+               
+                'content.min'=>'content ít nhất 100 kí tự',
+                'content.required'=>'content không được trống',
+
+                'image.required' => 'image không được trống'
+            ]);
+        $blog = new blog();
+        $blog->title = $req->title;
+        $blog->image = $req->image;
+        $blog->content = $req->content;
+        $blog->user_id = Auth::user()->id;
+       	$blog->writing_date=Carbon::now();
+        $blog->save();
+        return redirect()->back()->with('thanhcong','Tạo blog thành công');
+    }
+    public function getShowblog(){
+    	$blog =blog::all();
+    	return view('admin.showBlog', compact('blog'));
+    }
+    public function getDeleteBlog($id) {
+		$blog = blog::find($id);
+		// File::delete('public/backend/images/'.$product->image);
+		$blog->delete($id);
+		return back()->with('thanhcong','xóa blog thành công');
+	}
+	public function getEditBlog($id){
+		$blog = blog::find($id);
+		return view('admin.editBlog', compact('blog'));
+	}
+	public static function postEditBlog($id, Request $req){
+		$blog = blog::find($id);
+		$image = 'homeland/images/'. Request::input('image');
+		$blog->title = Request::input('title');
+		$blog->content = Request::input('content');
+		$blog->image = Request::input('image');
+		// $product->content = Request::input('content');
+
+		
+		 $cont = static::$apiContext;
+
+		$blog->save();
+		return redirect()->route('adminshowblog')->with('thanhcong','Sửa sản phẩm thành công!');
+	}
+
 }
