@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
         $table->double('price');  
         $table->text('description'); 
         $table->string('location'); 
+        $table->string('main_image'); 
         $table->integer('number_of_bedroom'); 
         $table->integer('number_of_bathroom'); 
         $table->double('area'); 

@@ -51,7 +51,7 @@ class AdminController extends Controller
         $user->email = $req->email;
         $user->password = Hash::make($req->password);
         $user->phone = $req->phone;
-       $user->role_id=2;
+        $user->role_id=2;
         $user->save();
         return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
