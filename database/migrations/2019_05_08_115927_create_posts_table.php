@@ -27,6 +27,7 @@ class CreatePostsTable extends Migration
         $table->integer('year_built'); 
         $table->double('price/m2'); 
         $table->boolean('transaction_type'); 
+        $table->boolean('status'); 
         $table->integer('user_id')->unsigned(); 
         $table->foreign('property_type_id')->references('id')->on(
        'property_types')->onDelete('cascade');

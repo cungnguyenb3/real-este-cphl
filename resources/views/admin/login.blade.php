@@ -2,11 +2,12 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Admin - Register</title>
- <base href="{{asset('')}}"></base>
+ <base href="{{asset('public')}}"></base>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <!------ Include the above in your HEAD tag ---------->
 
 <body>
+  
     <div class="container login-container">
       <div class="row">
         <div class="col-md-6 ads">
@@ -15,12 +16,11 @@
         <div class="col-md-6 login-form">
           <div class="profile-img">
           	<!-- <i class="mdi mdi-account-box"></i> -->
-            <img src="assets/images/account.png" alt="profile_img"  height="140px" width="140px;">
+            <img src="{{asset('public/assets/images/account.png')}}" alt="profile_img"  height="140px" width="140px;">
           </div>
           <h3>Login</h3>
           <form action="{{route('login')}}" method="post">
-		
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="form-group">
             	
               <input type="mail" class="form-control" name="email" placeholder="abc@gmail.com">

@@ -176,5 +176,4 @@ class AdminController extends Controller
 		$blog->save();
 		return redirect()->route('adminshowblog')->with('thanhcong','Sửa sản phẩm thành công!');
 	}
-
 }

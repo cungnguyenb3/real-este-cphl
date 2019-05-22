@@ -5,35 +5,35 @@
 				<a href="">
 					<i class="fa fa-home"></i>
 					<strong>Home</strong>
-					<small>sweet home</small>
+					<small>Sweet home</small>
 				</a>
 			</li>
 			<li>
 				<a href="" class="active">
 					<i class="fa fa-edit"></i>
 					<strong>About us</strong>
-					<small>sweet home</small>
+					<small>Sweet home</small>
 				</a>
 			</li>
 			<li>
 				<a href="">
 					<i class="fa fa-gift"></i>
 					<strong>Features</strong>
-					<small>sweet home</small>
+					<small>Sweet home</small>
 				</a>
 			</li>
 			<li>
 				<a href="">
 					<i class="fa fa-globe"></i>
 					<strong>News</strong>
-					<small>sweet home</small>
+					<small>Sweet home</small>
 				</a>
 			</li>
 			<li>
 				<a href="">
 					<i class="fa fa-comments-o"></i>
 					<strong>Blog</strong>
-					<small>what they say</small>
+					<small>What they say</small>
 				</a>
 				<ul>
 					<li><a href="#"><i class="fa fa-globe"></i>Mission</a></li>
@@ -59,14 +59,14 @@
 				<a href="">
 					<i class="fa fa-picture-o"></i>
 					<strong>Portfolio</strong>
-					<small>sweet home</small>
+					<small>Sweet home</small>
 				</a>
 			</li>
 			<li>
 				<a href="">
 					<i class="fa fa-envelope-o"></i>
 					<strong>Contacts</strong>
-					<small>drop a line</small>
+					<small>Drop a line</small>
 				</a>
 			</li>
 			<li class="float">
