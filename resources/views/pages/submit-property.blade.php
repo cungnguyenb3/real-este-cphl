@@ -88,7 +88,7 @@
                         <div class="main-title-2">
                             <h1><span>Property</span> Gallery</h1>
                         </div>
-                        <div id="myDropZone" class="dropzone dropzone-design mb-50">
+                        <div id="uploadImage" class="dropzone dropzone-design mb-50">
                             <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
                         </div>
 

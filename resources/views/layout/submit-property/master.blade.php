@@ -61,9 +61,7 @@
 <!-- End Google Tag Manager (noscript) -->
 <div class="page_loader"></div>
 
-<!-- Option Panel -->
-@include('layout.option-panel')
-<!-- /Option Panel -->
+
 
 <!-- Top header start -->
 @include('layout.header-top')

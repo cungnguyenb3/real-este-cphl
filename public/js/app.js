@@ -210,8 +210,8 @@ $(function () {
     // Dropzone initialization
     Dropzone.autoDiscover = false;
     $(function () {
-        $("div#myDropZone").dropzone({
-            url: "/file-upload",
+        $("div#uploadImage").dropzone({
+            url: "/MyPHP/real-este-cphl/file-upload",
             success: function(file , res) {
                 console.log(res)
             }

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Schema; //NEW: Import Schema
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema; //NEW: Import Schema
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,9 +12,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    
     public function register()
     {
-        //
+        
     }
 
     /**
