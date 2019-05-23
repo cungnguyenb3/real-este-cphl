@@ -121,6 +121,38 @@
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/maps.js"></script>
 <script src="js/app.js"></script>
+<script>
+    // Dropzone initialization
+    Dropzone.autoDiscover = false;
+    $(function () {
+        $("div#uploadImage").dropzone({
+            url: "/MyPHP/real-este-cphl/file-upload",
+            headers: {
+                'X-CSRF-TOKEN': '{!! csrf_token() !!}'
+            },
+            autoProcessQueue: true,
+            uploadMultiple: true,
+            parallelUploads: 5,
+            maxFiles: 10,
+            maxFilesize: 5,
+            acceptedFiles: ".jpeg,.jpg,.png,.gif",
+            dictFileTooBig: 'Image is bigger than 5MB',
+            addRemoveLinks: true,
+            removedfile: function(file) {
+                $(`input[value="images/${file.name}"]`).remove();
+                file.previewElement.remove();
+            },
+            successmultiple: function(file , res) {
+                if (res) {
+                    for (let i = 0; i < res.length; i++) {
+                    $('#albumImage').append(`<input type="hidden" name="images[]" value="${res[i]}" >`);
+                    }
+                }
+                
+            }
+        });
+    });
+</script>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>

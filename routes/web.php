@@ -28,7 +28,7 @@ Route::get('about', [
 
 Route::post('/file-upload', [
     'as' => 'file-upload',
-    'uses' => 'FileUploadController@uploadDropzone',
+    'uses' => 'UploadController@postImages',
 ]);
 
 Route::get('properties-details', [
@@ -68,7 +68,13 @@ Route::get('logout',[
 
 Route::get('logout',[
     'as' => 'getLogout',
-    'uses' =>'PageController@getLogout']);
+    'uses' =>'PageController@getLogout'
+]);
+
+Route::post('post',[
+    'as' => 'postProperty',
+    'uses' =>'PostController@postProperty'
+]);
 
 Route::group(['prefix' => 'admin'], function () {
 
