@@ -11,58 +11,64 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('test', [
+	'as' 	=> 'test',
+	'uses' 	=> 'PageController@getTest',
+]);
 
-Route::group(['prefix' => 'user'], function () {
-	Route::get('index', [
-		'as' 	=> 'user/index',
-		'uses' 	=> 'PageController@homepage',
-	]);
-	Route::get('contact', [
-		'as' 	=> 'user/contact',
-		'uses' 	=> 'PageController@contact',
-	]);
-	Route::get('about', [
-		'as' 	=> 'user/about',
-		'uses' 	=> 'PageController@about',
-	]);
-	Route::get('blog', [
-		'as' 	=> 'user/blog',
-		'uses' 	=> 'PageController@blog',
-	]);
-	Route::get('properties', [
-		'as' 	=> 'user/properties',
-		'uses' 	=> 'PageController@properties',
-	]);
-	Route::get('rent', [
-		'as' 	=> 'user/rent',
-		'uses' 	=> 'PageController@rent',
-	]);
-	Route::get('buy', [
-		'as' 	=> 'user/buy',
-		'uses' 	=> 'PageController@buy',
-	]);
-	Route::get('login', [
-		'as' 	=> 'user/login',
-		'uses' 	=> 'PageController@login',
-	]);
-	Route::post('login', [
-		'as' 	=> 'user/login',
-		'uses' 	=> 'PageController@postlogin',
-	]);
-	Route::get('register', [
-		'as' 	=> 'user/register',
-		'uses' 	=> 'PageController@register',
-	]);
-	Route::post('register',[
-		'as'=>'user/register',
-		'uses'=>'PageController@postRegister'
-	]);
+Route::get('/', [
+	'as' 	=> 'index',
+	'uses' 	=> 'PageController@getIndex',
+]);
 
+Route::get('about', [
+	'as' 	=> 'about',
+	'uses' 	=> 'PageController@getAbout',
+]);
 
-}); 
+Route::post('/file-upload', [
+    'as' => 'file-upload',
+    'uses' => 'FileUploadController@uploadDropzone',
+]);
+
+Route::get('properties-details', [
+	'as' 	=> 'properties-details',
+	'uses' 	=> 'PageController@getPropertiesDetails',
+]);
+
+Route::get('submit-property', [
+	'as' 	=> 'submit-property',
+	'uses' 	=> 'PageController@getSubmitProperty',
+]);
+
+Route::get('login', [
+	'as' 	=> 'getLogin',
+	'uses' 	=> 'PageController@getLogin',
+]);
+
+Route::post('login', [
+	'as' 	=> 'postLogin',
+	'uses' 	=> 'PageController@postLogin',
+]);
+
+Route::get('register', [
+	'as' 	=> 'getRegister',
+	'uses' 	=> 'PageController@getRegister',
+]);
+
+Route::post('register', [
+	'as' 	=> 'postRegister',
+	'uses' 	=> 'PageController@postRegister',
+]);
+
+Route::get('logout',[
+    'as'    => 'getLogout',
+    'user'  => 'PageController@getLogout'
+]);
+
+Route::get('logout',[
+    'as' => 'getLogout',
+    'uses' =>'PageController@getLogout']);
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -81,11 +87,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('login',[
     'as' => 'login',
     'uses' =>'AdminController@postLogin']);
-
-
-    Route::get('logout',[
-    'as' => 'logout',
-    'uses' =>'AdminController@postLogout']);
 
     Route::get('index',[
     'as' => 'adminindex',
