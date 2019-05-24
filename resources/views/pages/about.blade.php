@@ -1,7 +1,7 @@
 @extends('layout/master') 
 @section('content')
     <div class="site-section">
-      <base href="{{asset('public/public/')}}">
+      <base href="{{asset('public/')}}">
       <div class="container">
           <h1 class="mb-2">Nhà Đất Đà Nẵng</h1>
         

@@ -3,7 +3,7 @@
     <div class="site-section site-section-sm pb-0">
       @include('pages.choice')
     </div>
-    <base href="{{asset('public/public/')}}">
+    <base href="{{asset('public/')}}">
     <div class="site-section site-section-sm bg-light">
       <div class="container">
         <div class="row mb-5">

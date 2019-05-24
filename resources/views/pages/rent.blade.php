@@ -8,7 +8,7 @@
       @include('pages/choice')
     </div>
 
-    <base href="{{asset('public/public/')}}">
+    <base href="{{asset('public/')}}">
     <div class="site-section site-section-sm bg-light">
       <div class="container">
       

@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $table = 'blogs'; // Tên của bảng trong database
-    protected $guarded = ['name','price','description','location', 'number_of_bedroom', 'number_of_bathroom','area', 'property_type_id', 'year_built', 'price/m2', 'transaction_type', 'user_id']; // Lấy hết các trường trong bảng đó
+    protected $table = 'posts'; // Tên của bảng trong database
+    protected $guarded = ['name','price','description','location', 'number_of_bedroom', 'number_of_bathroom','area', 'property_type_id', 'year_built', 'price/m2', 'transaction_type', 'user_id', 'status']; // Lấy hết các trường trong bảng đó
 
     public $timestamps = true;
 

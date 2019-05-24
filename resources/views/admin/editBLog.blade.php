@@ -1,8 +1,10 @@
 @extends('admin.master')
 @section('content')
 <div class="container-fluid">
-	<div class="row">
+	
+		
 		<form action="{{route('admineditblog', $blog->id)}}" method="POST" class="form" role="form">
+		@include('admin.error')
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
 			<div class="form-group">
 				<label class="sr-only" for="">Title</label>
@@ -22,6 +24,6 @@
 		
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
-	</div>
+	
 </div>
 @endsection

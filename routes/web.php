@@ -60,6 +60,8 @@ Route::group(['prefix' => 'user'], function () {
 		'as'=>'user/register',
 		'uses'=>'PageController@postRegister'
 	]);
+
+
 }); 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -92,10 +94,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('post',[
     'as' => 'post',
     'uses' =>'AdminController@getPost'])->middleware('adminlogin');
-
-    Route::get('profile',[
-    'as' => 'profile',
-    'uses' =>'AdminController@getProfile'])->middleware('adminlogin');
 
     Route::get('user',[
     'as' => 'user',
@@ -131,5 +129,49 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('editblog/{id}',[
     'as' => 'admineditblog',
-    'uses' =>'AdminController@postEditBlog'])->middleware('adminlogin');
+    'uses' =>'PostController@postEditBlog'])->middleware('adminlogin');
+    //profile
+    // Route::get('profile',[
+    // 'as' => 'adminShowProfile',
+    // 'uses' =>'AdminController@getProfile'])->middleware('adminlogin');
+    // Route::get('profile',[
+    // 'as' => 'adminShowProfile',
+    // 'uses' =>'AdminController@getProfile'])->middleware('adminlogin');
+    Route::get('editprofile',[
+    'as' => 'adminEditProfile',
+    'uses' =>'AdminController@getProfile'])->middleware('adminlogin');
+
+    Route::post('editprofile',[
+    'as' => 'adminEditProfile',
+    'uses' =>'PostController@postEditProfile'])->middleware('adminlogin');
+
+
+    Route::get('acceptpost/{id}',[
+    'as' => 'adminAcceptPost',
+    'uses' =>'PostController@postAcceptPost'])->middleware('adminlogin');
+
+    Route::get('deletepost/{id}',[
+    'as' => 'adminDeletePost',
+    'uses' =>'PostController@postDeletePost'])->middleware('adminlogin');
+
+    Route::get('deleteuser/{id}',[
+    'as' => 'adminDeleteUser',
+    'uses' =>'AdminController@getDeleteUser'])->middleware('adminlogin');
+
+    Route::get('edituser/{id}',[
+    'as' => 'adminEditUser',
+    'uses' =>'AdminController@getEditUser'])->middleware('adminlogin');
+
+    Route::post('edituser/{id}',[
+    'as' => 'adminEditUser',
+    'uses' =>'PostController@postEditUser'])->middleware('adminlogin');
+    
+    Route::get('search',[
+    'as' => 'adminSearch',
+    'uses' =>'AdminController@getSearch'])->middleware('adminlogin');
+
+    Route::post('edituser/{id}',[
+    'as' => 'adminEditUser',
+    'uses' =>'PostController@postEditUser'])->middleware('adminlogin');
+
 });

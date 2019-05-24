@@ -1,5 +1,5 @@
   
-  <base href="{{asset('public/public/')}}">
+  <base href="{{asset('public/')}}">
   <div class="site-loader">
   </div>
   

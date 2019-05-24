@@ -8,16 +8,7 @@
 		<form action="{{route('createBLog')}}" method="post" role="form">
 			<input type="hidden" name="_token" value="{{csrf_token()}}">
 			<legend>Create Blogs</legend>
-		@if(count($errors)>0)
-						<div class="alert alert-danger">
-							@foreach($errors->all() as $err)
-							{{$err}}
-							@endforeach
-						</div>
-					@endif
-					@if(Session::has('thanhcong'))
-						<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
-					@endif
+		@include('admin.error')
 			<div class="form-group ">
 				<label for="">Title</label>
 				<input type="text" class="form-control" name="title" id="" placeholder="Input field">
