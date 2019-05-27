@@ -8,7 +8,7 @@ use Response;
 
 class UploadController extends Controller
 {
-    function postImages(Request $request)
+    public function postImages(Request $request)
     {
         if ($request->ajax()) {
             if ($request->hasFile('file')) {

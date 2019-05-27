@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PropertyTypeTableSeeder extends Seeder
+class propertyTypeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,12 @@ class PropertyTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-    }
+        DB::table('property_types')->insert([
+        	['name'=>'Apartment','description'=>'Apartment'],
+        	['name'=>'House','description'=>'House'],
+        	['name'=>'Commercial','description'=>'Commercial'],
+        	['name'=>'Garage','description'=>'Garage'],
+        	['name'=>'Lot','description'=>'Lot'],
+        ]);
+    }   
 }

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="submit-address">
-                    <form method="POST" action="postProperty" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('postProperty')}}" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="main-title-2">
                             <h1><span>Basic</span> Information</h1>
@@ -20,8 +20,8 @@
                                     <div class="form-group">
                                         <label>Status</label>
                                         <select class="selectpicker search-fields" name="selTransactionType">
-                                            <option>For Sale</option>
-                                            <option>For Rent</option>
+                                            <option value="0">For Sale</option>
+                                            <option value="1">For Rent</option>
                                         </select>
                                     </div>
                                 </div>
@@ -29,47 +29,42 @@
                                     <div class="form-group">
                                         <label>Type</label>
                                         <select class="selectpicker search-fields" name="selPropertyType">
-                                            <option>Apartment</option>
-                                            <option>House</option>
-                                            <option>Commercial</option>
-                                            <option>Garage</option>
-                                            <option>Lot</option>
+                                            <option value="1">Apartment</option>
+                                            <option value="2">House</option>
+                                            <option value="3">Commercial</option>
+                                            <option value="4">Garage</option>
+                                            <option value="5">Lot</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 col-sm-6">
+                                <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label>Price</label>
                                         <input type="text" class="input-text" name="txtPrice" placeholder="USD">
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-sm-6">
+                                <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label>Area/Location</label>
                                         <input type="text" class="input-text" name="txtArea" placeholder="m2">
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-sm-6">
+                                <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label>Rooms</label>
                                         <select class="selectpicker search-fields" name="slcRoom">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="form-group">
-                                        <label>Price/m2</label>
-                                        <input type="text" class="input-text" name="txtPriceM2" placeholder="USD">
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -109,26 +104,19 @@
                             <div class="col-md-4 col-sm-4">
                                 <div class="form-group">
                                     <label>Building Age</label>
-                                    <select class="selectpicker search-fields" name="selBuildingAge">
-                                        <option>0-1 Years</option>
-                                        <option>0-5 Years</option>
-                                        <option>0-10 Years</option>
-                                        <option>0-20 Years</option>
-                                        <option>0-40 Years</option>
-                                        <option>40+Years</option>
-                                    </select>
+                                    <input type="text" class="input-text" name="txtBuildingAge"  placeholder="BuildingAge">
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-4">
                                 <div class="form-group">
                                     <label>Bedrooms</label>
                                     <select class="selectpicker search-fields" name="selBedroom">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
                                     </select>
                                 </div>
                             </div>
@@ -136,17 +124,19 @@
                                 <div class="form-group">
                                     <label>Bathrooms </label>
                                     <select class="selectpicker search-fields" name="selBathroom">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        
+                        @if(Auth::check())
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                        @endif
                         <div class="row mb-30">
                             <!-- <a href="#" class="btn button-md button-theme">Preview</a> -->
                             <button class="btn button-md button-theme" type="submit">Submit</button>

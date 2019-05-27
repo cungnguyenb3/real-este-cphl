@@ -26,6 +26,11 @@ Route::get('about', [
 	'uses' 	=> 'PageController@getAbout',
 ]);
 
+Route::get('blog', [
+	'as' 	=> 'blog',
+	'uses' 	=> 'PageController@getBlog',
+]);
+
 Route::post('/file-upload', [
     'as' => 'file-upload',
     'uses' => 'UploadController@postImages',
@@ -39,6 +44,11 @@ Route::get('properties-details', [
 Route::get('submit-property', [
 	'as' 	=> 'submit-property',
 	'uses' 	=> 'PageController@getSubmitProperty',
+]);
+
+Route::get('user-profile', [
+	'as' 	=> 'user-profile',
+	'uses' 	=> 'PageController@getUserProfile',
 ]);
 
 Route::get('login', [
@@ -75,6 +85,8 @@ Route::post('post',[
     'as' => 'postProperty',
     'uses' =>'PostController@postProperty'
 ]);
+
+// Route::resource('post', 'PostController');
 
 Route::group(['prefix' => 'admin'], function () {
 

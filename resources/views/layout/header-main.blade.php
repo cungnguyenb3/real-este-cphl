@@ -125,7 +125,7 @@
                             <li class="col-lg-3 col-md-3 col-sm-6">
                                 <ul>
                                     <li class="dropdown-header">Pages</li>
-                                    <li><a href="user-profile.html">User profile</a></li>
+                                    <li><a href="{{route('user-profile')}}">User profile</a></li>
                                     <li><a href="my-properties.html">My Properties</a></li>
                                     <li><a href="favorited-properties.html">Favorited properties</a></li>
                                     <li><a href="submit-property.html">Submit Property</a></li>
@@ -144,7 +144,7 @@
                             <li class="dropdown-submenu">
                                 <a tabindex="0">Classic</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="blog-classic-sidebar-right.html">Right Sidebar</a></li>
+                                    <li><a class="dropdown-item" href="{{route('blog')}}">Right Sidebar</a></li>
                                     <li><a class="dropdown-item" href="blog-classic-sidebar-left.html">Left Sidebar</a></li>
                                     <li><a class="dropdown-item" href="blog-classic-fullwidth.html">FullWidth</a></li>
                                 </ul>

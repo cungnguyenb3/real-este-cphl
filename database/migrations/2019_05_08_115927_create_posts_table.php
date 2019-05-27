@@ -27,7 +27,6 @@ class CreatePostsTable extends Migration
         $table->double('area'); 
         $table->integer('property_type_id')->unsigned(); 
         $table->integer('building_age'); 
-        $table->double('price/m2'); 
         $table->boolean('transaction_type');
         $table->boolean('status');
         $table->integer('user_id')->unsigned(); 
