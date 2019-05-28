@@ -26,9 +26,14 @@ Route::get('about', [
 	'uses' 	=> 'PageController@getAbout',
 ]);
 
+Route::get('blog', [
+	'as' 	=> 'blog',
+	'uses' 	=> 'PageController@getBlog',
+]);
+
 Route::post('/file-upload', [
     'as' => 'file-upload',
-    'uses' => 'FileUploadController@uploadDropzone',
+    'uses' => 'UploadController@postImages',
 ]);
 
 Route::get('properties-details', [
@@ -39,6 +44,11 @@ Route::get('properties-details', [
 Route::get('submit-property', [
 	'as' 	=> 'submit-property',
 	'uses' 	=> 'PageController@getSubmitProperty',
+]);
+
+Route::get('user-profile', [
+	'as' 	=> 'user-profile',
+	'uses' 	=> 'PageController@getUserProfile',
 ]);
 
 Route::get('login', [
@@ -68,7 +78,28 @@ Route::get('logout',[
 
 Route::get('logout',[
     'as' => 'getLogout',
-    'uses' =>'PageController@getLogout']);
+    'uses' =>'PageController@getLogout'
+]);
+
+Route::post('post',[
+    'as' => 'postProperty',
+    'uses' =>'PostController@postProperty'
+]);
+
+
+Route::get('sale', [
+	'as' 	=> 'sale',
+	'uses' 	=> 'PropertiesListController@getSale',
+]);
+
+Route::get('properties-list', [
+	'as' 	=> 'properties-list',
+	'uses' 	=> 'PropertiesListController@getListProperty',
+]);
+
+// Route::post('image-upload/{postID}','postController@uploadImage');
+
+// Route::resource('post', 'PostController');
 
 Route::group(['prefix' => 'admin'], function () {
 

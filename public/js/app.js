@@ -207,17 +207,6 @@ $(function () {
     var videoHeight = videoWidth * .61;
     $('.sidebar-widget iframe').css('height', videoHeight);
 
-    // Dropzone initialization
-    Dropzone.autoDiscover = false;
-    $(function () {
-        $("div#uploadImage").dropzone({
-            url: "/MyPHP/real-este-cphl/file-upload",
-            success: function(file , res) {
-                console.log(res)
-            }
-        });
-    });
-
 
     // SO something in mega menu
     jQuery(document).on('click', '.mega-dropdown', function(e) {

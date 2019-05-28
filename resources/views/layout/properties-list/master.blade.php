@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/submit-property.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:45:01 GMT -->
+<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/properties-list-fullwidth.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:41:43 GMT -->
 <head>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -13,9 +13,6 @@
     <title>The Nest - Real Estate HTML Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-
-    <!-- Chuyển đường dẫn sang thẻ base -->
-    <base href="{{asset('public/public/')}}">
 
     <!-- External CSS libraries -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -61,8 +58,6 @@
 <!-- End Google Tag Manager (noscript) -->
 <div class="page_loader"></div>
 
-
-
 <!-- Top header start -->
 @include('layout.header-top')
 <!-- Top header end -->
@@ -76,10 +71,10 @@
     <div class="overlay">
         <div class="container">
             <div class="breadcrumb-area">
-                <h1>Submit Property</h1>
+                <h1>Properties Listing</h1>
                 <ul class="breadcrumbs">
                     <li><a href="index.html">Home</a></li>
-                    <li class="active">Submit Property</li>
+                    <li class="active">Properties Listing</li>
                 </ul>
             </div>
         </div>
@@ -87,13 +82,14 @@
 </div>
 <!-- Sub Banner end -->
 
-<!-- Submit Property start -->
+<!-- Properties section body start -->
 @yield('content')
-<!-- Submit Property end -->
+<!-- Properties section body end -->
 
 <!-- Partners block start -->
 @include('layout.partners-block')
 <!-- Partners block end -->
+
 
 <!-- Footer start -->
 @include('layout.footer')
@@ -102,6 +98,9 @@
 <!-- Copy right start -->
 @include('layout.copy-right')
 <!-- Copy end right-->
+
+<!-- Car Video Modal -->
+@include('layout.car-video')
 
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -121,38 +120,6 @@
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/maps.js"></script>
 <script src="js/app.js"></script>
-<script>
-    // Dropzone initialization
-    Dropzone.autoDiscover = false;
-    $(function () {
-        $("div#uploadImage").dropzone({
-            url: "/MyPHP/real-este-cphl/file-upload",
-            headers: {
-                'X-CSRF-TOKEN': '{!! csrf_token() !!}'
-            },
-            autoProcessQueue: true,
-            uploadMultiple: true,
-            parallelUploads: 5,
-            maxFiles: 10,
-            maxFilesize: 5,
-            acceptedFiles: ".jpeg,.jpg,.png,.gif",
-            dictFileTooBig: 'Image is bigger than 5MB',
-            addRemoveLinks: true,
-            removedfile: function(file) {
-                $(`input[value="images/${file.name}"]`).remove();
-                file.previewElement.remove();
-            },
-            successmultiple: function(file , res) {
-                if (res) {
-                    for (let i = 0; i < res.length; i++) {
-                    $('#albumImage').append(`<input type="hidden" name="images[]" value="${res[i]}" >`);
-                    }
-                }
-                
-            }
-        });
-    });
-</script>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
@@ -161,5 +128,5 @@
 
 </body>
 
-<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/submit-property.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:45:01 GMT -->
+<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/properties-list-fullwidth.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:41:43 GMT -->
 </html>

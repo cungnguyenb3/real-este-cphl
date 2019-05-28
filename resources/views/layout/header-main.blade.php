@@ -29,48 +29,17 @@
                     </li>
                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Properties<span class="caret"></span>
+                        Agents<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">List Layout</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="properties-list-rightside.html">Right Sidebar</a></li>
-                                    <li><a href="properties-list-leftside.html">Left Sidebar</a></li>
-                                    <li><a href="properties-list-fullwidth.html">Fullwidth</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Grid Layout</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="properties-grid-rightside.html">Right Sidebar</a></li>
-                                    <li><a href="properties-grid-leftside.html">Left Sidebar</a></li>
-                                    <li><a href="properties-grid-fullwidth.html">Fullwidth</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Map View</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="properties-map-leftside-list.html">Map List 1</a></li>
-                                    <li><a href="properties-map-rightside-list.html">Map List 2</a></li>
-                                    <li><a href="properties-map-leftside-grid.html">Map Grid 1</a></li>
-                                    <li><a href="properties-map-rightside-grid.html">Map Grid 2</a></li>
-                                    <li><a href="properties-map-full.html">Map FullWidth</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Property Detail</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="properties-details.html">Property Detail 1</a></li>
-                                    <li><a href="properties-details-2.html">Property Detail 2</a></li>
-                                    <li><a href="properties-details-3.html">Property Detail 3</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="{{route('properties-list')}}">Fullwidth</a></li>
+                            <li><a href="{{route('sale')}}">Sale</a></li>
+                            <li><a href="{{route('properties-list')}}">Rent</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Agents<span class="caret"></span>
+                            Properties<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="agent-listing-grid.html">Agent grid</a></li>
@@ -125,7 +94,7 @@
                             <li class="col-lg-3 col-md-3 col-sm-6">
                                 <ul>
                                     <li class="dropdown-header">Pages</li>
-                                    <li><a href="user-profile.html">User profile</a></li>
+                                    <li><a href="{{route('user-profile')}}">User profile</a></li>
                                     <li><a href="my-properties.html">My Properties</a></li>
                                     <li><a href="favorited-properties.html">Favorited properties</a></li>
                                     <li><a href="submit-property.html">Submit Property</a></li>
@@ -144,7 +113,7 @@
                             <li class="dropdown-submenu">
                                 <a tabindex="0">Classic</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="blog-classic-sidebar-right.html">Right Sidebar</a></li>
+                                    <li><a class="dropdown-item" href="{{route('blog')}}">Right Sidebar</a></li>
                                     <li><a class="dropdown-item" href="blog-classic-sidebar-left.html">Left Sidebar</a></li>
                                     <li><a class="dropdown-item" href="blog-classic-fullwidth.html">FullWidth</a></li>
                                 </ul>

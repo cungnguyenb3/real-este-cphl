@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/submit-property.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:45:01 GMT -->
+<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:44:34 GMT -->
 <head>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -13,9 +13,6 @@
     <title>The Nest - Real Estate HTML Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-
-    <!-- Chuyển đường dẫn sang thẻ base -->
-    <base href="{{asset('public/public/')}}">
 
     <!-- External CSS libraries -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -61,7 +58,26 @@
 <!-- End Google Tag Manager (noscript) -->
 <div class="page_loader"></div>
 
-
+<!-- Option Panel -->
+<div class="option-panel option-panel-collased">
+    <h2>Change Color</h2>
+    <div class="color-plate default-plate" data-color="default"></div>
+    <div class="color-plate blue-plate" data-color="blue"></div>
+    <div class="color-plate yellow-plate" data-color="yellow"></div>
+    <div class="color-plate red-plate" data-color="red"></div>
+    <div class="color-plate green-light-plate" data-color="green-light"></div>
+    <div class="color-plate orange-plate" data-color="orange"></div>
+    <div class="color-plate yellow-light-plate" data-color="yellow-light"></div>
+    <div class="color-plate green-light-2-plate" data-color="green-light-2"></div>
+    <div class="color-plate olive-plate" data-color="olive"></div>
+    <div class="color-plate purple-plate" data-color="purple"></div>
+    <div class="color-plate blue-light-plate" data-color="blue-light"></div>
+    <div class="color-plate brown-plate" data-color="brown"></div>
+    <div class="setting-button">
+        <i class="fa fa-gear"></i>
+    </div>
+</div>
+<!-- /Option Panel -->
 
 <!-- Top header start -->
 @include('layout.header-top')
@@ -71,25 +87,9 @@
 @include('layout.header-main')
 <!-- Main header end -->
 
-<!-- Sub banner start -->
-<div class="sub-banner overview-bgi">
-    <div class="overlay">
-        <div class="container">
-            <div class="breadcrumb-area">
-                <h1>Submit Property</h1>
-                <ul class="breadcrumbs">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">Submit Property</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Sub Banner end -->
-
-<!-- Submit Property start -->
+<!-- My profile start -->
 @yield('content')
-<!-- Submit Property end -->
+<!-- My profile end -->
 
 <!-- Partners block start -->
 @include('layout.partners-block')
@@ -121,38 +121,6 @@
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/maps.js"></script>
 <script src="js/app.js"></script>
-<script>
-    // Dropzone initialization
-    Dropzone.autoDiscover = false;
-    $(function () {
-        $("div#uploadImage").dropzone({
-            url: "/MyPHP/real-este-cphl/file-upload",
-            headers: {
-                'X-CSRF-TOKEN': '{!! csrf_token() !!}'
-            },
-            autoProcessQueue: true,
-            uploadMultiple: true,
-            parallelUploads: 5,
-            maxFiles: 10,
-            maxFilesize: 5,
-            acceptedFiles: ".jpeg,.jpg,.png,.gif",
-            dictFileTooBig: 'Image is bigger than 5MB',
-            addRemoveLinks: true,
-            removedfile: function(file) {
-                $(`input[value="images/${file.name}"]`).remove();
-                file.previewElement.remove();
-            },
-            successmultiple: function(file , res) {
-                if (res) {
-                    for (let i = 0; i < res.length; i++) {
-                    $('#albumImage').append(`<input type="hidden" name="images[]" value="${res[i]}" >`);
-                    }
-                }
-                
-            }
-        });
-    });
-</script>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
@@ -161,5 +129,5 @@
 
 </body>
 
-<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/submit-property.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:45:01 GMT -->
+<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:44:35 GMT -->
 </html>

@@ -28,6 +28,10 @@ class PageController extends Controller
 		return view('pages.about');
 	}
 
+    public function getBlog(){
+		return view('pages.blog');
+	}
+
 	public function getPropertiesDetails(){
 		return view('pages.properties-details');
 	}
@@ -38,6 +42,10 @@ class PageController extends Controller
 
 	public function blog(){
 		return view('pages.blog');
+    }
+    
+    public function getUserProfile(){
+		return view('pages.user-profile');
 	}
 
     //Login
@@ -107,7 +115,7 @@ class PageController extends Controller
         $user->password = Hash::make($req->password);
         $user->role_id=3;
         $user->save();
-        return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
+        return redirect()->route('getLogin')->with('thanhcong','Tạo tài khoản thành công');
     }
 
     //Logout
