@@ -7,6 +7,14 @@ use App\User;
 use Hash;
 use Auth;
 use Session;
+use App\Blog;
+use App\Post;
+use App\image;
+
+
+
+use Illuminate\Support\MessageBag;
+use Carbon\Carbon;
 
 class PageController extends Controller
 {
@@ -21,23 +29,42 @@ class PageController extends Controller
 	}
 
   	public function getIndex(){
-		return view('pages.index');
+        $post = Post::all();
+        $blog = Blog::all();
+        $user = User::all();
+		return view('pages.index', compact('post','user','blog'));
 	}
 
 	public function getAbout(){
 		return view('pages.about');
 	}
 
-	public function getPropertiesDetails(){
-		return view('pages.properties-details');
+    public function getBlog(){
+        $user = user::all();
+        $blog = Blog::all();
+        $blogPopular = Blog::limit(3)->get();
+        return view('pages.blog',compact('blog','user','blogPopular'));
+    }
+
+
+	public function getPropertiesDetails($id){
+        $postPopular = Post::where('id','<>',$id)->limit(3)->get();
+        $post = Post::find($id);
+        $image = image::where('post_id',$id)->limit(3)->get();
+		return view('pages.properties-details', compact('image','post','postPopular'));
 	}
 	
 	public function getSubmitProperty(){
 		return view('pages.submit-property');
 	}
 
-	public function blog(){
-		return view('pages.blog');
+	public function getBlogDetail($id){
+        
+        $blog = Blog::find($id);
+        $user = user::all();
+        $blogPopular = Blog::where('id','<>',$id)->limit(3)->get();
+        return view('layout.blog.blog-detail',compact('blog','user','blogPopular'));
+		
 	}
 
     //Login
@@ -111,8 +138,13 @@ class PageController extends Controller
     }
 
     //Logout
-    public function getLogout(){
+    public function postLogout(){
         Auth::logout();
-        return redirect()->route('index');
+        return redirect()->route('getlogin');
     }
+    public function getMyPost(){
+        $post = Post::all();
+        return view('layout.post.myPost', compact('post'));
+    }
+
 }

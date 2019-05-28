@@ -15,7 +15,7 @@
     <meta charset="utf-8">
 
     <!-- Chuyển đường dẫn sang thẻ base -->
-    <base href="{{asset('public/public/')}}">
+    <base href="{{asset('public/')}}">
 
     <!-- CSS -->
     @include('layout.about.stylesheet')

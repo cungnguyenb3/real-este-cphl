@@ -68,7 +68,7 @@ class AdminController extends Controller
             [
                 'email'=>'required|email|unique:users,email',
                 'password'=>'required|min:6|max:20',
-                'username'=>'required',
+                'username'=>'required|unique:users',
                 're_password'=>'required|same:password',
                 'role_id'=>'required',
                 'address'=>'required'
@@ -81,7 +81,10 @@ class AdminController extends Controller
                 're_password.same'=>'Mật khẩu không giống nhau',
                 'password.min'=>'Mật khẩu ít nhất 6 kí tự',
                 'role_id.required'=>'Vui lòng chọn loại user',
-                'address.required'=>'Vui lòng nhập Address'
+                'address.required'=>'Vui lòng nhập Address',
+                'username.unique'=>'username da co nguoi dung',
+                'username.required'=>'Vui lòng nhập username'
+
             ]);
         $user = new User();
         $user->username = $req->username;
@@ -130,7 +133,7 @@ class AdminController extends Controller
     }
     public function postLogout(){
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('adminlogin');
     }
     public function getCreate(){
     	return view('admin.createAdmin');

@@ -20,7 +20,7 @@
 								<td  style="width: 20px">{{$b->content}}</td>
 								
 								<td >
-									<img src="{{ asset('homeland/images/'.$b["image"]) }}" width="200" height="200" alt="{!! $b["name"] !!}">
+									<img src="{{ ('img/blog/'.$b["image"]) }}" width="150" height="150" alt="{!! $b["name"] !!}">
 								</td>
 								<td >{{$b->user_id}}</td>
 								<td >

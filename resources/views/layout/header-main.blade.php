@@ -144,7 +144,7 @@
                             <li class="dropdown-submenu">
                                 <a tabindex="0">Classic</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="blog-classic-sidebar-right.html">Right Sidebar</a></li>
+                                    <li><a class="dropdown-item" href="{{route('blog')}}">Right Sidebar</a></li>
                                     <li><a class="dropdown-item" href="blog-classic-sidebar-left.html">Left Sidebar</a></li>
                                     <li><a class="dropdown-item" href="blog-classic-fullwidth.html">FullWidth</a></li>
                                 </ul>
@@ -159,7 +159,7 @@
                             <li class="dropdown-submenu">
                                 <a tabindex="0">Blog Details</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="blog-single-sidebar-right.html">Right Sidebar</a></li>
+                                    <li><a class="dropdown-item" href="{{route('blog')}}">Right Sidebar</a></li>
                                     <li><a class="dropdown-item" href="blog-single-sidebar-left.html">Left Sidebar</a></li>
                                     <li><a class="dropdown-item" href="blog-single-fullwidth.html">Fullwidth</a></li>
                                 </ul>

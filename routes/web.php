@@ -26,12 +26,22 @@ Route::get('about', [
 	'uses' 	=> 'PageController@getAbout',
 ]);
 
+Route::get('blog', [
+    'as'    => 'blog',
+    'uses'  => 'PageController@getBlog',
+]);
+
+Route::get('blogdetail/{id}', [
+    'as'    => 'blogdetail',
+    'uses'  => 'PageController@getBlogDetail',
+]);
+
 Route::post('/file-upload', [
     'as' => 'file-upload',
     'uses' => 'FileUploadController@uploadDropzone',
 ]);
 
-Route::get('properties-details', [
+Route::get('properties-details/{id}', [
 	'as' 	=> 'properties-details',
 	'uses' 	=> 'PageController@getPropertiesDetails',
 ]);
@@ -62,13 +72,13 @@ Route::post('register', [
 ]);
 
 Route::get('logout',[
-    'as'    => 'getLogout',
+    'as'    => 'getlogout',
     'user'  => 'PageController@getLogout'
 ]);
 
-Route::get('logout',[
-    'as' => 'getLogout',
-    'uses' =>'PageController@getLogout']);
+Route::get('myPost',[
+    'as' => 'getMyPost',
+    'uses' =>'PageController@getMyPost'])->middleware('userlogin');;
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -83,6 +93,10 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('login',[
     'as' => 'adminlogin',
     'uses' =>'AdminController@getLogin']);
+
+    Route::get('logout',[
+    'as' => 'adminlogout',
+    'uses' =>'AdminController@postLogout']);
 
     Route::post('login',[
     'as' => 'login',
