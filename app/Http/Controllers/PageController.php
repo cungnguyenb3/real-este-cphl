@@ -115,7 +115,7 @@ class PageController extends Controller
         $user->password = Hash::make($req->password);
         $user->role_id=3;
         $user->save();
-        return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
+        return redirect()->route('getLogin')->with('thanhcong','Tạo tài khoản thành công');
     }
 
     //Logout

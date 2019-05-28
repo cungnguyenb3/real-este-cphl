@@ -86,6 +86,13 @@ Route::post('post',[
     'uses' =>'PostController@postProperty'
 ]);
 
+Route::get('properties-list', [
+	'as' 	=> 'properties-list',
+	'uses' 	=> 'PropertiesListController@getListProperty',
+]);
+
+// Route::post('image-upload/{postID}','postController@uploadImage');
+
 // Route::resource('post', 'PostController');
 
 Route::group(['prefix' => 'admin'], function () {

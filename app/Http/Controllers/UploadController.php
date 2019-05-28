@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Response;
+use App\Image;
+use App\Post;
 
 class UploadController extends Controller
 {
@@ -23,9 +25,12 @@ class UploadController extends Controller
                         $images = Arr::prepend($images, 'images/'.$destinationFileName);
                     }
                 }
+                
                 return Response::json($images);
             }
         }
         return false;
     }
+
+    
 }

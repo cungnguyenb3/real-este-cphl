@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Image;
 
 class PostController extends Controller
 {
@@ -29,25 +30,15 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create()
-    {
-        // $this->data['title'] = 'Add new product';
-        // $listCate = DB::table('categories')->orderBy('id', 'desc')->get();
-        // $this->data['listCate'] = $listCate;
-        // return view('admin.product.create', $this->data);
-    }
 
     public function postProperty(Request $req){
+        
+
         $post = new Post();
         $post->name = $req->txtName;
         $post->price = $req->txtPrice;
         $post->description = $req->txtDescription;
         $post->location = $req->txtAddress;
-        
-        $file_name = $req->file(postImages('images[]'))->getClientOriginalName();
-		$post->main_image = $file_name;
-        $req->file(postImages('images[]'))->move('public/img-home',$file_name);
-        
         $post->room = $req->slcRoom;
         $post->number_of_bedroom = $req->selBedroom;
         $post->number_of_bathroom = $req->selBathroom;
@@ -57,7 +48,27 @@ class PostController extends Controller
         $post->transaction_type = $req->selTransactionType;
         $post->status = 0;
         $post->user_id = $req->user_id;
+        if (isset($req->images)) {
+            $post->main_image = $req->images[0];
+        }
         $post->save();
+        if (isset($req->images)) {
+            $arr_image = [];
+            foreach ($req->images as $key => $value) {
+                $arr_image[] = [
+                    'image' => $value,
+                    'post_id' => $post->id
+                ];
+            }
+            Image::insert($arr_image);
+        }
         return redirect()->back()->with('thanhcong','Create new post succesfull');
     }
+
+    public function uploadImage(Request $req){
+        $post = Post::find(postID);
+        $image = $req->file('file');
+    }
+
+
 }
