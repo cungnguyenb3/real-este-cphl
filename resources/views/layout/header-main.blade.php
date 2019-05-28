@@ -33,25 +33,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="{{route('properties-list')}}">Fullwidth</a></li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Sale</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="properties-grid-rightside.html">Right Sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Rent</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="properties-map-leftside-list.html">Right Sidebar</a></li>       
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Property Detail</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="properties-details.html">Property Detail 1</a></li>
-                                    
-                                </ul>
-                            </li>
+                            <li><a href="{{route('sale')}}">Sale</a></li>
+                            <li><a href="{{route('properties-list')}}">Rent</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

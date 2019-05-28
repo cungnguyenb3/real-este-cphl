@@ -86,6 +86,12 @@ Route::post('post',[
     'uses' =>'PostController@postProperty'
 ]);
 
+
+Route::get('sale', [
+	'as' 	=> 'sale',
+	'uses' 	=> 'PropertiesListController@getSale',
+]);
+
 Route::get('properties-list', [
 	'as' 	=> 'properties-list',
 	'uses' 	=> 'PropertiesListController@getListProperty',

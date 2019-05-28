@@ -52,6 +52,7 @@ class PostController extends Controller
             $post->main_image = $req->images[0];
         }
         $post->save();
+
         if (isset($req->images)) {
             $arr_image = [];
             foreach ($req->images as $key => $value) {
@@ -62,6 +63,7 @@ class PostController extends Controller
             }
             Image::insert($arr_image);
         }
+        
         return redirect()->back()->with('thanhcong','Create new post succesfull');
     }
 
