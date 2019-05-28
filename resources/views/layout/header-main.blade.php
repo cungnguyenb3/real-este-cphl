@@ -34,7 +34,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="{{route('properties-list')}}">Fullwidth</a></li>
                             <li><a href="{{route('sale')}}">Sale</a></li>
-                            <li><a href="{{route('properties-list')}}">Rent</a></li>
+                            <li><a href="{{route('rent')}}">Rent</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

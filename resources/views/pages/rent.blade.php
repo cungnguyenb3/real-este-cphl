@@ -1,4 +1,4 @@
-@extends('layout/sale/master')
+@extends('layout/rent/master')
 @section('content')
 <div class="properties-section-body content-area">
     <div class="container">
@@ -33,7 +33,7 @@
 
                 <div class="clearfix"></div>
                 <!-- Property start -->
-                @foreach($sale as $value)
+                @foreach($rent as $value)
                 <div class="property clearfix wow fadeInUp delay-03s">
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-pad">
                         <!-- Property img -->

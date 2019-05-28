@@ -92,6 +92,11 @@ Route::get('sale', [
 	'uses' 	=> 'PropertiesListController@getSale',
 ]);
 
+Route::get('rent', [
+	'as' 	=> 'rent',
+	'uses' 	=> 'PropertiesListController@getRent',
+]);
+
 Route::get('properties-list', [
 	'as' 	=> 'properties-list',
 	'uses' 	=> 'PropertiesListController@getListProperty',

@@ -30,5 +30,17 @@ class PropertiesListController extends Controller
         ->toArray();
 
         return view('pages.sale',compact('sale'));
+    }
+    
+    public function getRent(){
+        $rent = DB::table('posts')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->select('users.username AS username','posts.*')
+        ->where('transaction_type','=',0)
+        ->take(10)
+        ->get()
+        ->toArray();
+
+        return view('pages.rent',compact('rent'));
 	}
 }
