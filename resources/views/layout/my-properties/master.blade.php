@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:39:49 GMT -->
+<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/my-properties.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:44:35 GMT -->
 <head>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -61,9 +61,79 @@
 <!-- End Google Tag Manager (noscript) -->
 <div class="page_loader"></div>
 
-<!-- Content area start -->
+<!-- Top header start -->
+@include('layout.header-top')
+<!-- Top header end -->
+
+<!-- Main header start -->
+@include('layout.header-main')
+<!-- Main header end -->
+
+<!-- Sub banner start -->
+<div class="sub-banner overview-bgi">
+    <div class="overlay">
+        <div class="container">
+            <div class="breadcrumb-area">
+                <h1>My Properties</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">My Properties</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sub Banner end -->
+
+<!-- My Propertiess start -->
 @yield('content')
-<!-- Content area end -->
+<!-- My Propertiess end -->
+
+<!-- Counters strat -->
+<div class="counters overview-bgi">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6 bordered-right">
+                <div class="counter-box">
+                    <i class="flaticon-tag"></i>
+                    <h1 class="counter">967</h1>
+                    <p>Listings For Sale</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 bordered-right">
+                <div class="counter-box">
+                    <i class="flaticon-symbol-1"></i>
+                    <h1 class="counter">1276</h1>
+                    <p>Listings For Rent</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 bordered-right">
+                <div class="counter-box">
+                    <i class="flaticon-people"></i>
+                    <h1 class="counter">396</h1>
+                    <p>Agents</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="counter-box">
+                    <i class="flaticon-people-1"></i>
+                    <h1 class="counter">177</h1>
+                    <p>Brokers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Counters end -->
+
+<!-- Footer start -->
+@include('layout.footer')
+<!-- Footer end -->
+
+<!-- Copy right start -->
+@include('layout.copy-right')
+<!-- Copy end right-->
 
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -91,5 +161,5 @@
 
 </body>
 
-<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:39:49 GMT -->
+<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/my-properties.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:45:01 GMT -->
 </html>

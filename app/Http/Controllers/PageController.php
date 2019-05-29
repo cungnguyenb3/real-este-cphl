@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Property_type;
+use App\Post;
+use App\Blog;
+use App\Image;
 use Hash;
 use Auth;
 use Session;
+use DB;
 
 class PageController extends Controller
 {
@@ -21,7 +26,10 @@ class PageController extends Controller
 	}
 
   	public function getIndex(){
-		return view('pages.index');
+		$post = Post::all()->take(6);
+        $blog = Blog::all();
+        $user = User::all();
+		return view('pages.index', compact('post','user','blog'));
 	}
 
 	public function getAbout(){
@@ -32,10 +40,14 @@ class PageController extends Controller
 		return view('pages.blog');
 	}
 
-	public function getPropertiesDetails(){
-		return view('pages.properties-details');
+    public function getPropertiesDetails($id){
+        $postPopular = Post::where('id','<>',$id)->limit(3)->get();
+        $post = Post::find($id);
+        $image = image::where('post_id',$id)->limit(3)->get();
+		return view('pages.properties-details', compact('image','post','postPopular'));
 	}
-	
+
+    
 	public function getSubmitProperty(){
 		return view('pages.submit-property');
 	}
@@ -52,6 +64,7 @@ class PageController extends Controller
 	public function getLogin(){
 		return view('pages.login');
     }
+
     public function postLogin(Request $req){
         $this->validate($req,
             [
@@ -122,5 +135,38 @@ class PageController extends Controller
     public function getLogout(){
         Auth::logout();
         return redirect()->route('index');
+    }
+
+    /*get property*/
+    public function getProperty($type)
+    {
+       $properties_type= Post::where('property_type_id',$type)->limit(3)->get();
+       $properties= Property_type::all();
+       $properties_house = Property_type::where('id',$type)->first(); 
+       return view('pages.property-type',compact('properties_type','properties','properties_house'));
+    }
+
+    public function getUpdate(){
+        if(Auth::check())
+        {
+            return view('pages.user-profile')->with('data',Auth::user()->profile);
+        }
+        else
+        {
+            return redirect()->back();
+        }                 
+    }
+    public function postUpdate(Request $req){
+        $this->validate($req,
+            [
+                'email'=>'email'
+            ],
+            [
+                'email.email'=>'Email is not the correct format'
+            ]
+        );
+        $user_id = Auth::user()->id;
+        DB::table('users')->where('id',$user_id)->update($req->except('_token'));
+        return redirect()->back()->with('thanhcong','Successfully updated your account');  
     }
 }

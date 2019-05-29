@@ -32,8 +32,6 @@ class PostController extends Controller
 
 
     public function postProperty(Request $req){
-        
-
         $post = new Post();
         $post->name = $req->txtName;
         $post->price = $req->txtPrice;

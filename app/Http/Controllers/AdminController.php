@@ -18,6 +18,27 @@ class AdminController extends Controller
 	public function getLogin(){
     	return view('admin.login');
     }
+    public function store(Request $request){
+        $this->validate($req,
+            [
+                'email'=>'required|email:users,email',
+                'username'=>'required',
+       
+                'phone'=>'required',
+                'address'=>'required'
+            ],
+            [
+                'email.required'=>'Vui lòng nhập email',
+                'email.email'=>'Không đúng định dạng email',
+                'email.unique'=>'Email đã có người sử dụng',
+                
+                'username.required'=>'Vui lòng nhập số điện thoại',
+                
+                'phone.required'=>'Vui lòng nhập số điện thoại',
+                'address.required'=>'Vui lòng nhập Address'
+            ]);
+    }
+
     public function getIndex(){
     	return view('admin.index');
     }
@@ -28,8 +49,14 @@ class AdminController extends Controller
     	return view('admin.user');
     }
     public function getPost(){
-    	return view('admin.post');
+        if(Auth::user()->id == 1){
+            $user = user::where('role_id','<>','1')->orderBy('role_id', 'asc')->get(); //nếu là superadmin thì get admin và user 
+        }else{
+            $user = user::where('role_id','3')->orderBy('role_id', 'asc')->get(); //nếu là admin thì chỉ get user 
+        }
+    	return view('admin.user', compact('user'));
     }
+    
 
     public function postRegister(Request $req){
         $this->validate($req,

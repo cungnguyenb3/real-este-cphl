@@ -39,8 +39,12 @@
                         <!-- Property img -->
                         <div class="property-img">
                             <div class="property-tag button alt featured">Featured</div>
+                            @if($value->transaction_type == 0)
                             <div class="property-tag button sale">For Sale</div>
-                            <div class="property-price">{!! $value->price !!}</div>
+                            @else
+                            <div class="property-tag button sale">For Rent</div>
+                            @endif
+                            <div class="property-price">${!! $value->price !!}</div>
                             <img src="{!! $value->main_image !!}"alt="fp-list" class="img-responsive">
                             <div class="property-overlay">
                                 <a href="properties-details.html" class="overlay-link">

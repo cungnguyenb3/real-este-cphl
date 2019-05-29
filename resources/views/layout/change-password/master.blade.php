@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:39:49 GMT -->
+<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/change-password.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:45:17 GMT -->
 <head>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -13,9 +13,6 @@
     <title>The Nest - Real Estate HTML Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-
-    <!-- Chuyển đường dẫn sang thẻ base -->
-    <base href="{{asset('')}}">
 
     <!-- External CSS libraries -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -61,9 +58,45 @@
 <!-- End Google Tag Manager (noscript) -->
 <div class="page_loader"></div>
 
-<!-- Content area start -->
+<!-- Top header start -->
+@include('layout.header-top')
+<!-- Top header end -->
+
+<!-- Main header start -->
+@include('layout.header-main')
+<!-- Main header end -->
+
+<!-- Sub banner start -->
+<div class="sub-banner overview-bgi">
+    <div class="overlay">
+        <div class="container">
+            <div class="breadcrumb-area">
+                <h1>Change Password</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Change Password</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sub Banner end -->
+
+<!-- Change password start -->
 @yield('content')
-<!-- Content area end -->
+<!-- Change password end -->
+
+<!-- Partners block start -->
+@include('layout.partners-block')
+<!-- Partners block end -->
+
+<!-- Footer start -->
+@include('layout.footer')
+<!-- Footer end -->
+
+<!-- Copy right start -->
+@include('layout.copy-right')
+<!-- Copy end right-->
 
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -91,5 +124,5 @@
 
 </body>
 
-<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:39:49 GMT -->
+<!-- Mirrored from themevessel-item.s3-website-us-east-1.amazonaws.com/nest/change-password.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 18 May 2019 03:45:17 GMT -->
 </html>

@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
       Schema::create('posts', function (Blueprint $table) {
         $table->increments('id')->unsigned();
         $table->string('name'); 
+        $table->string('slug')->nullable(); 
         $table->double('price');  
         $table->text('description'); 
         $table->string('location'); 
@@ -29,6 +30,7 @@ class CreatePostsTable extends Migration
         $table->integer('building_age'); 
         $table->boolean('transaction_type');
         $table->boolean('status');
+        $table->boolean('hide')->nullable();
         $table->integer('user_id')->unsigned(); 
         $table->foreign('property_type_id')->references('id')->on(
        'property_types')->onDelete('cascade');
