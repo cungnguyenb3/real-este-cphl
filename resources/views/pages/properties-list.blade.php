@@ -1,4 +1,4 @@
-@extends('layout/login/master')
+@extends('layout/properties-list/master')
 @section('content')
 <div class="properties-section property-big content-area">
     <div class="container">

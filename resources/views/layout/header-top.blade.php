@@ -11,7 +11,7 @@
                 <ul class="top-social-media pull-right">
                     @if(Auth::check())
                     <li>
-                        <a href="#" class="sign-in"><i class="fa fa-user"></i> {{Auth::user()->username}}</a>
+                        <a href="{{route('user-profile')}}" class="sign-in"><i class="fa fa-user"></i> {{Auth::user()->username}}</a>
                     </li>
                     <li>
                         <a href="{{route('getLogout')}}" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
