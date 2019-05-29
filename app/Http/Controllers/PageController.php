@@ -26,10 +26,16 @@ class PageController extends Controller
 	}
 
   	public function getIndex(){
-		$post = Post::all()->take(6);
+		$post = DB::table('posts')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->select('users.username AS username','posts.*')
+        ->where('transaction_type','=',0)
+        ->take(10)
+        ->get()
+        ->toArray(); 
         $blog = Blog::all();
-        $user = User::all();
-		return view('pages.index', compact('post','user','blog'));
+      
+		return view('pages.index', compact('post','blog'));
 	}
 
 	public function getAbout(){

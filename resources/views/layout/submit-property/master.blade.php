@@ -126,7 +126,7 @@
     Dropzone.autoDiscover = false;
     $(function () {
         $("div#uploadImage").dropzone({
-            url: "/MyPHP/real-este-cphl/file-upload",
+            url: "file-upload",
             headers: {
                 'X-CSRF-TOKEN': '{!! csrf_token() !!}'
             },

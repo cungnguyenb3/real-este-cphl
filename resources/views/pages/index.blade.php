@@ -21,7 +21,11 @@
                         <!-- Property img -->
                         <div class="property-img">
                             <div class="property-tag button alt featured">Featured</div>
+                            @if($value->transaction_type == 0)
                             <div class="property-tag button sale">For Sale</div>
+                            @else
+                            <div class="property-tag button sale">For Rent</div>
+                            @endif
                             <div class="property-price">$150,000</div>
                             <img src="{{$value->main_image}}" alt="fp" class="img-responsive" width="100" heigh="200">
                             <div class="property-overlay">
@@ -35,7 +39,6 @@
                                     <a href="img/properties/properties-1.jpg" class="overlay-link">
                                         <i class="fa fa-expand"></i>
                                     </a>
-
                                     <a href="img/properties/properties-2.jpg" class="hidden"></a>
                                     <a href="img/properties/properties-3.jpg" class="hidden"></a>
                                 </div>
@@ -57,11 +60,11 @@
                             <ul class="facilities-list clearfix">
                                 <li>
                                     <i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-                                    <span>4800 sq ft</span>
+                                    <span>{{$value->area}} sq ft</span>
                                 </li>
                                 <li>
                                     <i class="flaticon-bed"></i>
-                                    <span>3 Beds</span>
+                                    <span>{{$value->number_of_bedroom}} Beds</span>
                                 </li>
                                 <li>
                                     <i class="flaticon-monitor"></i>
@@ -69,7 +72,7 @@
                                 </li>
                                 <li>
                                     <i class="flaticon-holidays"></i>
-                                    <span> 2 Baths</span>
+                                    <span> {{$value->number_of_bathroom}} Baths</span>
                                 </li>
                                 <li>
                                     <i class="flaticon-vehicle"></i>
@@ -83,7 +86,7 @@
                             <!-- Property footer -->
                             <div class="property-footer">
                                 <span class="left">
-                                    <a href="#"><i class="fa fa-user"></i>Jhon Doe</a>
+                                    <a href="#"><i class="fa fa-user"></i>{!! $value->username !!}</a>
                                 </span>
                                 <span class="right">
                                     <i class="fa fa-calendar"></i>5 Days ago
