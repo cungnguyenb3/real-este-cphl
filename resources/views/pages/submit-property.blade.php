@@ -5,6 +5,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="submit-address">
+                    @if(Auth::check())
+                    @else
+                    <div class="col-md-12">
+                        <div class="notification-box">
+                            <h3>Don't Have an Account?</h3>
+                            <p>You must login to do SUBMIT PROPERTY</p>
+                        </div>
+                    </div>
+                    @endif
+                    <br>
                     <form method="POST" action="{{route('postProperty')}}" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="main-title-2">
@@ -13,7 +23,7 @@
                         <div class="search-contents-sidebar mb-30">
                             <div class="form-group">
                                 <label>Property Title</label>
-                                <input type="text" class="input-text" name="txtName" placeholder="Property Title">
+                                <input type="text" class="input-text" name="txtName" placeholder="Property Title" required>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
@@ -82,7 +92,7 @@
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" class="input-text" name="txtAddress"  placeholder="Address">
+                                    <input type="text" class="input-text" name="txtAddress"  placeholder="Address" required>
                                 </div>
                             </div>
                             
@@ -104,7 +114,7 @@
                             <div class="col-md-4 col-sm-4">
                                 <div class="form-group">
                                     <label>Building Age</label>
-                                    <input type="text" class="input-text" name="txtBuildingAge"  placeholder="BuildingAge">
+                                    <input type="text" class="input-text" name="txtBuildingAge"  placeholder="BuildingAge" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-4">

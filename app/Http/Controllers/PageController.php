@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Property_type;
+use App\Post;
+use App\Blog;
+use App\Image;
 use Hash;
 use Auth;
 use Session;
-use App\Blog;
-use App\Post;
-use App\image;
 use Illuminate\Support\MessageBag;
 use Carbon\Carbon;
+use DB;
 
 class PageController extends Controller
 {
@@ -50,7 +52,8 @@ class PageController extends Controller
         $image = image::where('slug',$slug)->limit(3)->get();
 		return view('pages.properties-details', compact('image','post','postPopular'));
 	}
-	
+
+    
 	public function getSubmitProperty(){
 		return view('pages.submit-property');
 	}
@@ -67,6 +70,7 @@ class PageController extends Controller
 	public function getLogin(){
 		return view('pages.login');
     }
+
     public function postLogin(Request $req){
         $this->validate($req,
             [
@@ -143,4 +147,37 @@ class PageController extends Controller
         return view('layout.post.myPost', compact('post'));
     }
 
+    /*get property*/
+    public function getProperty($type)
+    {
+       $properties_type= Post::where('property_type_id',$type)->limit(3)->get();
+       $properties= Property_type::all();
+       $properties_house = Property_type::where('id',$type)->first(); 
+       $user = User::all();
+       return view('pages.property-type',compact('properties_type','properties','properties_house','user'));
+    }
+
+    public function getUpdate(){
+        if(Auth::check())
+        {
+            return view('pages.user-profile')->with('data',Auth::user()->profile);
+        }
+        else
+        {
+            return redirect()->back();
+        }                 
+    }
+    public function postUpdate(Request $req){
+        $this->validate($req,
+            [
+                'email'=>'email'
+            ],
+            [
+                'email.email'=>'Email is not the correct format'
+            ]
+        );
+        $user_id = Auth::user()->id;
+        DB::table('users')->where('id',$user_id)->update($req->except('_token'));
+        return redirect()->back()->with('thanhcong','Successfully updated your account');  
+    }
 }

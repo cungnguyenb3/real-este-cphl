@@ -1,4 +1,4 @@
-@extends('layout/login/master')
+@extends('layout/properties-type/master')
 @section('content')
 <div class="properties-section-body content-area">
     <div class="container">
@@ -12,7 +12,7 @@
                                 <span class="heading-icon">
                                     <i class="fa fa-th-list"></i>
                                 </span>
-                                <span class="hidden-xs">Properties List</span>
+                                <span class="hidden-xs">Properties {{$properties_house["name"]}}</a></li></span>
                             </h4>
                         </div>
                         <div class="col-lg-6 col-md-7 col-sm-7 col-xs-10 cod-pad">
@@ -34,80 +34,93 @@
                 <div class="clearfix"></div>
                 <!-- Property start -->
              
+                
+
+                @foreach($properties_type as $value)
                 <div class="property clearfix wow fadeInUp delay-03s">
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-pad">
-                        <!-- Property img -->
-                        <div class="property-img">
-                            <div class="property-tag button alt featured">Featured</div>
-                            <div class="property-tag button sale">For Sale</div>
-                            <div class="property-price">$150,000</div>
-                            <img src="img/properties/properties-list-1.jpg" alt="fp-list" class="img-responsive hp-1">
-                            <div class="property-overlay">
-                                <a href="properties-details.html" class="overlay-link">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <a class="overlay-link property-video" title="Lexus GS F">
-                                    <i class="fa fa-video-camera"></i>
-                                </a>
-                                <div class="property-magnify-gallery">
-                                    <a href="img/properties/properties-1.jpg" class="overlay-link">
-                                        <i class="fa fa-expand"></i>
-                                    </a>
-                                    <a href="img/properties/properties-2.jpg" class="hidden"></a>
-                                    <a href="img/properties/properties-3.jpg" class="hidden"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 property-content ">
-                        <!-- title -->
-                        <h1 class="title">
-                            <a href="properties-details.html">{!! $value->name !!}</a>
-                        </h1>
-                        <!-- Property address -->
-                        <h3 class="property-address">
-                            <a href="properties-details.html">
-                                <i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
-                            </a>
-                        </h3>
-                        <!-- Facilities List -->
-                        <ul class="facilities-list clearfix">
-                            <li>
-                                <i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-                                <span>4800 sq ft</span>
-                            </li>
-                            <li>
-                                <i class="flaticon-bed"></i>
-                                <span>3 Beds</span>
-                            </li>
-                            <li>
-                                <i class="flaticon-monitor"></i>
-                                <span>TV </span>
-                            </li>
-                            <li>
-                                <i class="flaticon-holidays"></i>
-                                <span> 2 Baths</span>
-                            </li>
-                            <li>
-                                <i class="flaticon-vehicle"></i>
-                                <span>1 Garage</span>
-                            </li>
-                            <li>
-                                <i class="flaticon-building"></i>
-                                <span> 3 Balcony</span>
-                            </li>
-                        </ul>
-                        <!-- Property footer -->
-                        <div class="property-footer">
-                            <span class="left">
-                                <a href="#"><i class="fa fa-user"></i>Jhon Doe</a>
-                            </span>
-                            <span class="right">
-                                <i class="fa fa-calendar"></i>5 Days ago
-                            </span>
-                        </div>
-                    </div>
+                   
+                   <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-pad">
+                       <!-- Property img -->
+                       <div class="property-img">
+                           <div class="property-tag button alt featured">Featured</div>
+                           <div class="property-tag button sale">For Sale</div>
+                           <div class="property-price">{{$value["price"]}} $</div>
+                           <img src="img/properties/{{$value['main_image']}}" alt="fp-list" class="img-responsive hp-1">
+                           <div class="property-overlay">
+                               <a href="properties-details.html" class="overlay-link">
+                                   <i class="fa fa-link"></i>
+                               </a>
+                               <a class="overlay-link property-video" title="Lexus GS F">
+                                   <i class="fa fa-video-camera"></i>
+                               </a>
+                               <div class="property-magnify-gallery">
+                                   <a href="img/properties/properties-1.jpg" class="overlay-link">
+                                       <i class="fa fa-expand"></i>
+                                   </a>
+                                   <a href="img/properties/properties-2.jpg" class="hidden"></a>
+                                   <a href="img/properties/properties-3.jpg" class="hidden"></a>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 property-content ">
+                       <!-- title -->
+                       
+                       <h1 class="title">
+                           <a href="properties-details.html"></a>
+                       </h1>
+                       <!-- Property address -->
+                       <h3 class="property-address">
+                           <a href="properties-details.html">
+                               <i class="fa fa-map-marker"></i>{{$value["name"]}}
+                           </a>
+                       </h3>
+                       <!-- Facilities List -->
+                       <ul class="facilities-list clearfix">
+                           <li>
+                               <i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
+                               <span>{{$value["area"]}} sq ft</span>
+                           </li>
+                           <li>
+                               <i class="flaticon-bed"></i>
+                               <span>{{$value["number_of_bedroom"]}} Beds</span>
+                           </li>
+                           <li>
+                               <i class="flaticon-monitor"></i>
+                               <span>TV </span>
+                           </li>
+                           <li>
+                               <i class="flaticon-holidays"></i>
+                               <span>{{$value["number_of_bathroom"]}} Baths</span>
+                           </li>
+                           <li>
+                               <i class="flaticon-vehicle"></i>
+                               <span>Garage</span>
+                           </li>
+                           <li>
+                               <i class="flaticon-building"></i>
+                               <span>Balcony</span>
+                           </li>
+                       </ul>
+                       <!-- Property footer -->
+                       <div class="property-footer">
+                           <span class="left">
+                               <a href="#"><i class="fa fa-user"></i>
+                                  @foreach($user as $u)
+                                    @if($u->id == $value->user_id)
+                                        {{$u->username}}    
+                                    @endif
+                                    @endforeach
+                               </a>
+                           </span>
+                           <span class="right">
+                               <i class="fa fa-calendar"></i>{{$value->created_at}}
+                           </span>
+                       </div>
+                   </div>
+                   
                 </div>
+                @endforeach
     
                 <!-- Property end -->
 

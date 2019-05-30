@@ -49,7 +49,7 @@ Route::get('products/{slug}', [
 Route::get('submit-property', [
 	'as' 	=> 'submit-property',
 	'uses' 	=> 'PageController@getSubmitProperty',
-]);
+])->middleware('userlogin');;
 
 Route::get('user-profile', [
 	'as' 	=> 'user-profile',
@@ -86,11 +86,6 @@ Route::get('myPost',[
     'uses' =>'PageController@getMyPost'])->middleware('userlogin');
 
 
-// Route::get('logout',[
-//     'as' => 'getLogout',
-//     'uses' =>'PageController@getLogout'
-// ]);
-
 Route::post('post',[
     'as' => 'postProperty',
     'uses' =>'PostController@postProperty'
@@ -102,14 +97,52 @@ Route::get('sale', [
 	'uses' 	=> 'PropertiesListController@getSale',
 ]);
 
+Route::get('rent', [
+	'as' 	=> 'rent',
+	'uses' 	=> 'PropertiesListController@getRent',
+]);
+
 Route::get('properties-list', [
 	'as' 	=> 'properties-list',
 	'uses' 	=> 'PropertiesListController@getListProperty',
 ]);
 
-// Route::post('image-upload/{postID}','postController@uploadImage');
+Route::get('my-properties', [
+	'as' 	=> 'my-properties',
+	'uses' 	=> 'PropertiesListController@getMyProperties',
+]);
 
-// Route::resource('post', 'PostController');
+Route::get('change-password', [
+	'as' 	=> 'change-password',
+	'uses' 	=> 'PropertiesListController@getChangePassword',
+]);
+
+Route::post('change-password', [
+	'as' 	=> 'change-password',
+	'uses' 	=> 'PropertiesListController@postChangePassword',
+]);
+
+Route::get('properties/{type}',[
+    'as' => 'properties',
+    'uses' =>'PageController@getProperty'
+ ]);
+
+ Route::get('blog', [
+    'as'    => 'blog',
+    'uses'  => 'PageController@getBlog',
+]);
+Route::get('blogdetail/{slug}', [
+    'as'    => 'blogdetail',
+    'uses'  => 'PageController@getBlogDetail',
+]);
+
+Route::post('search',[
+    'as' => 'postSearch',
+    'uses' =>'PostController@postSearch'
+]);
+
+Route::get('updateProfile',['as' => 'update_profile', 'uses' => 'PageController@getUpdate']);
+Route::post('updateProfile',  ['as' => 'update_profile', 'uses' => 'PageController@postUpdate']);
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -157,6 +190,10 @@ Route::group(['prefix' => 'admin'], function () {
     'as' => 'createBLog',
     'uses' =>'AdminController@getBlog'])->middleware('login');
 
+    Route::get('logout',[
+        'as' => 'adminlogout',
+        'uses' =>'AdminController@postLogout']);
+
     Route::post('createBLog',[
     'as' => 'createBLog',
     'uses' =>'AdminController@postBlog'])->middleware('login');
@@ -190,8 +227,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('editprofile',[
     'as' => 'adminEditProfile',
     'uses' =>'PostController@postEditProfile'])->middleware('adminlogin');
-
-
+    
     Route::get('acceptpost/{id}',[
     'as' => 'adminAcceptPost',
     'uses' =>'PostController@postAcceptPost'])->middleware('adminlogin');

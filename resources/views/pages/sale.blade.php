@@ -1,4 +1,4 @@
-@extends('layout/register/master')
+@extends('layout/sale/master')
 @section('content')
 <div class="properties-section-body content-area">
     <div class="container">
@@ -33,6 +33,8 @@
 
                 <div class="clearfix"></div>
                 <!-- Property start -->
+                
+
                 @foreach($sale as $value)
                 <div class="property clearfix wow fadeInUp delay-03s">
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-pad">
@@ -40,8 +42,8 @@
                         <div class="property-img">
                             <div class="property-tag button alt featured">Featured</div>
                             <div class="property-tag button sale">For Sale</div>
-                            <div class="property-price">$150,000</div>
-                            <img src="img/properties/properties-list-1.jpg" alt="fp-list" class="img-responsive hp-1">
+                            <div class="property-price">${!! $value->price !!}</div>
+                            <img src="{!! $value->main_image !!}" alt="fp-list" class="img-responsive hp-1">
                             <div class="property-overlay">
                                 <a href="properties-details.html" class="overlay-link">
                                     <i class="fa fa-link"></i>
@@ -67,18 +69,18 @@
                         <!-- Property address -->
                         <h3 class="property-address">
                             <a href="properties-details.html">
-                                <i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
+                                <i class="fa fa-map-marker"></i>{!! $value->location !!},
                             </a>
                         </h3>
                         <!-- Facilities List -->
                         <ul class="facilities-list clearfix">
                             <li>
                                 <i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-                                <span>4800 sq ft</span>
+                                <span>{!! $value->area !!} sq ft</span>
                             </li>
                             <li>
                                 <i class="flaticon-bed"></i>
-                                <span>3 Beds</span>
+                                <span>{!! $value->number_of_bedroom !!} Beds</span>
                             </li>
                             <li>
                                 <i class="flaticon-monitor"></i>
@@ -86,7 +88,7 @@
                             </li>
                             <li>
                                 <i class="flaticon-holidays"></i>
-                                <span> 2 Baths</span>
+                                <span> {!! $value->number_of_bathroom !!} Baths</span>
                             </li>
                             <li>
                                 <i class="flaticon-vehicle"></i>
@@ -100,7 +102,7 @@
                         <!-- Property footer -->
                         <div class="property-footer">
                             <span class="left">
-                                <a href="#"><i class="fa fa-user"></i>Jhon Doe</a>
+                                <a href="#"><i class="fa fa-user"></i> {!! $value->username !!}</a>
                             </span>
                             <span class="right">
                                 <i class="fa fa-calendar"></i>5 Days ago
@@ -109,6 +111,7 @@
                     </div>
                 </div>
                 @endforeach
+                
                 <!-- Property end -->
 
                 <!-- Page navigation start -->

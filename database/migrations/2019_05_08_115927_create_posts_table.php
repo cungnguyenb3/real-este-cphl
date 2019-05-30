@@ -30,6 +30,7 @@ class CreatePostsTable extends Migration
         $table->integer('building_age'); 
         $table->boolean('transaction_type');
         $table->boolean('status');
+        $table->boolean('hide')->nullable();
         $table->integer('user_id')->unsigned(); 
         $table->foreign('property_type_id')->references('id')->on(
        'property_types')->onDelete('cascade');

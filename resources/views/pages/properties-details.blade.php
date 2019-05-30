@@ -649,7 +649,7 @@
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="{{route('properties-details',$p->slug)}}">{{$p->name}}</a>
+                                    <a href="{{route('products',$p->slug)}}">{{$p->name}}</a>
                                 </h3>
                                 <p>{{$p->created_at}}</p>
                                 <div class="price">

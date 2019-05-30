@@ -8,7 +8,7 @@
                 <div class="user-account-box">
                     <div class="header clearfix">
                         <div class="edit-profile-photo">
-                            <img src="img/avatar/avatar-3.jpg" alt="agent-1" class="img-responsive">
+                            <img src="img/avatar/avatar-{{rand(1,4)}}.jpg" alt="agent-1" class="img-responsive">
                             <div class="change-photo-btn">
                                 <div class="photoUpload">
                                     <span><i class="fa fa-upload"></i> Upload Photo</span>
@@ -16,8 +16,8 @@
                                 </div>
                             </div>
                         </div>
-                        <h3>John Doe</h3>
-                        <p>johndoe@gmail.com</p>
+                        <h3>{{Auth::user()->username}}</h3>
+                        <p>{{Auth::user()->email}}</p>
 
                         <ul class="social-list clearfix">
                             <li>
@@ -56,7 +56,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="my-properties.html">
+                                <a href="{{route('my-properties')}}">
                                     <i class="flaticon-apartment"></i>My Properties
                                 </a>
                             </li>
@@ -86,34 +86,49 @@
                 <!-- User account box end -->
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12">
+                
+
                 <!-- My address start-->
                 <div class="my-address">
                     <div class="main-title-2">
                         <h1><span>Advanced</span> Search</h1>
+                    
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                       <ul>
+                           @foreach ($errors->all() as $error)
+                               <li>{{ $error }}</li>
+                           @endforeach
+                        </ul>
                     </div>
+                    @endif
 
-                    <form action="http://themevessel-item.s3-website-us-east-1.amazonaws.com/nest/index.html" method="GET">
+                    @if(Session::has('thanhcong'))
+                        <div class="alert alert-success">
+                            {{Session::get('thanhcong')}}    
+                        </div>
+                    @endif
+                    </div>
+                    <form action="{{route('update_profile')}}" method="POST">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
-                            <label>Your Name</label>
-                            <input type="text" class="input-text" name="your name" placeholder="John Antony">
+                           <label>Your Name</label>
+                           <input type="text" class="input-text" name="username" placeholder="John Antony" value="{{Auth::user()->username}}" required>
                         </div>
                         <div class="form-group">
-                            <label>Your Title</label>
-                            <input type="text" class="input-text" name="agent" placeholder="Your title">
+                            <label>Your address</label>
+                            <input type="text" class="input-text" name="address" placeholder="Your address" value="{{Auth::user()->address}}" required>
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="text" class="input-text" name="phone" placeholder="+55 4XX-634-7071">
+                            <input type="number" class="input-text" name="phone" placeholder="0905 055 055" value="{{Auth::user()->phone}}" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="input-text" name="email" placeholder="johndoe@gmail.com">
+                            <input type="email" class="input-text" name="email" placeholder="Your email" value="{{Auth::user()->email}}" required>
                         </div>
-                        <div class="form-group">
-                            <label>About Me</label>
-                            <textarea class="input-text" name="message" placeholder="Etiam luctus malesuada quam eu aliquet. Donec eget mollis tortor. Donec pellentesque eros a nisl euismod, ut congue orci ultricies. Fusce aliquet metus non arcu varius ullamcorper a sit amet nunc. Donec in lacus neque. Vivamus ullamcorper sed ligula vitae "></textarea>
-                        </div>
-                        <a href="#" class="btn button-md button-theme">Save Changes</a>
+                        
+                        <button type="Submit" class="btn button-md button-theme">Save Changes</button>
                     </form>
                 </div>
                 <!-- My address end -->

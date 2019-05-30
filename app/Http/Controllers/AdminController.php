@@ -43,11 +43,11 @@ class AdminController extends Controller
 	public function getRegister(){
     	return view('admin.register');
     }
-	public function getLogin(){
-    	return view('admin.login');
+    public function getLogin(){
+    return view('admin.login');
     }
     public function getIndex(){
-    	return view('admin.index');
+    return view('admin.index');
     }
     public function getProfile(){
         
@@ -136,7 +136,7 @@ class AdminController extends Controller
         return redirect()->route('adminlogin');
     }
     public function getCreate(){
-    	return view('admin.createAdmin');
+    return view('admin.createAdmin');
     }
     public function postCreate(Request $req){
 
@@ -165,7 +165,7 @@ class AdminController extends Controller
         return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
     public function getBlog(){
-    	return view('admin.createBlog');
+    return view('admin.createBlog');
     }
     public function postBlog(Request $req){
         $this->validate($req,
@@ -193,8 +193,8 @@ class AdminController extends Controller
         return redirect()->back()->with('thanhcong','Tạo blog thành công');
     }
     public function getShowblog(){
-    	$blog =blog::all();
-    	return view('admin.showBlog', compact('blog'));
+    $blog =blog::all();
+    return view('admin.showBlog', compact('blog'));
     }
     public function getDeleteBlog($id) {
 		$blog = blog::find($id);

@@ -5,13 +5,15 @@ use Illuminate\Support\MessageBag;
 use UserRequest;
 use Illuminate\Http\Request;
 // use Request;
-use App\blog;
-use App\user;
-use App\post;
-
+use App\Post;
+use App\Image;
+use DB;
 use Hash;
 use Auth;
 use Session;
+use App\Blog;
+use App\User;
+use Carbon\Carbon;
 class PostController extends Controller
 {
 
@@ -30,7 +32,7 @@ class PostController extends Controller
                 'image.required' => 'image không được trống'
             ]);
 		$blog = blog::find($id);
-		$image = 'homeland/images/'. $req->image;
+		$image = 'img/blog/'. $req->image;
 		$blog->title = $req->title;
 		$blog->content = $req->content;
 		$blog->image = $req->image;
@@ -126,8 +128,6 @@ class PostController extends Controller
 
 
     public function postProperty(Request $req){
-        
-
         $post = new Post();
         $post->name = $req->txtName;
         $post->price = $req->txtPrice;
@@ -141,6 +141,8 @@ class PostController extends Controller
         $post->building_age = $req->txtBuildingAge;
         $post->transaction_type = $req->selTransactionType;
         $post->status = 0;
+        $s = str_slug($req->txtName).Carbon::now();
+        $post->slug = $s;
         $post->user_id = $req->user_id;
         if (isset($req->images)) {
             $post->main_image = $req->images[0];
@@ -166,5 +168,31 @@ class PostController extends Controller
         $image = $req->file('file');
     }
 
+    public function postSearch(Request $req){
+        $area_from = $req->area_from;
+        $property_status = $req->property_status;
+        $building_age = $req->building_age;
+        $property_types = $req->property_types;
+        $bedrooms = $req->bedrooms;
+        $bathrooms = $req->bathrooms;
+        $min_price = $req->min_price;
+        $max_price = $req->max_price;
+        
+        $result = DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->select('users.username AS username','posts.*')
+            ->where('area','=',$area_from)
+            ->where('transaction_type','=',$property_status)
+            ->where('building_age','=',$building_age)
+            ->where('property_type_id','=',$property_types)
+            ->where('number_of_bedroom','=',$bedrooms)
+            ->where('number_of_bathroom','=',$bathrooms)
+            ->where('number_of_bathroom','=',$bathrooms)
+            ->whereBetween('price', [$min_price, $max_price])
+            ->get();
 
+        return view('pages.search',compact('result'));
+    }
+
+    
 }
