@@ -5,6 +5,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="submit-address">
+                    @if(Auth::check())
+                    @else
+                    <div class="col-md-12">
+                        <div class="notification-box">
+                            <h3>Don't Have an Account?</h3>
+                            <p>You must login to do SUBMIT PROPERTY</p>
+                        </div>
+                    </div>
+                    @endif
+                    <br>
                     <form method="POST" action="{{route('postProperty')}}" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="main-title-2">

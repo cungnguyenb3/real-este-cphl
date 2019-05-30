@@ -36,7 +36,7 @@ Route::post('/file-upload', [
     'uses' => 'UploadController@postImages',
 ]);
 
-Route::get('properties-details', [
+Route::get('properties-details/{id}', [
 	'as' 	=> 'properties-details',
 	'uses' 	=> 'PageController@getPropertiesDetails',
 ]);
@@ -92,14 +92,47 @@ Route::get('sale', [
 	'uses' 	=> 'PropertiesListController@getSale',
 ]);
 
+Route::get('rent', [
+	'as' 	=> 'rent',
+	'uses' 	=> 'PropertiesListController@getRent',
+]);
+
 Route::get('properties-list', [
 	'as' 	=> 'properties-list',
 	'uses' 	=> 'PropertiesListController@getListProperty',
 ]);
 
-// Route::post('image-upload/{postID}','postController@uploadImage');
+Route::get('my-properties', [
+	'as' 	=> 'my-properties',
+	'uses' 	=> 'PropertiesListController@getMyProperties',
+]);
 
-// Route::resource('post', 'PostController');
+Route::get('change-password', [
+	'as' 	=> 'change-password',
+	'uses' 	=> 'PropertiesListController@getChangePassword',
+]);
+
+Route::post('change-password', [
+	'as' 	=> 'change-password',
+	'uses' 	=> 'PropertiesListController@postChangePassword',
+]);
+
+Route::get('properties/{type}',[
+    'as' => 'properties',
+    'uses' =>'PageController@getProperty'
+ ]);
+
+ Route::get('blog', [
+    'as'    => 'blog',
+    'uses'  => 'PageController@getBlog',
+]);
+Route::get('blogdetail/{id}', [
+    'as'    => 'blogdetail',
+    'uses'  => 'PageController@getBlogDetail',
+]);
+
+Route::get('updateProfile',['as' => 'update_profile', 'uses' => 'PageController@getUpdate']);
+Route::post('updateProfile',  ['as' => 'update_profile', 'uses' => 'PageController@postUpdate']);
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -166,4 +199,40 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('editblog/{id}',[
     'as' => 'admineditblog',
     'uses' =>'AdminController@postEditBlog'])->middleware('adminlogin');
+
+    Route::get('editprofile',[
+    'as' => 'adminEditProfile',
+    'uses' =>'AdminController@getProfile'])->middleware('adminlogin');
+
+    Route::post('editprofile',[
+    'as' => 'adminEditProfile',
+    'uses' =>'PostController@postEditProfile'])->middleware('adminlogin');
+        
+    Route::get('acceptpost/{id}',[
+    'as' => 'adminAcceptPost',
+    'uses' =>'PostController@postAcceptPost'])->middleware('adminlogin');
+        
+    Route::get('deletepost/{id}',[
+    'as' => 'adminDeletePost',
+    'uses' =>'PostController@postDeletePost'])->middleware('adminlogin');
+        
+    Route::get('deleteuser/{id}',[
+    'as' => 'adminDeleteUser',
+    'uses' =>'AdminController@getDeleteUser'])->middleware('adminlogin');
+        
+    Route::get('edituser/{id}',[
+    'as' => 'adminEditUser',
+    'uses' =>'AdminController@getEditUser'])->middleware('adminlogin');
+        
+    Route::post('edituser/{id}',[
+    'as' => 'adminEditUser',
+    'uses' =>'PostController@postEditUser'])->middleware('adminlogin');
+        
+    Route::get('search',[
+    'as' => 'adminSearch',
+    'uses' =>'AdminController@getSearch'])->middleware('adminlogin');
+    
+    Route::post('edituser/{id}',[
+    'as' => 'adminEditUser',
+    'uses' =>'PostController@postEditUser'])->middleware('adminlogin');
 });

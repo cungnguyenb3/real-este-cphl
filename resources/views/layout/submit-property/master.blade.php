@@ -15,7 +15,7 @@
     <meta charset="utf-8">
 
     <!-- Chuyển đường dẫn sang thẻ base -->
-    <base href="{{asset('public/public/')}}">
+    <base href="{{asset('')}}">
 
     <!-- External CSS libraries -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -126,7 +126,7 @@
     Dropzone.autoDiscover = false;
     $(function () {
         $("div#uploadImage").dropzone({
-            url: "/MyPHP/real-este-cphl/file-upload",
+            url: "file-upload",
             headers: {
                 'X-CSRF-TOKEN': '{!! csrf_token() !!}'
             },

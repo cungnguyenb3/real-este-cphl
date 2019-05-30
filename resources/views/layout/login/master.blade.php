@@ -15,7 +15,7 @@
     <meta charset="utf-8">
 
     <!-- Chuyển đường dẫn sang thẻ base -->
-    <base href="{{asset('public/public/')}}">
+    <base href="{{asset('')}}">
 
     <!-- External CSS libraries -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -60,27 +60,6 @@
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div class="page_loader"></div>
-
-<!-- Option Panel -->
-<div class="option-panel option-panel-collased">
-    <h2>Change Color</h2>
-    <div class="color-plate default-plate" data-color="default"></div>
-    <div class="color-plate blue-plate" data-color="blue"></div>
-    <div class="color-plate yellow-plate" data-color="yellow"></div>
-    <div class="color-plate red-plate" data-color="red"></div>
-    <div class="color-plate green-light-plate" data-color="green-light"></div>
-    <div class="color-plate orange-plate" data-color="orange"></div>
-    <div class="color-plate yellow-light-plate" data-color="yellow-light"></div>
-    <div class="color-plate green-light-2-plate" data-color="green-light-2"></div>
-    <div class="color-plate olive-plate" data-color="olive"></div>
-    <div class="color-plate purple-plate" data-color="purple"></div>
-    <div class="color-plate blue-light-plate" data-color="blue-light"></div>
-    <div class="color-plate brown-plate" data-color="brown"></div>
-    <div class="setting-button">
-        <i class="fa fa-gear"></i>
-    </div>
-</div>
-<!-- Option Panel -->
 
 <!-- Content area start -->
 @yield('content')
