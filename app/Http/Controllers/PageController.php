@@ -29,10 +29,11 @@ class PageController extends Controller
 		$post = DB::table('posts')
         ->join('users', 'posts.user_id', '=', 'users.id')
         ->select('users.username AS username','posts.*')
-        ->where('transaction_type','=',0)
+        ->where('status','=',1)
         ->take(10)
         ->get()
         ->toArray(); 
+
         $blog = Blog::all();
       
 		return view('pages.index', compact('post','blog'));

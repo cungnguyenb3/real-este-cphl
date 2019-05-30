@@ -44,7 +44,7 @@ Route::get('properties-details/{id}', [
 Route::get('submit-property', [
 	'as' 	=> 'submit-property',
 	'uses' 	=> 'PageController@getSubmitProperty',
-]);
+])->middleware('userlogin');;
 
 Route::get('user-profile', [
 	'as' 	=> 'user-profile',
@@ -131,6 +131,11 @@ Route::get('blogdetail/{id}', [
     'uses'  => 'PageController@getBlogDetail',
 ]);
 
+Route::post('search',[
+    'as' => 'postSearch',
+    'uses' =>'PostController@postSearch'
+]);
+
 Route::get('updateProfile',['as' => 'update_profile', 'uses' => 'PageController@getUpdate']);
 Route::post('updateProfile',  ['as' => 'update_profile', 'uses' => 'PageController@postUpdate']);
 
@@ -179,6 +184,10 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('createBLog',[
     'as' => 'createBLog',
     'uses' =>'AdminController@getBlog'])->middleware('login');
+
+    Route::get('logout',[
+        'as' => 'adminlogout',
+        'uses' =>'AdminController@postLogout']);
 
     Route::post('createBLog',[
     'as' => 'createBLog',

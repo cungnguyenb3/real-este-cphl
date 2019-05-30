@@ -10,74 +10,73 @@ Include the above in your HEAD tag
 @section('content')
 <div class="container">
 
+<div class="container">
 
 
-<div class="card bg-light">
-<article class="card-body mx-auto" style="max-width: 1200px;">
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			
-		
 
-	
-	<form action="{{route('adminCreate')}}" method="post" >
-		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		@if(count($errors)>0)
-						<div class="alert alert-danger">
-							@foreach($errors->all() as $err)
-							{{$err}}
-							@endforeach
-						</div>
-					@endif
-					@if(Session::has('thanhcong'))
-						<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
-					@endif
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		 </div>
+<div class="row">
+<article class="card-body mx-auto" >
+   
+    <form action="{{route('register')}}" method="post" >
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
+        @include('admin.error')
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+         </div>
         <input name="username" class="form-control" placeholder="username" type="text">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-		 </div>
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+         </div>
         <input name="email" class="form-control" placeholder="Email address" type="email">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-		</div>
-		<select class="custom-select" style="max-width: 240px;">
-		    <option selected="">+971</option>
-		    <option value="1">+972</option>
-		    <option value="2">+198</option>
-		    <option value="3">+701</option>
-		</select>
-    	<input name="phone" class="form-control" placeholder="Phone number" type="text">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+        </div>
+        
+        <input name="phone" class="form-control" placeholder="Phone number" type="text">
     </div> <!-- form-group// -->
-
     <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+        </div>
+        <select name="role_id" class="form-control">
+            <option selected=""> Select user type</option>
+            <option value="1">Superadmin</option>
+            <option value="2">Admin</option>
+            <option value="3">user</option>
+        </select>
+    </div> <!-- form-group end.// -->
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+         </div>
+        <input name="address" class="form-control" placeholder="Address" type="text">
+    </div>
+    <div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
         <input class="form-control" name="password" placeholder="Create password" type="password">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
         <input class="form-control " name="re_password" placeholder="Repeat password" type="password">
     </div> <!-- form-group// -->                                      
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
     </div> <!-- form-group// -->      
-                                                                   
+    <p class="text-center">Have an account? <a href="{{route('login')}}">Log In</a> </p>                                                                 
 </form>
-</div>
-</div>
 </article>
 </div> <!-- card.// -->
+
+</div> 
 
 </div> 
 <!--container end.//-->
@@ -107,13 +106,5 @@ Include the above in your HEAD tag
     z-index: 1;
 }
 
-.btn-facebook {
-    background-color: #405D9D;
-    color: #fff;
-}
-.btn-twitter {
-    background-color: #42AEEC;
-    color: #fff;
-}
 </style>
 @endsection

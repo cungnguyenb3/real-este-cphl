@@ -23,7 +23,7 @@
                         <div class="search-contents-sidebar mb-30">
                             <div class="form-group">
                                 <label>Property Title</label>
-                                <input type="text" class="input-text" name="txtName" placeholder="Property Title">
+                                <input type="text" class="input-text" name="txtName" placeholder="Property Title" required>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
@@ -92,7 +92,7 @@
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" class="input-text" name="txtAddress"  placeholder="Address">
+                                    <input type="text" class="input-text" name="txtAddress"  placeholder="Address" required>
                                 </div>
                             </div>
                             
@@ -114,7 +114,7 @@
                             <div class="col-md-4 col-sm-4">
                                 <div class="form-group">
                                     <label>Building Age</label>
-                                    <input type="text" class="input-text" name="txtBuildingAge"  placeholder="BuildingAge">
+                                    <input type="text" class="input-text" name="txtBuildingAge"  placeholder="BuildingAge" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-4">
