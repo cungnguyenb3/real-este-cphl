@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Hash;
 use Auth;
-use App\blog;
+use App\Blog;
 use App\User;
-use App\post;
-use App\image;
-use App\property_type;
+use App\Post;
+use App\Image;
+use App\Property_type;
 use Illuminate\Support\MessageBag;
 use UserRequest;
 
@@ -181,7 +181,7 @@ public function getLogin(){
 
                 'image.required' => 'image không được trống'
             ]);
-        $blog = new blog();
+        $blog = new Blog();
         $blog->title = $req->title;
         $s = str_slug($req->title).Carbon::now();
         $blog->slug = $s;
@@ -197,26 +197,27 @@ public function getLogin(){
     return view('admin.showBlog', compact('blog'));
     }
     public function getDeleteBlog($id) {
-$blog = blog::find($id);
-// File::delete('public/backend/images/'.$product->image);
-$blog->delete($id);
-return back()->with('thanhcong','xóa blog thành công');
-}
-public function getEditBlog($id){
-$blog = blog::find($id);
-return view('admin.editBlog', compact('blog'));
-}
+        $blog = blog::find($id);
+        // File::delete('public/backend/images/'.$product->image);
+        $blog->delete($id);
+        return back()->with('thanhcong','xóa blog thành công');
+        }
+
+    public function getEditBlog($id){
+    $blog = Blog::find($id);
+    return view('admin.editBlog', compact('blog'));
+    }
 
 
     public function getPost(){
-        $post= post::where('status','0')->get();
-        $image = image::all();
-        $user = user::all();
-        $property=property_type::all();
+        $post= Post::where('status','0')->get();
+        $image = Image::all();
+        $user = User::all();
+        $property=Property_type::all();
         return view('admin.post', compact('post', 'image', 'user','property'));
     }
     public function getDeleteUser($id) {
-        $user = user::find($id);
+        $user = User::find($id);
         // File::delete('public/backend/images/'.$product->image);
         $user->delete($id);
         return back()->with('thanhcong','xóa user thành công');
@@ -224,7 +225,7 @@ return view('admin.editBlog', compact('blog'));
     
 
     public function getEditUser($id){
-        $user = user::find($id);
+        $user = User::find($id);
         return view('admin.editUser', compact('user'));
     }
     public function postEditUser($id, Request $req){
@@ -247,7 +248,7 @@ return view('admin.editBlog', compact('blog'));
                 'phone.required'=>'Vui lòng nhập số điện thoại',
                 'address.required'=>'Vui lòng nhập Address'
             ]);
-        $user = user::find($id);
+        $user = User::find($id);
         $user->username = Request::input('username');
         $user->email = Request::input('email');
         

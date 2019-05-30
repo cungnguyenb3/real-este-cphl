@@ -126,7 +126,7 @@ Route::get('properties/{type}',[
     'as'    => 'blog',
     'uses'  => 'PageController@getBlog',
 ]);
-Route::get('blogdetail/{id}', [
+Route::get('blogdetail/{slug}', [
     'as'    => 'blogdetail',
     'uses'  => 'PageController@getBlogDetail',
 ]);

@@ -15,42 +15,37 @@ use DB;
 
 class PageController extends Controller
 {
-    // public function __construct(){
-    //     if (Auth::check()) {
-    //         view()->share('user',Auth::user());
-    //     }        
-    // }
-
-    public function getTest(){
-		return view('layout.properties-details.master');
-	}
-
   	public function getIndex(){
 		$post = DB::table('posts')
         ->join('users', 'posts.user_id', '=', 'users.id')
         ->select('users.username AS username','posts.*')
         ->where('status','=',1)
-        ->take(10)
+        ->take(6)
         ->get()
         ->toArray(); 
 
         $blog = Blog::all();
-      
-		return view('pages.index', compact('post','blog'));
+        $user = User::all();
+
+		return view('pages.index', compact('post','blog','user'));
 	}
 
 	public function getAbout(){
 		return view('pages.about');
-	}
-
-    public function getBlog(){
-		return view('pages.blog');
+    }
+    
+    public function getBlogDetail($slug){
+        $blog = Blog::where('slug',$slug)->first();
+        $user = user::all();
+        $blogPopular = Blog::where('slug','<>',$slug)->limit(3)->get();
+        return view('pages.blog-detail',compact('blog','user','blogPopular'));
+		
 	}
 
     public function getPropertiesDetails($id){
         $postPopular = Post::where('id','<>',$id)->limit(3)->get();
         $post = Post::find($id);
-        $image = image::where('post_id',$id)->limit(3)->get();
+        $image = Image::where('post_id',$id)->get();
 		return view('pages.properties-details', compact('image','post','postPopular'));
 	}
 
@@ -59,10 +54,6 @@ class PageController extends Controller
 		return view('pages.submit-property');
 	}
 
-	public function blog(){
-		return view('pages.blog');
-    }
-    
     public function getUserProfile(){
 		return view('pages.user-profile');
 	}

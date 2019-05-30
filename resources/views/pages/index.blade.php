@@ -8,10 +8,11 @@
         </div>
         <ul class="list-inline-listing filters filters-listing-navigation">
             <li class="active btn filtr-button filtr" data-filter="all">All</li>
-            <li data-filter="1" class="btn btn-inline filtr-button filtr">House</li>
-            <li data-filter="2" class="btn btn-inline filtr-button filtr">Office</li>
-            <li data-filter="3" class="btn btn-inline filtr-button filtr">Apartment</li>
-            <li data-filter="4" class="btn btn-inline filtr-button filtr">Residential</li>
+            <li data-filter="1" class="btn btn-inline filtr-button filtr">Apartment</li>
+            <li data-filter="2" class="btn btn-inline filtr-button filtr">House</li>
+            <li data-filter="3" class="btn btn-inline filtr-button filtr">Commercial</li>
+            <li data-filter="4" class="btn btn-inline filtr-button filtr">Garage</li>
+            <li data-filter="5" class="btn btn-inline filtr-button filtr">Lot</li>
         </ul>
         <div class="row">
             <div class="filtr-container">
@@ -89,7 +90,7 @@
                                     <a href="#"><i class="fa fa-user"></i>{!! $value->username !!}</a>
                                 </span>
                                 <span class="right">
-                                    <i class="fa fa-calendar"></i>5 Days ago
+                                    <i class="fa fa-calendar"></i></i>{{$value->created_at}}
                                 </span>
                             </div>
                         </div>

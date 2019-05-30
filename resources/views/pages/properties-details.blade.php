@@ -7,13 +7,13 @@
                 <!-- Header -->
                 <div class="heading-properties clearfix sidebar-widget">
                     <div class="pull-left">
-                        <h3>Sweet Family Home</h3>
+                        <h3>{{$post->name}}</h3>
                         <p>
-                            <i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
+                            <i class="fa fa-map-marker"></i>{{$post->location}},
                         </p>
                     </div>
                     <div class="pull-right">
-                        <h3><span>$362,100</span></h3>
+                        <h3><span>${{$post->price}}</span></h3>
                         <h5>
                             Per Manth
                         </h5>
@@ -27,30 +27,14 @@
                             <div class="carousel-outer">
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
-                                    <div class="item">
-                                        <img src="img/properties/properties-1.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/properties/properties-3.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/properties/properties-4.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/properties/properties-5.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/properties/properties-6.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/properties/properties-7.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/properties/properties-8.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
                                     <div class="item active">
-                                        <img src="img/properties/properties-2.jpg" class="thumb-preview" alt="Chevrolet Impala">
+                                        <img src="{{$post->main_image}}" class="thumb-preview" alt="Chevrolet Impala">
                                     </div>
+                                    @foreach($image as $i)
+                                    <div class="item">
+                                        <img src="{{$i->image}}" class="thumb-preview" alt="Chevrolet Impala">
+                                    </div>
+                                    @endforeach
                                 </div>
                                 <!-- Controls -->
                                 <a class="left carousel-control" href="#carousel-custom" role="button" data-slide="prev">
@@ -68,14 +52,9 @@
                             </div>
                             <!-- Indicators -->
                             <ol class="carousel-indicators thumbs visible-lg visible-md">
-                                <li data-target="#carousel-custom" data-slide-to="0" class=""><img src="img/properties/properties-small-1.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="1" class=""><img src="img/properties/properties-small-3.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="2" class=""><img src="img/properties/properties-small-4.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="3" class=""><img src="img/properties/properties-small-5.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="4" class=""><img src="img/properties/properties-small-6.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="5" class=""><img src="img/properties/properties-small-7.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="6" class=""><img src="img/properties/properties-small-8.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="7" class=""><img src="img/properties/properties-small-2.jpg" alt="Chevrolet Impala"></li>
+                                @foreach($image as $i)
+                                <li data-target="#carousel-custom" data-slide-to="{{$i->id}}" class=""><img src="{{$i->image}}" alt="Chevrolet Impala"></li>
+                                @endforeach 
                             </ol>
                         </div>
                     </div>
@@ -217,9 +196,7 @@
                                         <div class="main-title-2">
                                             <h1><span>Description</span></h1>
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.</p>
-                                        <br>
-                                        <p>Nam mattis lobortis felis eu blandit. Morbi tellus ligula, interdum sit amet ipsum et, viverra hendrerit lectus. Nunc efficitur sem vel est laoreet, sed bibendum eros viverra. Vestibulum finibus, ligula sed euismod tincidunt, lacus libero lobortis ligula, sit amet molestie ipsum purus ut tortor. Nunc varius, dui et sollicitudin facilisis, erat felis imperdiet felis, et iaculis dui magna vitae diam. Donec mattis diam nisl, quis ullamcorper enim malesuada non. Curabitur lobortis eu mauris nec vestibulum. Nam efficitur, ex ac semper malesuada nisi odio consequat dui, hendrerit vulputate odio dui vitae massa. Aliquam tortor urna, tincidunt</p>
+                                        <p>{{$post->description}}</p>
                                     </div>
                                     <div class="tab-pane fade features" id="tab2default">
                                         <!-- Properties condition start -->
@@ -231,17 +208,17 @@
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <ul class="condition">
                                                         <li>
-                                                            <i class="fa fa-check-square"></i>3 Beds
+                                                            <i class="fa fa-check-square"></i>{{$post->number_of_bedroom}} Beds
                                                         </li>
                                                         <li>
-                                                            <i class="fa fa-check-square"></i>Bathroom
+                                                            <i class="fa fa-check-square"></i>{{$post->number_of_bathroom}} Bathroom
                                                         </li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <ul class="condition">
                                                         <li>
-                                                            <i class="fa fa-check-square"></i>4800 sq ft
+                                                            <i class="fa fa-check-square"></i>{{$post->area}} m2
                                                         </li>
                                                         <li>
                                                             <i class="fa fa-check-square"></i>TV
@@ -251,7 +228,7 @@
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <ul class="condition">
                                                         <li>
-                                                            <i class="fa fa-check-square"></i>1 Garage
+                                                            <i class="fa fa-check-square"></i> Garage
                                                         </li>
                                                         <li>
                                                             <i class="fa fa-check-square"></i>Balcony
@@ -332,16 +309,15 @@
                                                 <tbody><tr>
                                                     <td><strong>Size</strong></td>
                                                     <td><strong>Rooms</strong></td>
-                                                    <td><strong>2 Bathrooms</strong></td>
+                                                    <td><strong> Bathrooms</strong></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>1600</td>
-                                                    <td>3</td>
-                                                    <td>2</td>
+                                                    <td>{{$post->area}}</td>
+                                                    <td>{{$post->room}}</td>
+                                                    <td>{{$post->number_of_bathroom}}</td>
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <img src="img/properties/floor-plans.html" alt="floor-plans" class="img-responsive">
                                         </div>
                                         <!-- Floor Plans end -->
                                     </div>

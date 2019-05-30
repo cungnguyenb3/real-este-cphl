@@ -7,7 +7,6 @@
                 <div class="carousel-caption banner-slider-inner">
                     <div class="banner-content">
                         <h1 data-animation="animated fadeInDown delay-05s"><span>Find your </span> Dream House</h1>
-                        <p data-animation="animated fadeInUp delay-1s">Lorem ipsum dolor sit amet, conconsectetuer adipiscing elit Lorem ipsum dolor sit amet, conconsectetuer</p>
                         <a href="#" class="btn button-md button-theme" data-animation="animated fadeInUp delay-15s">Get Started Now</a>
                         <a href="#" class="btn button-md border-button-theme" data-animation="animated fadeInUp delay-15s">Learn More</a>
                     </div>
@@ -18,7 +17,6 @@
                 <div class="carousel-caption banner-slider-inner">
                     <div class="banner-content">
                         <h1 data-animation="animated fadeInDown delay-1s"><span>Sweet Home For</span> Small Family</h1>
-                        <p data-animation="animated fadeInUp delay-05s">Lorem ipsum dolor sit amet, conconsectetuer adipiscing elit Lorem ipsum dolor sit amet, conconsectetuer</p>
                         <a href="#" class="btn button-md button-theme" data-animation="animated fadeInUp delay-15s">Get Started Now</a>
                         <a href="#" class="btn button-md border-button-theme" data-animation="animated fadeInUp delay-15s">Learn More</a>
                     </div>
@@ -29,7 +27,6 @@
                 <div class="carousel-caption banner-slider-inner">
                     <div class="banner-content">
                         <h1 data-animation="animated fadeInLeft delay-05s"><span>Best Place To</span> Find Home</h1>
-                        <p data-animation="animated fadeInLeft delay-1s">Lorem ipsum dolor sit amet, conconsectetuer adipiscing elit Lorem ipsum dolor sit amet, conconsectetuer</p>
                         <a href="#" class="btn button-md button-theme" data-animation="animated fadeInLeft delay-15s">Get Started Now</a>
                         <a href="#" class="btn button-md border-button-theme" data-animation="animated fadeInLeft delay-20s">Learn More</a>
                     </div>

@@ -13,11 +13,11 @@ class PropertiesListController extends Controller
         $post = DB::table('posts')
         ->join('users', 'posts.user_id', '=', 'users.id')
         ->select('users.username AS username','posts.*')
-        ->where('status','=',0)
-        ->take(5)
-        ->get()
-        ->toArray();
-
+        ->where('status','=',1)
+     
+        ->paginate(3);
+        
+    
         return view('pages.properties-list',compact('post'));
     }
     
