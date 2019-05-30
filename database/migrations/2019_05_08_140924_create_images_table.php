@@ -17,6 +17,7 @@ class CreateImagesTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('title')->nullable();
             $table->string('link')->nullable();
+            $table->string('slug'); 
             $table->string('image');
             $table->integer('post_id')->unsigned();
             $table->foreign('post_id')->references('id')->on(

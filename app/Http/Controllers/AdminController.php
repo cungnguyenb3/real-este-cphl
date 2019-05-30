@@ -40,10 +40,10 @@ class AdminController extends Controller
             ]);
 
     }
-public function getRegister(){
-    return view('admin.register');
+	public function getRegister(){
+    	return view('admin.register');
     }
-public function getLogin(){
+    public function getLogin(){
     return view('admin.login');
     }
     public function getIndex(){
@@ -51,7 +51,7 @@ public function getLogin(){
     }
     public function getProfile(){
         
-    return view('admin.profile');
+    	return view('admin.profile');
     }
     public function getUser(){
         if(Auth::user()->id == 1){
@@ -59,7 +59,7 @@ public function getLogin(){
         }else{
             $user = user::where('role_id','3')->orderBy('role_id', 'asc')->get(); //nếu là admin thì chỉ get user 
         }
-    return view('admin.user', compact('user'));
+    	return view('admin.user', compact('user'));
     }
     
 
@@ -197,16 +197,15 @@ public function getLogin(){
     return view('admin.showBlog', compact('blog'));
     }
     public function getDeleteBlog($id) {
-        $blog = blog::find($id);
-        // File::delete('public/backend/images/'.$product->image);
-        $blog->delete($id);
-        return back()->with('thanhcong','xóa blog thành công');
-        }
-
-    public function getEditBlog($id){
-    $blog = Blog::find($id);
-    return view('admin.editBlog', compact('blog'));
-    }
+		$blog = blog::find($id);
+		// File::delete('public/backend/images/'.$product->image);
+		$blog->delete($id);
+		return back()->with('thanhcong','xóa blog thành công');
+	}
+	public function getEditBlog($id){
+		$blog = blog::find($id);
+		return view('admin.editBlog', compact('blog'));
+	}
 
 
     public function getPost(){
@@ -223,7 +222,7 @@ public function getLogin(){
         return back()->with('thanhcong','xóa user thành công');
     }
     
-
+	
     public function getEditUser($id){
         $user = User::find($id);
         return view('admin.editUser', compact('user'));

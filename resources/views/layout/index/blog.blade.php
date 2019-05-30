@@ -14,9 +14,9 @@
                     </div>
                     <div class="post-meta">
                         <ul>
-                            <li class="profile-user">
+                            <!-- <li class="profile-user">
                                 <img src="img/avatar/avatar-1.jpg" alt="user-blog">
-                            </li>
+                            </li> -->
                             <li><span>
                                 @foreach($user as $u)
                                 @if($u->id == $b->user_id)
@@ -39,7 +39,6 @@
                     </div>
                 </div>
             </div>
-
             @endforeach
         </div>
     </div>

@@ -11,6 +11,8 @@ use App\Image;
 use Hash;
 use Auth;
 use Session;
+use Illuminate\Support\MessageBag;
+use Carbon\Carbon;
 use DB;
 
 class PageController extends Controller
@@ -42,20 +44,17 @@ class PageController extends Controller
 		
 	}
 
-    public function getPropertiesDetails($id){
-        $postPopular = Post::where('id','<>',$id)->limit(3)->get();
-        $post = Post::find($id);
-        $image = Image::where('post_id',$id)->get();
+    public function getPropertiesDetails($slug){
+        $postPopular = Post::where('slug','<>',$slug)->limit(3)->get();
+        $post = Post::where('slug',$slug)->first();
+
+        $image = Image::where('post_id',$post->id)->get();
 		return view('pages.properties-details', compact('image','post','postPopular'));
 	}
 
     
 	public function getSubmitProperty(){
 		return view('pages.submit-property');
-	}
-
-    public function getUserProfile(){
-		return view('pages.user-profile');
 	}
 
     //Login
@@ -130,10 +129,18 @@ class PageController extends Controller
     }
 
     //Logout
-    public function getLogout(){
+    public function postLogout(){
         Auth::logout();
-        return redirect()->route('index');
+        return redirect()->route('getLogin');
     }
+    public function getMyPost(){
+        $post = Post::all();
+        return view('layout.post.myPost', compact('post'));
+    }
+
+    public function getUserProfile(){
+		return view('pages.user-profile');
+	}
 
     /*get property*/
     public function getProperty($type)
@@ -141,7 +148,8 @@ class PageController extends Controller
        $properties_type= Post::where('property_type_id',$type)->limit(3)->get();
        $properties= Property_type::all();
        $properties_house = Property_type::where('id',$type)->first(); 
-       return view('pages.property-type',compact('properties_type','properties','properties_house'));
+       $user = User::all();
+       return view('pages.property-type',compact('properties_type','properties','properties_house','user'));
     }
 
     public function getUpdate(){

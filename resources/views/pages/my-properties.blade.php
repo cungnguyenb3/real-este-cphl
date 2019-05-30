@@ -98,7 +98,7 @@
                 <!-- table start -->
                 <table class="manage-table responsive-table">
                     <tbody>
-                    @foreach($myProperties as $value)
+                    @foreach($post as $value)
                     <tr>
                         <td class="title-container">
                             <img src="{!! $value->main_image !!}" alt="my-properties-1" class="img-responsive hidden-xs">

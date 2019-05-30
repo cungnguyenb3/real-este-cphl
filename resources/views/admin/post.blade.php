@@ -10,7 +10,7 @@
 		<div class="col-2">
 			
 				<div class="row">
-					<img class="center-block" src="{{$p['main_image'] }}" height="190" width="190">
+					<img class="center-block" src="img/post/{{$p->main_image }}" height="190" width="190">
 				</div>
 			
 		</div>

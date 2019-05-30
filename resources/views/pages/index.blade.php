@@ -16,21 +16,23 @@
         </ul>
         <div class="row">
             <div class="filtr-container">
-                @foreach($post as $value)
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="{{$value->property_type_id}}">
+                @foreach($post as $p)
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="{{$p->property_type_id}}">
                     <div class="property">
                         <!-- Property img -->
                         <div class="property-img">
                             <div class="property-tag button alt featured">Featured</div>
-                            @if($value->transaction_type == 0)
-                            <div class="property-tag button sale">For Sale</div>
-                            @else
-                            <div class="property-tag button sale">For Rent</div>
-                            @endif
-                            <div class="property-price">$150,000</div>
-                            <img src="{{$value->main_image}}" alt="fp" class="img-responsive" width="100" heigh="200">
+                            <div class="property-tag button sale">
+                                @if($p->transaction_type==1)
+                                    For Sale
+                                @elseif($p->transaction_type==2)
+                                    For Rent
+                                @endif        
+                            </div>
+                            <div class="property-price">${{$p->price}}</div>
+                            <img src="{{$p->main_image}}" alt="fp" class="img-responsive">
                             <div class="property-overlay">
-                                <a href="properties-details.html" class="overlay-link">
+                                <a href="#" class="overlay-link">
                                     <i class="fa fa-link"></i>
                                 </a>
                                 <a class="overlay-link property-video" title="Lexus GS F">
@@ -40,8 +42,9 @@
                                     <a href="img/properties/properties-1.jpg" class="overlay-link">
                                         <i class="fa fa-expand"></i>
                                     </a>
-                                    <a href="img/properties/properties-2.jpg" class="hidden"></a>
-                                    <a href="img/properties/properties-3.jpg" class="hidden"></a>
+
+                                    <a href="img/mainimage/{{$p->main_image}}" class="hidden"></a>
+                                    <a href="img/mainimage/{{$p->main_image}}" class="hidden"></a>
                                 </div>
                             </div>
                         </div>
@@ -49,53 +52,56 @@
                         <div class="property-content">
                             <!-- title -->
                             <h1 class="title">
-                                <a href={{route('properties-details',$value->id)}}>{{$value->name}}</a>
+                                <a href="{{route('products',$p->slug)}}">{{$p->name}}</a>
                             </h1>
                             <!-- Property address -->
                             <h3 class="property-address">
-                                <a href="properties-details.html">
-                                    <i class="fa fa-map-marker"></i>{{$value->location}},
+                                <a href="#">
+                                    <i class="fa fa-map-marker"></i>{{$p->location}}
                                 </a>
                             </h3>
                             <!-- Facilities List -->
                             <ul class="facilities-list clearfix">
                                 <li>
                                     <i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-                                    <span>{{$value->area}} sq ft</span>
+                                    <span>{{$p->area}}m2</span>
                                 </li>
                                 <li>
                                     <i class="flaticon-bed"></i>
-                                    <span>{{$value->number_of_bedroom}} Beds</span>
+                                    <span>{{$p->number_of_bedroom}} Beds</span>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <i class="flaticon-monitor"></i>
                                     <span>TV </span>
-                                </li>
+                                </li> -->
                                 <li>
                                     <i class="flaticon-holidays"></i>
-                                    <span> {{$value->number_of_bathroom}} Baths</span>
+                                    <span> {{$p->number_of_bathroom}} Baths</span>
                                 </li>
                                 <li>
-                                    <i class="flaticon-vehicle"></i>
-                                    <span>1 Garage</span>
+                                    <i class="flaticon-year"></i>
+                                    <span>{{$p->building_age}}</span>
                                 </li>
-                                <li>
-                                    <i class="flaticon-building"></i>
-                                    <span> 3 Balcony</span>
-                                </li>
+                                
                             </ul>
                             <!-- Property footer -->
                             <div class="property-footer">
                                 <span class="left">
-                                    <a href="#"><i class="fa fa-user"></i>{!! $value->username !!}</a>
+                                    <a href="#"><i class="fa fa-user"></i>
+                                        @foreach($user as $u)
+                                        @if($u->id == $p->user_id)
+                                            {{$u->username}}    
+                                        @endif
+                                        @endforeach
+                                    </a>
                                 </span>
                                 <span class="right">
-                                    <i class="fa fa-calendar"></i></i>{{$value->created_at}}
+                                    <i class="fa fa-calendar"></i></i>{{$p->created_at}}
                                 </span>
                             </div>
                         </div>
                     </div>
-                </div>          
+                </div>
                 @endforeach
             </div>
         </div>

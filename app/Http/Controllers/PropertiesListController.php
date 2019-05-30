@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use DB;
 use Validation;
+use Auth;
 
 class PropertiesListController extends Controller
 {
@@ -37,7 +38,7 @@ class PropertiesListController extends Controller
         $rent = DB::table('posts')
         ->join('users', 'posts.user_id', '=', 'users.id')
         ->select('users.username AS username','posts.*')
-        ->where('transaction_type','=',0)
+        ->where('transaction_type','=',1)
         ->take(10)
         ->get()
         ->toArray();
@@ -50,8 +51,16 @@ class PropertiesListController extends Controller
     }
     
     public function getMyProperties(){
-        $myProperties = Post::all();
-        return view('pages.my-properties',compact('myProperties'));
+        $post = DB::table('posts')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->select('users.username AS username','posts.*')
+        ->where('transaction_type', '=',1)
+        ->where('user_id', '=', Auth::user()->id)
+        ->take(10)
+        ->get()
+        ->toArray();
+
+        return view('pages.my-properties',compact('post'));
     }
 
     public function admin_credential_rules(array $data)

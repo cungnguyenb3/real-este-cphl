@@ -9,7 +9,7 @@
                     <div class="pull-left">
                         <h3>{{$post->name}}</h3>
                         <p>
-                            <i class="fa fa-map-marker"></i>{{$post->location}},
+                            <i class="fa fa-map-marker"></i>{{$post->location}}
                         </p>
                     </div>
                     <div class="pull-right">
@@ -211,7 +211,7 @@
                                                             <i class="fa fa-check-square"></i>{{$post->number_of_bedroom}} Beds
                                                         </li>
                                                         <li>
-                                                            <i class="fa fa-check-square"></i>{{$post->number_of_bathroom}} Bathroom
+                                                            <i class="fa fa-check-square"></i>{{$post->number_of_bathroom}}Bathroom
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -225,7 +225,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <!-- <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <ul class="condition">
                                                         <li>
                                                             <i class="fa fa-check-square"></i> Garage
@@ -234,7 +234,7 @@
                                                             <i class="fa fa-check-square"></i>Balcony
                                                         </li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         <!-- Properties condition end -->
@@ -246,57 +246,7 @@
                                                 <h1><span>Amenities</span></h1>
                                             </div>
                                             <div class="row">
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                    <ul class="amenities">
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Air conditioning
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Balcony
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Pool
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>TV
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Gym
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                    <ul class="amenities">
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Wifi
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Parking
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Double Bed
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Iron
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                    <ul class="amenities">
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Telephone
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Jacuzzi
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Alarm
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-check-square"></i>Garage
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                                Functions are under maintenance
                                             </div>
                                         </div>
                                         <!-- Properties amenities end -->
@@ -688,48 +638,22 @@
                         <div class="main-title-2">
                             <h1><span>Recently</span> Properties</h1>
                         </div>
+                        @foreach($postPopular as $p)
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="img/properties/small-properties-1.jpg" alt="small-properties-1">
+                                <img class="media-object" src="img/properties/{{$p->main_image}}" alt="small-properties-1" width="90" height="63">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">Sweet Family Home</a>
+                                    <a href="{{route('products',$p->slug)}}">{{$p->name}}</a>
                                 </h3>
-                                <p>February 27, 2018</p>
+                                <p>{{$p->created_at}}</p>
                                 <div class="price">
-                                    $734,000
+                                    ${{$p->price}}
                                 </div>
                             </div>
                         </div>
-                        <div class="media">
-                            <div class="media-left">
-                                <img class="media-object" src="img/properties/small-properties-2.jpg" alt="small-properties-2">
-                            </div>
-                            <div class="media-body">
-                                <h3 class="media-heading">
-                                    <a href="properties-details.html">Modern Family Home</a>
-                                </h3>
-                                <p>February 27, 2018</p>
-                                <div class="price">
-                                    $734,000
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="media-left">
-                                <img class="media-object" src="img/properties/small-properties-3.jpg" alt="small-properties-3">
-                            </div>
-                            <div class="media-body">
-                                <h3 class="media-heading">
-                                    <a href="properties-details.html">Beautiful Single Home</a>
-                                </h3>
-                                <p>February 27, 2018</p>
-                                <div class="price">
-                                    $734,000
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
                     <!-- Category posts start -->
