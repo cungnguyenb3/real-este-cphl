@@ -31,24 +31,29 @@ Route::get('blog', [
     'uses'  => 'PageController@getBlog',
 ]);
 
-Route::get('blogdetail/{id}', [
+Route::get('blogdetail/{slug}', [
     'as'    => 'blogdetail',
     'uses'  => 'PageController@getBlogDetail',
 ]);
 
 Route::post('/file-upload', [
     'as' => 'file-upload',
-    'uses' => 'FileUploadController@uploadDropzone',
+    'uses' => 'UploadController@postImages',
 ]);
 
-Route::get('properties-details/{id}', [
-	'as' 	=> 'properties-details',
+Route::get('products/{slug}', [
+	'as' 	=> 'products',
 	'uses' 	=> 'PageController@getPropertiesDetails',
 ]);
 
 Route::get('submit-property', [
 	'as' 	=> 'submit-property',
 	'uses' 	=> 'PageController@getSubmitProperty',
+]);
+
+Route::get('user-profile', [
+	'as' 	=> 'user-profile',
+	'uses' 	=> 'PageController@getUserProfile',
 ]);
 
 Route::get('login', [
@@ -74,11 +79,37 @@ Route::post('register', [
 Route::get('logout',[
     'as'    => 'getlogout',
     'user'  => 'PageController@getLogout'
-]);
+])->middleware('userlogin');
 
 Route::get('myPost',[
     'as' => 'getMyPost',
-    'uses' =>'PageController@getMyPost'])->middleware('userlogin');;
+    'uses' =>'PageController@getMyPost'])->middleware('userlogin');
+
+
+// Route::get('logout',[
+//     'as' => 'getLogout',
+//     'uses' =>'PageController@getLogout'
+// ]);
+
+Route::post('post',[
+    'as' => 'postProperty',
+    'uses' =>'PostController@postProperty'
+]);
+
+
+Route::get('sale', [
+	'as' 	=> 'sale',
+	'uses' 	=> 'PropertiesListController@getSale',
+]);
+
+Route::get('properties-list', [
+	'as' 	=> 'properties-list',
+	'uses' 	=> 'PropertiesListController@getListProperty',
+]);
+
+// Route::post('image-upload/{postID}','postController@uploadImage');
+
+// Route::resource('post', 'PostController');
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -99,7 +130,7 @@ Route::group(['prefix' => 'admin'], function () {
     'uses' =>'AdminController@postLogout']);
 
     Route::post('login',[
-    'as' => 'login',
+    'as' => 'adminlogin',
     'uses' =>'AdminController@postLogin']);
 
     Route::get('index',[

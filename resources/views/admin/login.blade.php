@@ -18,7 +18,7 @@
             <img src="assets/images/account.png" alt="profile_img"  height="140px" width="140px;">
           </div>
           <h3>Login</h3>
-          <form action="{{route('login')}}" method="post">
+          <form action="{{route('adminlogin')}}" method="post">
 		
 			<input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="form-group">

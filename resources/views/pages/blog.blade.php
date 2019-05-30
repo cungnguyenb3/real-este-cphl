@@ -33,7 +33,7 @@
                         <div class="clearfix"></div>
                         <!-- Btn -->
 
-                        <a href="{{route('blogdetail',$b->id)}}" class="read-more">Read More...</a>
+                        <a href="{{route('blogdetail',$b->slug)}}" class="read-more">Read More...</a>
                     </div>
                 </div>
                 
@@ -63,7 +63,7 @@
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="{{route('blogdetail', $b->id)}}">{{$b->title}}</a>
+                                    <a href="{{route('blogdetail', $b->slug)}}">{{$b->title}}</a>
                                 </h3>
                                 <p>{{$b->writing_date}}</p>
                                 <div class="price">
@@ -76,11 +76,7 @@
                             </div>
                         </div>
                         @endforeach
-                    </div>
-                  
-                  
-                    
-                    
+                    </div>    
                 </div>
             </div>
         </div>

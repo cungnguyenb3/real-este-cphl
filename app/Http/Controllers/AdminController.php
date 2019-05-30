@@ -183,6 +183,8 @@ class AdminController extends Controller
             ]);
         $blog = new blog();
         $blog->title = $req->title;
+        $s = str_slug($req->title).Carbon::now();
+        $blog->slug = $s;
         $blog->image = $req->image;
         $blog->content = $req->content;
         $blog->user_id = Auth::user()->id;

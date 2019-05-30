@@ -81,7 +81,7 @@
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
     </div> <!-- form-group// -->      
-    <p class="text-center">Have an account? <a href="{{route('login')}}">Log In</a> </p>                                                                 
+    <p class="text-center">Have an account? <a href="{{route('adminlogin')}}">Log In</a> </p>                                                                 
 </form>
 </article>
 </div> <!-- card.// -->

@@ -33,7 +33,7 @@
                             <div class="property-price">${{$p->price}}</div>
                             <img src="img/mainimage/{{$p->main_image}}" alt="fp" class="img-responsive">
                             <div class="property-overlay">
-                                <a href="properties-details.html" class="overlay-link">
+                                <a href="#" class="overlay-link">
                                     <i class="fa fa-link"></i>
                                 </a>
                                 <a class="overlay-link property-video" title="Lexus GS F">
@@ -53,11 +53,11 @@
                         <div class="property-content">
                             <!-- title -->
                             <h1 class="title">
-                                <a href="{{route('properties-details',$p->id)}}">{{$p->name}}</a>
+                                <a href="{{route('products',$p->slug)}}">{{$p->name}}</a>
                             </h1>
                             <!-- Property address -->
                             <h3 class="property-address">
-                                <a href="properties-details.html">
+                                <a href="#">
                                     <i class="fa fa-map-marker"></i>{{$p->location}}
                                 </a>
                             </h3>

@@ -6,7 +6,8 @@
             <div class="col-lg-8 col-md-8 col-xs-12">
       			
                 <div class="thumbnail blog-box clearfix">
-                    <img src="{{ asset('img/blog/'.$blog->image) }}" alt="{{$blog->name}}" class="img-responsive">
+
+                    <img src="img/blog/{{$blog->image}}" alt="{{$blog->name}}" class="img-responsive">
                     <!-- detail -->
                     <div class="caption detail">
                         <!--Main title -->
@@ -68,11 +69,11 @@
                         @foreach($blogPopular as $b)
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="{{ asset('img/blog/'.$b->image) }}" alt="small-properties-1" width="170" height="100">
+                                <img class="media-object" src="img/blog/{{$blog->image}}" alt="small-properties-1" width="170" height="100">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="{{route('blogdetail', $b->id)}}">{{$b->title}}</a>
+                                    <a href="{{route('blogdetail',$b->slug)}}">{{$b->title}}</a>
                                 </h3>
                                 <p>{{$b->writing_date}}</p>
                                 <div class="price">

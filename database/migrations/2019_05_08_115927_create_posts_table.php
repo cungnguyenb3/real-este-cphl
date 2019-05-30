@@ -17,16 +17,17 @@ class CreatePostsTable extends Migration
       Schema::create('posts', function (Blueprint $table) {
         $table->increments('id')->unsigned();
         $table->string('name'); 
+        $table->string('slug')->nullable(); 
         $table->double('price');  
         $table->text('description'); 
         $table->string('location'); 
-        $table->string('main_image'); 
-        $table->integer('number_of_bedroom'); 
+        $table->string('main_image')->nullable(); 
+        $table->integer('room');
+        $table->integer('number_of_bedroom');  
         $table->integer('number_of_bathroom'); 
         $table->double('area'); 
         $table->integer('property_type_id')->unsigned(); 
-        $table->integer('year_built'); 
-        $table->double('price/m2'); 
+        $table->integer('building_age'); 
         $table->boolean('transaction_type');
         $table->boolean('status');
         $table->integer('user_id')->unsigned(); 

@@ -9,6 +9,7 @@
             <div class="col-lg-4 col-md-4 col-sm-6 wow fadeInLeft delay-04s">
                 <div class="thumbnail blog-box-2 clearfix">
                     <div class="blog-photo">
+
                         <img src="img/blog/{{$b->image}}" alt="blog-1" class="img-responsive">
                     </div>
                     <div class="post-meta">
@@ -18,7 +19,7 @@
                             </li> -->
                             <li><span>
                                 @foreach($user as $u)
-                                @if($u->id == $p->user_id)
+                                @if($u->id == $b->user_id)
                                     {{$u->username}}    
                                 @endif
                                 @endforeach
@@ -34,7 +35,7 @@
                         <p><?php echo str_limit($b->content, 100); ?></p>
                         <div class="clearfix"></div>
                         <!-- Btn -->
-                        <a href="{{route('blogdetail',$b->id)}}" class="read-more">Read More...</a>
+                        <a href="{{route('blogdetail',$b->slug)}}" class="read-more">Read More...</a>
                     </div>
                 </div>
             </div>

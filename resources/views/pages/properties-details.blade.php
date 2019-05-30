@@ -27,30 +27,14 @@
                             <div class="carousel-outer">
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
-                                    <div class="item">
+                                    <div class="item active">
                                         <img src="img/properties/properties-1.jpg" class="thumb-preview" alt="Chevrolet Impala">
                                     </div>
+                                    @foreach($image as $i)
                                     <div class="item">
-                                        <img src="img/properties/properties-3.jpg" class="thumb-preview" alt="Chevrolet Impala">
+                                        <img src="img/properties/{{$i->image}}" class="thumb-preview" alt="Chevrolet Impala">
                                     </div>
-                                    <div class="item">
-                                        <img src="img/properties/properties-4.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/properties/properties-5.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/properties/properties-6.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/properties/properties-7.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/properties/properties-8.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item active">
-                                        <img src="img/properties/properties-2.jpg" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <!-- Controls -->
                                 <a class="left carousel-control" href="#carousel-custom" role="button" data-slide="prev">
@@ -69,13 +53,9 @@
                             <!-- Indicators -->
                             <ol class="carousel-indicators thumbs visible-lg visible-md">
                                 <li data-target="#carousel-custom" data-slide-to="0" class=""><img src="img/properties/properties-small-1.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="1" class=""><img src="img/properties/properties-small-3.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="2" class=""><img src="img/properties/properties-small-4.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="3" class=""><img src="img/properties/properties-small-5.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="4" class=""><img src="img/properties/properties-small-6.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="5" class=""><img src="img/properties/properties-small-7.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="6" class=""><img src="img/properties/properties-small-8.jpg" alt="Chevrolet Impala"></li>
-                                <li data-target="#carousel-custom" data-slide-to="7" class=""><img src="img/properties/properties-small-2.jpg" alt="Chevrolet Impala"></li>
+                                @foreach($image as $i)
+                                <li data-target="#carousel-custom" data-slide-to="1" class=""><img src="img/properties/{{$i->image}}" alt="Chevrolet Impala"></li>
+                                @endforeach 
                                 
                             </ol>
                         </div>
@@ -669,7 +649,7 @@
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="{{route('properties-details',$p->id)}}">{{$p->name}}</a>
+                                    <a href="{{route('properties-details',$p->slug)}}">{{$p->name}}</a>
                                 </h3>
                                 <p>{{$p->created_at}}</p>
                                 <div class="price">

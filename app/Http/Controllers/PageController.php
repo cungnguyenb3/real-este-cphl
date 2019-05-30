@@ -10,9 +10,6 @@ use Session;
 use App\Blog;
 use App\Post;
 use App\image;
-
-
-
 use Illuminate\Support\MessageBag;
 use Carbon\Carbon;
 
@@ -29,7 +26,7 @@ class PageController extends Controller
 	}
 
   	public function getIndex(){
-        $post = Post::all();
+        $post = Post::where('status','1')->get();
         $blog = Blog::all();
         $user = User::all();
 		return view('pages.index', compact('post','user','blog'));
@@ -47,10 +44,10 @@ class PageController extends Controller
     }
 
 
-	public function getPropertiesDetails($id){
-        $postPopular = Post::where('id','<>',$id)->limit(3)->get();
-        $post = Post::find($id);
-        $image = image::where('post_id',$id)->limit(3)->get();
+	public function getPropertiesDetails($slug){
+        $postPopular = Post::where('slug','<>',$slug)->limit(3)->get();
+        $post = Post::where('slug',$slug)->first();
+        $image = image::where('slug',$slug)->limit(3)->get();
 		return view('pages.properties-details', compact('image','post','postPopular'));
 	}
 	
@@ -58,11 +55,10 @@ class PageController extends Controller
 		return view('pages.submit-property');
 	}
 
-	public function getBlogDetail($id){
-        
-        $blog = Blog::find($id);
+	public function getBlogDetail($slug){
+        $blog = Blog::where('slug',$slug)->first();
         $user = user::all();
-        $blogPopular = Blog::where('id','<>',$id)->limit(3)->get();
+        $blogPopular = Blog::where('slug','<>',$slug)->limit(3)->get();
         return view('layout.blog.blog-detail',compact('blog','user','blogPopular'));
 		
 	}
@@ -134,13 +130,13 @@ class PageController extends Controller
         $user->password = Hash::make($req->password);
         $user->role_id=3;
         $user->save();
-        return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
+        return redirect()->route('getLogin')->with('thanhcong','Tạo tài khoản thành công');
     }
 
     //Logout
     public function postLogout(){
         Auth::logout();
-        return redirect()->route('getlogin');
+        return redirect()->route('getLogin');
     }
     public function getMyPost(){
         $post = Post::all();
