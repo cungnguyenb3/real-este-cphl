@@ -56,7 +56,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="my-properties.html">
+                                <a href="{{route('my-properties')}}">
                                     <i class="flaticon-apartment"></i>My Properties
                                 </a>
                             </li>

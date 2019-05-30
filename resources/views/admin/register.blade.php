@@ -24,16 +24,7 @@
     </p>
 	<form action="{{route('register')}}" method="post" >
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
-		@if(count($errors)>0)
-			<div class="alert alert-danger">
-				@foreach($errors->all() as $err)
-				{{$err}}
-				@endforeach
-			</div>
-		@endif
-		@if(Session::has('thanhcong'))
-			<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
-		@endif
+		@include('admin.error')
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -58,17 +49,23 @@
 		</select>
     	<input name="phone" class="form-control" placeholder="Phone number" type="text">
     </div> <!-- form-group// -->
-    <!-- <div class="form-group input-group">
+    <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
 		</div>
-		<select class="form-control">
+		<select name="role_id" class="form-control">
 			<option selected=""> Select user type</option>
-			<option>Superadmin</option>
-			<option>Admin</option>
-			<option>user</option>
+			<option value="1">Superadmin</option>
+			<option value="2">Admin</option>
+			<option value="3">user</option>
 		</select>
-	</div> --> <!-- form-group end.// -->
+	</div> <!-- form-group end.// -->
+	<div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="address" class="form-control" placeholder="Address" type="text">
+    </div>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
@@ -84,7 +81,7 @@
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
     </div> <!-- form-group// -->      
-    <p class="text-center">Have an account? <a href="{{route('login')}}">Log In</a> </p>                                                                 
+    <p class="text-center">Have an account? <a href="{{route('adminlogin')}}">Log In</a> </p>                                                                 
 </form>
 </article>
 </div> <!-- card.// -->
@@ -92,17 +89,6 @@
 </div> 
 <!--container end.//-->
 
-<br><br>
-<article class="bg-secondary mb-3">  
-	<!-- <div class="card-body text-center">
-	    <h3 class="text-white mt-3">Bootstrap 4 UI KIT</h3>
-	<p class="h5 text-white">Components and templates  <br> for Ecommerce, marketplace, booking websites 
-	and product landing pages</p>   <br>
-	<p><a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com  
-	 <i class="fa fa-window-restore "></i></a></p>
-	</div> -->
-<br><br>
-</article>
 <style type="text/css">
 	.divider-text {
     position: relative;

@@ -7,17 +7,17 @@ use Hash;
 use Auth;
 use App\blog;
 use App\User;
+use App\post;
+use App\image;
+use App\property_type;
+use Illuminate\Support\MessageBag;
+use UserRequest;
+
 use Carbon\Carbon;
 use Session;
 
 class AdminController extends Controller
 {
-	public function getRegister(){
-    	return view('admin.register');
-    }
-	public function getLogin(){
-    	return view('admin.login');
-    }
     public function store(Request $request){
         $this->validate($req,
             [
@@ -34,27 +34,32 @@ class AdminController extends Controller
                 
                 'username.required'=>'Vui lòng nhập số điện thoại',
                 
+                
                 'phone.required'=>'Vui lòng nhập số điện thoại',
                 'address.required'=>'Vui lòng nhập Address'
             ]);
-    }
 
+    }
+public function getRegister(){
+    return view('admin.register');
+    }
+public function getLogin(){
+    return view('admin.login');
+    }
     public function getIndex(){
-    	return view('admin.index');
+    return view('admin.index');
     }
     public function getProfile(){
-    	return view('admin.profile');
+        
+    return view('admin.profile');
     }
     public function getUser(){
-    	return view('admin.user');
-    }
-    public function getPost(){
         if(Auth::user()->id == 1){
             $user = user::where('role_id','<>','1')->orderBy('role_id', 'asc')->get(); //nếu là superadmin thì get admin và user 
         }else{
             $user = user::where('role_id','3')->orderBy('role_id', 'asc')->get(); //nếu là admin thì chỉ get user 
         }
-    	return view('admin.user', compact('user'));
+    return view('admin.user', compact('user'));
     }
     
 
@@ -63,8 +68,10 @@ class AdminController extends Controller
             [
                 'email'=>'required|email|unique:users,email',
                 'password'=>'required|min:6|max:20',
-                'username'=>'required',
-                're_password'=>'required|same:password'
+                'username'=>'required|unique:users',
+                're_password'=>'required|same:password',
+                'role_id'=>'required',
+                'address'=>'required'
             ],
             [
                 'email.required'=>'Vui lòng nhập email',
@@ -72,14 +79,21 @@ class AdminController extends Controller
                 'email.unique'=>'Email đã có người sử dụng',
                 'password.required'=>'Vui lòng nhập mật khẩu',
                 're_password.same'=>'Mật khẩu không giống nhau',
-                'password.min'=>'Mật khẩu ít nhất 6 kí tự'
+                'password.min'=>'Mật khẩu ít nhất 6 kí tự',
+                'role_id.required'=>'Vui lòng chọn loại user',
+                'address.required'=>'Vui lòng nhập Address',
+                'username.unique'=>'username da co nguoi dung',
+                'username.required'=>'Vui lòng nhập username'
+
             ]);
         $user = new User();
         $user->username = $req->username;
         $user->email = $req->email;
         $user->password = Hash::make($req->password);
         $user->phone = $req->phone;
-        $user->role_id=2;
+        $user->role_id= $req->role_id;
+        $user->address= $req->address;
+
         $user->save();
         return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
@@ -119,12 +133,13 @@ class AdminController extends Controller
     }
     public function postLogout(){
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('adminlogin');
     }
     public function getCreate(){
-    	return view('admin.createAdmin');
+    return view('admin.createAdmin');
     }
     public function postCreate(Request $req){
+
         $this->validate($req,
             [
                 'email'=>'required|email|unique:users,email',
@@ -150,7 +165,7 @@ class AdminController extends Controller
         return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
     }
     public function getBlog(){
-    	return view('admin.createBlog');
+    return view('admin.createBlog');
     }
     public function postBlog(Request $req){
         $this->validate($req,
@@ -168,6 +183,8 @@ class AdminController extends Controller
             ]);
         $blog = new blog();
         $blog->title = $req->title;
+        $s = str_slug($req->title).Carbon::now();
+        $blog->slug = $s;
         $blog->image = $req->image;
         $blog->content = $req->content;
         $blog->user_id = Auth::user()->id;
@@ -176,32 +193,69 @@ class AdminController extends Controller
         return redirect()->back()->with('thanhcong','Tạo blog thành công');
     }
     public function getShowblog(){
-    	$blog =blog::all();
-    	return view('admin.showBlog', compact('blog'));
+    $blog =blog::all();
+    return view('admin.showBlog', compact('blog'));
     }
     public function getDeleteBlog($id) {
-		$blog = blog::find($id);
-		// File::delete('public/backend/images/'.$product->image);
-		$blog->delete($id);
-		return back()->with('thanhcong','xóa blog thành công');
-	}
-	public function getEditBlog($id){
-		$blog = blog::find($id);
-		return view('admin.editBlog', compact('blog'));
-	}
-	public static function postEditBlog($id, Request $req){
-		$blog = blog::find($id);
-		$image = 'homeland/images/'. Request::input('image');
-		$blog->title = Request::input('title');
-		$blog->content = Request::input('content');
-		$blog->image = Request::input('image');
-		// $product->content = Request::input('content');
+$blog = blog::find($id);
+// File::delete('public/backend/images/'.$product->image);
+$blog->delete($id);
+return back()->with('thanhcong','xóa blog thành công');
+}
+public function getEditBlog($id){
+$blog = blog::find($id);
+return view('admin.editBlog', compact('blog'));
+}
 
-		
-		 $cont = static::$apiContext;
 
-		$blog->save();
-		return redirect()->route('adminshowblog')->with('thanhcong','Sửa sản phẩm thành công!');
-	}
+    public function getPost(){
+        $post= post::where('status','0')->get();
+        $image = image::all();
+        $user = user::all();
+        $property=property_type::all();
+        return view('admin.post', compact('post', 'image', 'user','property'));
+    }
+    public function getDeleteUser($id) {
+        $user = user::find($id);
+        // File::delete('public/backend/images/'.$product->image);
+        $user->delete($id);
+        return back()->with('thanhcong','xóa user thành công');
+    }
+    
+
+    public function getEditUser($id){
+        $user = user::find($id);
+        return view('admin.editUser', compact('user'));
+    }
+    public function postEditUser($id, Request $req){
+        $this->validate($Request,
+            [
+                'email'=>'required|email:users,email',
+                'username'=>'required',
+       
+                'phone'=>'required',
+                'address'=>'required'
+            ],
+            [
+                'email.required'=>'Vui lòng nhập email',
+                'email.email'=>'Không đúng định dạng email',
+                'email.unique'=>'Email đã có người sử dụng',
+                
+                'username.required'=>'Vui lòng nhập số điện thoại',
+                
+                
+                'phone.required'=>'Vui lòng nhập số điện thoại',
+                'address.required'=>'Vui lòng nhập Address'
+            ]);
+        $user = user::find($id);
+        $user->username = Request::input('username');
+        $user->email = Request::input('email');
+        
+        $user->phone = Request::input('phone');
+        $user->address = Request::input('address');
+        $user->save();
+        return redirect()->route('user')->with('thanhcong','Sửa user thành công!');
+    }
+    
 
 }

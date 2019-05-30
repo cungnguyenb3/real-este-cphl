@@ -33,6 +33,8 @@
 
                 <div class="clearfix"></div>
                 <!-- Property start -->
+                
+
                 @foreach($sale as $value)
                 <div class="property clearfix wow fadeInUp delay-03s">
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-pad">
@@ -100,7 +102,7 @@
                         <!-- Property footer -->
                         <div class="property-footer">
                             <span class="left">
-                                <a href="#"><i class="fa fa-user"></i>{!! $value->username !!}</a>
+                                <a href="#"><i class="fa fa-user"></i> {!! $value->username !!}</a>
                             </span>
                             <span class="right">
                                 <i class="fa fa-calendar"></i>5 Days ago
@@ -109,6 +111,7 @@
                     </div>
                 </div>
                 @endforeach
+                
                 <!-- Property end -->
 
                 <!-- Page navigation start -->

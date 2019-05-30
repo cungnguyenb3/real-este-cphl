@@ -35,22 +35,17 @@
                         @endif
 
                         <!-- User Profile-->
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('adminindex')}}" aria-expanded="false"><i class="mdi mdi-details"></i><span class="hide-menu">Dashboard</span></a></li>
+                       <!--  <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('adminindex')}}" aria-expanded="false"><i class="mdi mdi-details"></i><span class="hide-menu">Dashboard</span></a></li> -->
 
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('post')}}" aria-expanded="false"><i class="mdi mdi-arrow-up-bold-circle"></i><span class="hide-menu">Post</span></a></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('profile')}}" aria-expanded="false"><i class="mdi mdi-account-network"></i><span class="hide-menu">Profile</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('adminEditProfile')}}" aria-expanded="false"><i class="mdi mdi-account-network"></i><span class="hide-menu">Profile</span></a></li>
+                        
                         @if(Auth::user()->role_id==1)
                         <li class="sidebar-item nav"> 
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"  aria-expanded="false"><i class="mdi mdi mdi-blogger"></i><span class="hide-menu">Blog</span>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"  href="{{route('adminshowblog') }}" aria-expanded="false"><i class="mdi mdi mdi-blogger"></i><span class="hide-menu">Blog</span>
                             </a>
-                            <ul  class="mcd-menu"">
-                                <li  class="fa fa-globe"> <a href="{{route('adminshowblog') }}" title="">Show Blog</a></li>
-                                <li class="fa fa-globe"> <a href="{{route('adminshowblog')}}" title=""></a><a href="{{route('createBLog')}}" title="">Add Blog
-                                </a></li>
-                                <li class="fa fa-globe">Edit blog</li>
-
-                            </ul>
+                            
                         </li>
 
                          @endif

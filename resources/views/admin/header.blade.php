@@ -55,7 +55,7 @@
       @if(Auth::check())
       <li ><a style="font-weight: 5em; color: white; font-size: 2em" class="username" href="#">Chào bạn: {{Auth::user()->username}}</a></li>
 
-      <li class="logout"><a style="font-weight: 5em; color: white; font-size: 2em" href="{{route('logout')}}">Đăng xuất</a></li>
+      <li class="adminlogout"><a style="font-weight: 5em; color: white; font-size: 2em" href="{{route('adminlogout')}}">Đăng xuất</a></li>
       @else
       <li><a href="{{route('register')}}">Đăng kí</a></li>
       <li><a href="{{route('login')}}">Đăng nhập</a></li>
@@ -64,7 +64,7 @@
         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
         <div class="dropdown-menu dropdown-menu-right user-dd animated">
           <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-          <a class="dropdown-item" href="{{route('logout')}}"><i class="ti-wallet m-r-5 m-l-5"></i> logout</a>
+          <a class="dropdown-item" href="{{route('adminlogout')}}"><i class="ti-wallet m-r-5 m-l-5"></i> adminlogout</a>
           <!-- <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i></a> -->
         </div>
       </li>
