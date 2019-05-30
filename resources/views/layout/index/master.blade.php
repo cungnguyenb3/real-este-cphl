@@ -15,7 +15,7 @@
     <meta charset="utf-8">
     
     <!-- Chuyển đường dẫn sang thẻ base -->
-    <base href="{{asset('')}}">
+    <base href="{{asset('public/')}}">
 
     <!-- CSS -->
     @include('layout.index.stylesheet')
@@ -26,18 +26,9 @@
     <!-- Google fonts -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link rel="stylesheet" type="text/css" href="css/ie10-viewport-bug-workaround.css">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script type="text/javascript" src="js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/ie-emulation-modes-warning.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="js/html5shiv.min.js"></script>
-    <script type="text/javascript" src="js/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -67,24 +58,19 @@
 <!-- Featured properties end -->
 
 <!-- Our service start -->
-@include('layout.index.our-service')
+
 <!-- Our service end -->
 
-<!-- Recently properties start -->
-@include('layout.index.recently-properties')
-<!-- Partners block end -->
 
 <div class="clearfix"></div>
 <!-- Categories strat -->
-@include('layout.index.categories')
+
 <!-- Categories end-->
 
-<!-- Agent section start -->
-@include('layout.agent-section')
-<!-- Agent section end -->
+
 
 <!-- Testimonial section start-->
-@include('layout.index.testimonial-section')
+
 <!-- Testimonial  end -->
 <div class="clearfix"></div>
 

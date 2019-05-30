@@ -37,7 +37,7 @@ class PropertiesListController extends Controller
         $rent = DB::table('posts')
         ->join('users', 'posts.user_id', '=', 'users.id')
         ->select('users.username AS username','posts.*')
-        ->where('transaction_type','=',0)
+        ->where('transaction_type','=',1)
         ->take(10)
         ->get()
         ->toArray();

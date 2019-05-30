@@ -45,7 +45,7 @@
                            <div class="property-tag button alt featured">Featured</div>
                            <div class="property-tag button sale">For Sale</div>
                            <div class="property-price">{{$value["price"]}} $</div>
-                           <img src="{{$value['main_image']}}" alt="fp-list" class="img-responsive hp-1">
+                           <img src="img/properties/{{$value['main_image']}}" alt="fp-list" class="img-responsive hp-1">
                            <div class="property-overlay">
                                <a href="properties-details.html" class="overlay-link">
                                    <i class="fa fa-link"></i>
@@ -105,10 +105,16 @@
                        <!-- Property footer -->
                        <div class="property-footer">
                            <span class="left">
-                               <a href="#"><i class="fa fa-user"></i>Jhon Doe</a>
+                               <a href="#"><i class="fa fa-user"></i>
+                                  @foreach($user as $u)
+                                    @if($u->id == $value->user_id)
+                                        {{$u->username}}    
+                                    @endif
+                                    @endforeach
+                               </a>
                            </span>
                            <span class="right">
-                               <i class="fa fa-calendar"></i>5 Days ago
+                               <i class="fa fa-calendar"></i>{{$value->created_at}}
                            </span>
                        </div>
                    </div>

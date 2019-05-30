@@ -15,7 +15,7 @@
     <meta charset="utf-8">
 
     <!-- Chuyển đường dẫn sang thẻ base -->
-    <base href="{{asset('')}}">
+    <base href="{{asset('public/')}}">
 
     <!-- External CSS libraries -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">

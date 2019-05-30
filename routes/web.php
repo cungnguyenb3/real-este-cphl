@@ -27,8 +27,13 @@ Route::get('about', [
 ]);
 
 Route::get('blog', [
-	'as' 	=> 'blog',
-	'uses' 	=> 'PageController@getBlog',
+    'as'    => 'blog',
+    'uses'  => 'PageController@getBlog',
+]);
+
+Route::get('blogdetail/{slug}', [
+    'as'    => 'blogdetail',
+    'uses'  => 'PageController@getBlogDetail',
 ]);
 
 Route::post('/file-upload', [
@@ -36,8 +41,8 @@ Route::post('/file-upload', [
     'uses' => 'UploadController@postImages',
 ]);
 
-Route::get('properties-details/{id}', [
-	'as' 	=> 'properties-details',
+Route::get('products/{slug}', [
+	'as' 	=> 'products',
 	'uses' 	=> 'PageController@getPropertiesDetails',
 ]);
 
@@ -72,14 +77,14 @@ Route::post('register', [
 ]);
 
 Route::get('logout',[
-    'as'    => 'getLogout',
+    'as'    => 'getlogout',
     'user'  => 'PageController@getLogout'
-]);
+])->middleware('userlogin');
 
-Route::get('logout',[
-    'as' => 'getLogout',
-    'uses' =>'PageController@getLogout'
-]);
+Route::get('myPost',[
+    'as' => 'getMyPost',
+    'uses' =>'PageController@getMyPost'])->middleware('userlogin');
+
 
 Route::post('post',[
     'as' => 'postProperty',
@@ -126,7 +131,7 @@ Route::get('properties/{type}',[
     'as'    => 'blog',
     'uses'  => 'PageController@getBlog',
 ]);
-Route::get('blogdetail/{id}', [
+Route::get('blogdetail/{slug}', [
     'as'    => 'blogdetail',
     'uses'  => 'PageController@getBlogDetail',
 ]);
@@ -153,8 +158,12 @@ Route::group(['prefix' => 'admin'], function () {
     'as' => 'adminlogin',
     'uses' =>'AdminController@getLogin']);
 
+    Route::get('logout',[
+    'as' => 'adminlogout',
+    'uses' =>'AdminController@postLogout']);
+
     Route::post('login',[
-    'as' => 'login',
+    'as' => 'adminlogin',
     'uses' =>'AdminController@postLogin']);
 
     Route::get('index',[
@@ -164,10 +173,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('post',[
     'as' => 'post',
     'uses' =>'AdminController@getPost'])->middleware('adminlogin');
-
-    Route::get('profile',[
-    'as' => 'profile',
-    'uses' =>'AdminController@getProfile'])->middleware('adminlogin');
 
     Route::get('user',[
     'as' => 'user',
@@ -207,8 +212,14 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('editblog/{id}',[
     'as' => 'admineditblog',
-    'uses' =>'AdminController@postEditBlog'])->middleware('adminlogin');
-
+    'uses' =>'PostController@postEditBlog'])->middleware('adminlogin');
+    //profile
+    // Route::get('profile',[
+    // 'as' => 'adminShowProfile',
+    // 'uses' =>'AdminController@getProfile'])->middleware('adminlogin');
+    // Route::get('profile',[
+    // 'as' => 'adminShowProfile',
+    // 'uses' =>'AdminController@getProfile'])->middleware('adminlogin');
     Route::get('editprofile',[
     'as' => 'adminEditProfile',
     'uses' =>'AdminController@getProfile'])->middleware('adminlogin');
@@ -216,32 +227,33 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('editprofile',[
     'as' => 'adminEditProfile',
     'uses' =>'PostController@postEditProfile'])->middleware('adminlogin');
-        
+    
     Route::get('acceptpost/{id}',[
     'as' => 'adminAcceptPost',
     'uses' =>'PostController@postAcceptPost'])->middleware('adminlogin');
-        
+
     Route::get('deletepost/{id}',[
     'as' => 'adminDeletePost',
     'uses' =>'PostController@postDeletePost'])->middleware('adminlogin');
-        
+
     Route::get('deleteuser/{id}',[
     'as' => 'adminDeleteUser',
     'uses' =>'AdminController@getDeleteUser'])->middleware('adminlogin');
-        
+
     Route::get('edituser/{id}',[
     'as' => 'adminEditUser',
     'uses' =>'AdminController@getEditUser'])->middleware('adminlogin');
-        
+
     Route::post('edituser/{id}',[
     'as' => 'adminEditUser',
     'uses' =>'PostController@postEditUser'])->middleware('adminlogin');
-        
+    
     Route::get('search',[
     'as' => 'adminSearch',
     'uses' =>'AdminController@getSearch'])->middleware('adminlogin');
-    
+
     Route::post('edituser/{id}',[
     'as' => 'adminEditUser',
     'uses' =>'PostController@postEditUser'])->middleware('adminlogin');
+
 });

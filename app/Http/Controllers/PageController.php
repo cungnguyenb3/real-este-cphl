@@ -11,6 +11,8 @@ use App\Image;
 use Hash;
 use Auth;
 use Session;
+use Illuminate\Support\MessageBag;
+use Carbon\Carbon;
 use DB;
 
 class PageController extends Controller
@@ -26,17 +28,10 @@ class PageController extends Controller
 	}
 
   	public function getIndex(){
-		$post = DB::table('posts')
-        ->join('users', 'posts.user_id', '=', 'users.id')
-        ->select('users.username AS username','posts.*')
-        ->where('status','=',1)
-        ->take(10)
-        ->get()
-        ->toArray(); 
-
+        $post = Post::where('status','1')->get();
         $blog = Blog::all();
-      
-		return view('pages.index', compact('post','blog'));
+        $user = User::all();
+		return view('pages.index', compact('post','user','blog'));
 	}
 
 	public function getAbout(){
@@ -44,13 +39,17 @@ class PageController extends Controller
 	}
 
     public function getBlog(){
-		return view('pages.blog');
-	}
+        $user = user::all();
+        $blog = Blog::all();
+        $blogPopular = Blog::limit(3)->get();
+        return view('pages.blog',compact('blog','user','blogPopular'));
+    }
 
-    public function getPropertiesDetails($id){
-        $postPopular = Post::where('id','<>',$id)->limit(3)->get();
-        $post = Post::find($id);
-        $image = image::where('post_id',$id)->limit(3)->get();
+
+	public function getPropertiesDetails($slug){
+        $postPopular = Post::where('slug','<>',$slug)->limit(3)->get();
+        $post = Post::where('slug',$slug)->first();
+        $image = image::where('slug',$slug)->limit(3)->get();
 		return view('pages.properties-details', compact('image','post','postPopular'));
 	}
 
@@ -59,12 +58,12 @@ class PageController extends Controller
 		return view('pages.submit-property');
 	}
 
-	public function blog(){
-		return view('pages.blog');
-    }
-    
-    public function getUserProfile(){
-		return view('pages.user-profile');
+	public function getBlogDetail($slug){
+        $blog = Blog::where('slug',$slug)->first();
+        $user = user::all();
+        $blogPopular = Blog::where('slug','<>',$slug)->limit(3)->get();
+        return view('layout.blog.blog-detail',compact('blog','user','blogPopular'));
+		
 	}
 
     //Login
@@ -139,9 +138,13 @@ class PageController extends Controller
     }
 
     //Logout
-    public function getLogout(){
+    public function postLogout(){
         Auth::logout();
-        return redirect()->route('index');
+        return redirect()->route('getLogin');
+    }
+    public function getMyPost(){
+        $post = Post::all();
+        return view('layout.post.myPost', compact('post'));
     }
 
     /*get property*/
@@ -150,7 +153,8 @@ class PageController extends Controller
        $properties_type= Post::where('property_type_id',$type)->limit(3)->get();
        $properties= Property_type::all();
        $properties_house = Property_type::where('id',$type)->first(); 
-       return view('pages.property-type',compact('properties_type','properties','properties_house'));
+       $user = User::all();
+       return view('pages.property-type',compact('properties_type','properties','properties_house','user'));
     }
 
     public function getUpdate(){
