@@ -30,7 +30,7 @@
                     </div>
                     <!-- Detail -->
                     <div class="caption detail">
-                        <h4><a href="blog-single-sidebar-right.html">{{$b->title}}</a></h4>
+                        <h4><a href="{{route('blogdetail',$b->slug)}}">{{$b->title}}</a></h4>
                         <!-- paragraph -->
                         <p><?php echo str_limit($b->content, 100); ?></p>
                         <div class="clearfix"></div>

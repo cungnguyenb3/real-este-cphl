@@ -66,11 +66,11 @@
                     <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 property-content ">
                         <!-- title -->
                         <h1 class="title">
-                            <a href="properties-details.html">{!! $value->name !!}</a>
+                            <a href="{{route('products',$value->slug)}}">{!! $value->name !!}</a>
                         </h1>
                         <!-- Property address -->
                         <h3 class="property-address">
-                            <a href="properties-details.html">
+                            <a href="#">
                                 <i class="fa fa-map-marker"></i>{!! $value->location !!},
                             </a>
                         </h3>

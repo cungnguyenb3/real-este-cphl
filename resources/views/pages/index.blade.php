@@ -30,7 +30,7 @@
                                 @endif        
                             </div>
                             <div class="property-price">${{$p->price}}</div>
-                            <img src="{{$p->main_image}}" alt="fp" class="img-responsive">
+                            <img src="{{$p->main_image}}"  alt="fp" class="img-responsive">
                             <div class="property-overlay">
                                 <a href="#" class="overlay-link">
                                     <i class="fa fa-link"></i>
@@ -64,25 +64,28 @@
                             <ul class="facilities-list clearfix">
                                 <li>
                                     <i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-                                    <span>{{$p->area}}m2</span>
+                                    <span>{{$p->area}} sq ft</span>
                                 </li>
                                 <li>
                                     <i class="flaticon-bed"></i>
                                     <span>{{$p->number_of_bedroom}} Beds</span>
                                 </li>
-                                <!-- <li>
+                                <li>
                                     <i class="flaticon-monitor"></i>
                                     <span>TV </span>
-                                </li> -->
+                                </li>
                                 <li>
                                     <i class="flaticon-holidays"></i>
                                     <span> {{$p->number_of_bathroom}} Baths</span>
                                 </li>
                                 <li>
-                                    <i class="flaticon-year"></i>
-                                    <span>{{$p->building_age}}</span>
+                                    <i class="flaticon-vehicle"></i>
+                                    <span>1 Garage</span>
                                 </li>
-                                
+                                <li>
+                                    <i class="flaticon-building"></i>
+                                    <span> 3 Balcony</span>
+                                </li>
                             </ul>
                             <!-- Property footer -->
                             <div class="property-footer">

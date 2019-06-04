@@ -22,6 +22,7 @@ class PageController extends Controller
         ->join('users', 'posts.user_id', '=', 'users.id')
         ->select('users.username AS username','posts.*')
         ->where('status','=',1)
+        ->orderBy('created_at', 'desc')
         ->take(6)
         ->get()
         ->toArray(); 
@@ -143,13 +144,17 @@ class PageController extends Controller
 	}
 
     /*get property*/
-    public function getProperty($type)
+    public function getProperty($slug)
     {
-       $properties_type= Post::where('property_type_id',$type)->limit(3)->get();
-       $properties= Property_type::all();
-       $properties_house = Property_type::where('id',$type)->first(); 
-       $user = User::all();
-       return view('pages.property-type',compact('properties_type','properties','properties_house','user'));
+       $property = DB::table('property_types')->where('slug','=', $slug)->select('id')->first();
+
+       $sale = DB::table('posts')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->select('users.username AS username','posts.*')
+        ->where('posts.property_type_id','=',$property->id)
+        ->orderBy('created_at', 'desc')
+        ->paginate(2);
+       return view('pages.sale',compact('sale'));
     }
 
     public function getUpdate(){
@@ -174,5 +179,17 @@ class PageController extends Controller
         $user_id = Auth::user()->id;
         DB::table('users')->where('id',$user_id)->update($req->except('_token'));
         return redirect()->back()->with('thanhcong','Successfully updated your account');  
+    }
+
+    public function getLogout(){
+        Auth::logout();
+        return redirect()->route('index');
+    }
+
+    public function getBlog(){
+        $user = user::all();
+        $blog = Blog::all();
+        $blogPopular = Blog::limit(3)->get();
+        return view('pages.blog',compact('blog','user','blogPopular'));
     }
 }

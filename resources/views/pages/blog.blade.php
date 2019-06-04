@@ -13,7 +13,7 @@
                     <div class="caption detail">
                         
                         <!-- title -->
-                        <h3 class="title"><a href="blog-single-sidebar-right.html">{{$b->title}}</a></h3>
+                        <h3 class="title"><a href="{{route('blogdetail',$b->slug)}}">{{$b->title}}</a></h3>
 
                         <!-- Post meta -->
                         <div class="post-meta">
@@ -59,7 +59,7 @@
                         @foreach($blogPopular as $b)
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="{{ asset('img/blog/'.$b->image) }}" alt="small-properties-1" width="170" height="100">
+                                <img class="media-object" src="images/{{$b->image}}" alt="small-properties-1" width="170" height="100">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">

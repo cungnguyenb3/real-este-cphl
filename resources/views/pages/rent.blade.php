@@ -114,19 +114,7 @@
                 <!-- Page navigation start -->
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
-                        <li>
-                            <a href="properties-list-leftside.html" aria-label="Previous">
-                                <span aria-hidden="true">«</span>
-                            </a>
-                        </li>
-                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="properties-list-leftside.html">2</a></li>
-                        <li><a href="properties-list-fullwidth.html">3</a></li>
-                        <li>
-                            <a href="properties-list-fullwidth.html" aria-label="Next">
-                                <span aria-hidden="true">»</span>
-                            </a>
-                        </li>
+                        {!! $rent->links() !!}
                     </ul>
                 </nav>
                 <!-- Page navigation end-->

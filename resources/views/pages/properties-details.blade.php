@@ -641,7 +641,7 @@
                         @foreach($postPopular as $p)
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="img/properties/{{$p->main_image}}" alt="small-properties-1" width="90" height="63">
+                                <img class="media-object" src="{{$p->main_image}}" alt="small-properties-1" width="90" height="63">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">

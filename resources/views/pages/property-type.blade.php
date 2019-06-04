@@ -36,7 +36,7 @@
              
                 
 
-                @foreach($properties_type as $value)
+                @foreach($posts as $value)
                 <div class="property clearfix wow fadeInUp delay-03s">
                    
                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 col-pad">
@@ -45,7 +45,7 @@
                            <div class="property-tag button alt featured">Featured</div>
                            <div class="property-tag button sale">For Sale</div>
                            <div class="property-price">{{$value["price"]}} $</div>
-                           <img src="img/properties/{{$value['main_image']}}" alt="fp-list" class="img-responsive hp-1">
+                           <img src="{{$value['main_image']}}" alt="fp-list" class="img-responsive hp-1">
                            <div class="property-overlay">
                                <a href="properties-details.html" class="overlay-link">
                                    <i class="fa fa-link"></i>
@@ -65,14 +65,13 @@
                    </div>
                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 property-content ">
                        <!-- title -->
-                       
                        <h1 class="title">
-                           <a href="properties-details.html"></a>
-                       </h1>
+                            <a href="{{route('products',$value->slug)}}">{!! $value->name !!}</a>
+                        </h1>
                        <!-- Property address -->
                        <h3 class="property-address">
                            <a href="properties-details.html">
-                               <i class="fa fa-map-marker"></i>{{$value["name"]}}
+                               <i class="fa fa-map-marker"></i>{{$value["location"]}}
                            </a>
                        </h3>
                        <!-- Facilities List -->
@@ -127,19 +126,7 @@
                 <!-- Page navigation start -->
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
-                        <li>
-                            <a href="properties-list-leftside.html" aria-label="Previous">
-                                <span aria-hidden="true">«</span>
-                            </a>
-                        </li>
-                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="properties-list-leftside.html">2</a></li>
-                        <li><a href="properties-list-fullwidth.html">3</a></li>
-                        <li>
-                            <a href="properties-list-fullwidth.html" aria-label="Next">
-                                <span aria-hidden="true">»</span>
-                            </a>
-                        </li>
+                        {!! $post->links() !!} 
                     </ul>
                 </nav>
                 <!-- Page navigation end-->

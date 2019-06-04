@@ -12,7 +12,7 @@
                     <div class="caption detail">
                         <!--Main title -->
                         <h3 class="title">
-                            <a href="#">{{$blog->name}}</a>
+                            <a href="#">{{$blog->title}}</a>
                         </h3>
                         <!-- Post meta -->
                         <div class="post-meta">
@@ -69,7 +69,7 @@
                         @foreach($blogPopular as $b)
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="img/blog/{{$blog->image}}" alt="small-properties-1" width="170" height="100">
+                                <img class="media-object" src="images/{{$b->image}}" alt="small-properties-1" width="170" height="100">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
