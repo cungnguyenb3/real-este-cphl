@@ -141,7 +141,7 @@ class PostController extends Controller
         $post->building_age = $req->txtBuildingAge;
         $post->transaction_type = $req->selTransactionType;
         $post->status = 0;
-        $s = str_slug($req->txtName).Carbon::now();
+        $s = str_slug($req->txtName) . '-' . time();
         $post->slug = $s;
         $post->user_id = $req->user_id;
         if (isset($req->images)) {
@@ -169,7 +169,7 @@ class PostController extends Controller
     }
 
     public function postSearch(Request $req){
-        $area_from = $req->area_from;
+        
         $property_status = $req->property_status;
         $building_age = $req->building_age;
         $property_types = $req->property_types;
@@ -177,19 +177,32 @@ class PostController extends Controller
         $bathrooms = $req->bathrooms;
         $min_price = $req->min_price;
         $max_price = $req->max_price;
-        
+        $min_area = $req->min_area;
+        $max_area = $req->max_area;
+
         $result = DB::table('posts')
             ->join('users', 'posts.user_id', '=', 'users.id')
-            ->select('users.username AS username','posts.*')
-            ->where('area','=',$area_from)
-            ->where('transaction_type','=',$property_status)
-            ->where('building_age','=',$building_age)
-            ->where('property_type_id','=',$property_types)
-            ->where('number_of_bedroom','=',$bedrooms)
-            ->where('number_of_bathroom','=',$bathrooms)
-            ->where('number_of_bathroom','=',$bathrooms)
-            ->whereBetween('price', [$min_price, $max_price])
-            ->get();
+            ->select('users.username AS username','posts.*');
+
+        if ($property_status != "Property Status") {
+            $result->where('transaction_type','=',$property_status);
+        }
+        if ($building_age != "Building Age") {
+            $result->whereBetween('building_age', [0, $building_age]);
+        }
+        if ($property_types != "Property Types") {
+            $result->where('property_type_id','=',$property_types);
+        }
+        if ($bedrooms != "Bedrooms") {
+            $result->whereBetween('number_of_bedroom', [0, $bedrooms]);
+        }
+        if ($bathrooms != "Bathrooms") {
+            $result->whereBetween('number_of_bathroom', [0, $bathrooms]);
+        }
+
+        $result = $result->whereBetween('area', [$min_area, $max_area])
+                ->whereBetween('price', [$min_price, $max_price])
+                ->get();
 
         return view('pages.search',compact('result'));
     }

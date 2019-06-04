@@ -77,9 +77,10 @@ Route::post('register', [
 ]);
 
 Route::get('logout',[
-    'as'    => 'getlogout',
-    'user'  => 'PageController@getLogout'
+    'as'    => 'getLogout',
+    'uses'  => 'PageController@getLogout'
 ])->middleware('userlogin');
+
 
 Route::get('myPost',[
     'as' => 'getMyPost',
@@ -122,7 +123,7 @@ Route::post('change-password', [
 	'uses' 	=> 'PropertiesListController@postChangePassword',
 ]);
 
-Route::get('properties/{type}',[
+Route::get('properties/{slug}',[
     'as' => 'properties',
     'uses' =>'PageController@getProperty'
  ]);

@@ -1,44 +1,53 @@
-@extends('layout/blog/master')
+@extends('layout.blog.master')
 @section('content')
-
 <div class="blog-body content-area">
     <div class="container">
         <div class="row">
-            @foreach($blog as $b)
             <div class="col-lg-8 col-md-8 col-xs-12">
-                <!-- Blog box start -->
+      			
                 <div class="thumbnail blog-box clearfix">
-                    <img src="img/blog/{{$b->image}}" alt="{{$b->name}}">
-                    <!-- Detail -->
-                    <div class="caption detail">
-                        
-                        <!-- title -->
-                        <h3 class="title"><a href="{{route('blogdetail',$b->slug)}}">{{$b->title}}</a></h3>
 
+                    <img src="img/blog/{{$blog->image}}" alt="{{$blog->name}}" class="img-responsive">
+                    <!-- detail -->
+                    <div class="caption detail">
+                        <!--Main title -->
+                        <h3 class="title">
+                            <a href="#">{{$blog->title}}</a>
+                        </h3>
                         <!-- Post meta -->
                         <div class="post-meta">
                             <span><a href="#"><i class="fa fa-user"></i>
-                                @foreach($user as $u)
-                                    @if($u->id == $b->user_id)
+                            	@foreach($user as $u)
+                                    @if($u->id == $blog->user_id)
                                         {{$u->username}}
                                     @endif    
-                                @endforeach
-                            </a></span>
-                            <span><a><i class="fa fa-calendar "></i>{{$b->writing_date}}</a></span>
-                            <span><a href="{{route('index')}}"><i class="fa fa-bars"></i>The Nest</a></span>
-                            <!-- <span><a href="#"><i class="fa fa-comments"></i>7 Comment</a></span> -->
+                                @endforeach</a></span>
+                            <span><a><i class="fa fa-calendar "></i>{{$blog->writing_date}}</a></span>
+                           <!--  <span><a href="#"><i class="fa fa-bars"></i>The Nest</a></span> -->
+                           
                         </div>
                         <!-- paragraph -->
-                        <p>{{$b->content}}</p>
-                        <div class="clearfix"></div>
-                        <!-- Btn -->
+                        
+                        <p>{{$blog->content}}</p>
+                        <div class="row mrg-btm-30">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <p>{{$blog->content}}</p>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <img src="img/properties/properties-3.jpg" alt="properties-3" class="img-responsive">
+                            </div>
+                        </div>
+                        <blockquote>
+                           {{$blog->content}}
+                        </blockquote>
+                        
 
-                        <a href="{{route('blogdetail',$b->slug)}}" class="read-more">Read More...</a>
+                       
                     </div>
                 </div>
-                
+               
             </div>
-            @endforeach
+
             <div class="col-lg-4 col-md-4 col-xs-12">
                 <div class="sidebar">
                     <!-- Search box -->
@@ -51,6 +60,7 @@
                             <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
+                  
                     <!-- Popular posts -->
                     <div class="sidebar-widget popular-posts">
                         <div class="main-title-2">
@@ -63,7 +73,7 @@
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="{{route('blogdetail', $b->slug)}}">{{$b->title}}</a>
+                                    <a href="{{route('blogdetail',$b->slug)}}">{{$b->title}}</a>
                                 </h3>
                                 <p>{{$b->writing_date}}</p>
                                 <div class="price">
@@ -71,16 +81,16 @@
                                     @if($u->id == $b->user_id)
                                         {{$u->username}}
                                     @endif    
-                                    @endforeach
+                                	@endforeach
                                 </div>
                             </div>
                         </div>
                         @endforeach
-                    </div>    
+                    </div>
+ 
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection

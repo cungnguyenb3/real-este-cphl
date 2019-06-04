@@ -36,13 +36,13 @@
                        </a>
                        <ul class="dropdown-menu">
                            @foreach($properties_type as $value)
-                               <li><a href="{{route('properties',$value->id)}}">{{$value["name"]}}</a></li>
+                               <li><a href="{{route('properties',$value->slug)}}">{{$value["name"]}}</a></li>
                            @endforeach
                            
                        </ul>
                     </li>
                     
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="{{route('blog')}}">Blog</a></li>
                     
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">

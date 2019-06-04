@@ -17,53 +17,45 @@ use DB;
 
 class PageController extends Controller
 {
-    // public function __construct(){
-    //     if (Auth::check()) {
-    //         view()->share('user',Auth::user());
-    //     }        
-    // }
-
-    public function getTest(){
-		return view('layout.properties-details.master');
-	}
-
   	public function getIndex(){
-        $post = Post::where('status','1')->get();
+		$post = DB::table('posts')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->select('users.username AS username','posts.*')
+        ->where('status','=',1)
+        ->orderBy('created_at', 'desc')
+        ->take(6)
+        ->get()
+        ->toArray(); 
+
         $blog = Blog::all();
         $user = User::all();
-		return view('pages.index', compact('post','user','blog'));
+
+		return view('pages.index', compact('post','blog','user'));
 	}
 
 	public function getAbout(){
 		return view('pages.about');
+    }
+    
+    public function getBlogDetail($slug){
+        $blog = Blog::where('slug',$slug)->first();
+        $user = user::all();
+        $blogPopular = Blog::where('slug','<>',$slug)->limit(3)->get();
+        return view('pages.blog-detail',compact('blog','user','blogPopular'));
+		
 	}
 
-    public function getBlog(){
-        $user = user::all();
-        $blog = Blog::all();
-        $blogPopular = Blog::limit(3)->get();
-        return view('pages.blog',compact('blog','user','blogPopular'));
-    }
-
-
-	public function getPropertiesDetails($slug){
+    public function getPropertiesDetails($slug){
         $postPopular = Post::where('slug','<>',$slug)->limit(3)->get();
         $post = Post::where('slug',$slug)->first();
-        $image = image::where('slug',$slug)->limit(3)->get();
+
+        $image = Image::where('post_id',$post->id)->get();
 		return view('pages.properties-details', compact('image','post','postPopular'));
 	}
 
     
 	public function getSubmitProperty(){
 		return view('pages.submit-property');
-	}
-
-	public function getBlogDetail($slug){
-        $blog = Blog::where('slug',$slug)->first();
-        $user = user::all();
-        $blogPopular = Blog::where('slug','<>',$slug)->limit(3)->get();
-        return view('layout.blog.blog-detail',compact('blog','user','blogPopular'));
-		
 	}
 
     //Login
@@ -147,14 +139,22 @@ class PageController extends Controller
         return view('layout.post.myPost', compact('post'));
     }
 
+    public function getUserProfile(){
+		return view('pages.user-profile');
+	}
+
     /*get property*/
-    public function getProperty($type)
+    public function getProperty($slug)
     {
-       $properties_type= Post::where('property_type_id',$type)->limit(3)->get();
-       $properties= Property_type::all();
-       $properties_house = Property_type::where('id',$type)->first(); 
-       $user = User::all();
-       return view('pages.property-type',compact('properties_type','properties','properties_house','user'));
+       $property = DB::table('property_types')->where('slug','=', $slug)->select('id')->first();
+
+       $sale = DB::table('posts')
+        ->join('users', 'posts.user_id', '=', 'users.id')
+        ->select('users.username AS username','posts.*')
+        ->where('posts.property_type_id','=',$property->id)
+        ->orderBy('created_at', 'desc')
+        ->paginate(2);
+       return view('pages.sale',compact('sale'));
     }
 
     public function getUpdate(){
@@ -179,5 +179,17 @@ class PageController extends Controller
         $user_id = Auth::user()->id;
         DB::table('users')->where('id',$user_id)->update($req->except('_token'));
         return redirect()->back()->with('thanhcong','Successfully updated your account');  
+    }
+
+    public function getLogout(){
+        Auth::logout();
+        return redirect()->route('index');
+    }
+
+    public function getBlog(){
+        $user = user::all();
+        $blog = Blog::all();
+        $blogPopular = Blog::limit(3)->get();
+        return view('pages.blog',compact('blog','user','blogPopular'));
     }
 }

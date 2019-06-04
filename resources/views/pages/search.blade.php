@@ -64,7 +64,7 @@
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 property-content ">
                         <!-- title -->
                         <h1 class="title">
-                            <a href="properties-details.html">{!! $value->name !!}</a>
+                            <a href="{{route('products',$value->slug)}}">{!! $value->name !!}</a>
                         </h1>
                         <!-- Property address -->
                         <h3 class="property-address">
@@ -114,25 +114,7 @@
                 
                 <!-- Property end -->
 
-                <!-- Page navigation start -->
-                <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        <li>
-                            <a href="properties-list-leftside.html" aria-label="Previous">
-                                <span aria-hidden="true">«</span>
-                            </a>
-                        </li>
-                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="properties-list-leftside.html">2</a></li>
-                        <li><a href="properties-list-fullwidth.html">3</a></li>
-                        <li>
-                            <a href="properties-list-fullwidth.html" aria-label="Next">
-                                <span aria-hidden="true">»</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- Page navigation end-->
+        
             </div>
 
             <div class="col-lg-4 col-md-4 col-xs-12">

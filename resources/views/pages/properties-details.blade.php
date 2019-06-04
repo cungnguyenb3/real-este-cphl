@@ -28,11 +28,11 @@
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img src="img/properties/properties-1.jpg" class="thumb-preview" alt="Chevrolet Impala">
+                                        <img src="{{$post->main_image}}" class="thumb-preview" alt="Chevrolet Impala">
                                     </div>
                                     @foreach($image as $i)
                                     <div class="item">
-                                        <img src="img/properties/{{$i->image}}" class="thumb-preview" alt="Chevrolet Impala">
+                                        <img src="{{$i->image}}" class="thumb-preview" alt="Chevrolet Impala">
                                     </div>
                                     @endforeach
                                 </div>
@@ -52,11 +52,9 @@
                             </div>
                             <!-- Indicators -->
                             <ol class="carousel-indicators thumbs visible-lg visible-md">
-                                <li data-target="#carousel-custom" data-slide-to="0" class=""><img src="img/properties/properties-small-1.jpg" alt="Chevrolet Impala"></li>
                                 @foreach($image as $i)
-                                <li data-target="#carousel-custom" data-slide-to="1" class=""><img src="img/properties/{{$i->image}}" alt="Chevrolet Impala"></li>
+                                <li data-target="#carousel-custom" data-slide-to="{{$i->id}}" class=""><img src="{{$i->image}}" alt="Chevrolet Impala"></li>
                                 @endforeach 
-                                
                             </ol>
                         </div>
                     </div>
@@ -198,8 +196,7 @@
                                         <div class="main-title-2">
                                             <h1><span>Description</span></h1>
                                         </div>
-                                        <p>{{$post->description}}.</p>
-                                        
+                                        <p>{{$post->description}}</p>
                                     </div>
                                     <div class="tab-pane fade features" id="tab2default">
                                         <!-- Properties condition start -->
@@ -231,7 +228,7 @@
                                                 <!-- <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <ul class="condition">
                                                         <li>
-                                                            <i class="fa fa-check-square"></i>1 Garage
+                                                            <i class="fa fa-check-square"></i> Garage
                                                         </li>
                                                         <li>
                                                             <i class="fa fa-check-square"></i>Balcony
@@ -262,7 +259,7 @@
                                                 <tbody><tr>
                                                     <td><strong>Size</strong></td>
                                                     <td><strong>Rooms</strong></td>
-                                                    <td><strong>2 Bathrooms</strong></td>
+                                                    <td><strong> Bathrooms</strong></td>
                                                 </tr>
                                                 <tr>
                                                     <td>{{$post->area}}</td>
@@ -271,7 +268,6 @@
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <img src="img/properties/floor-plans.html" alt="floor-plans" class="img-responsive">
                                         </div>
                                         <!-- Floor Plans end -->
                                     </div>
@@ -645,7 +641,7 @@
                         @foreach($postPopular as $p)
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="img/properties/{{$p->main_image}}" alt="small-properties-1" width="90" height="63">
+                                <img class="media-object" src="{{$p->main_image}}" alt="small-properties-1" width="90" height="63">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">

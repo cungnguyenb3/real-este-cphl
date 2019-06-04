@@ -66,11 +66,11 @@
                     <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 property-content ">
                         <!-- title -->
                         <h1 class="title">
-                            <a href="properties-details.html">{!! $value->name !!}</a>
+                            <a href="{{route('products',$value->slug)}}">{!! $value->name !!}</a>
                         </h1>
                         <!-- Property address -->
                         <h3 class="property-address">
-                            <a href="properties-details.html">
+                            <a href="#">
                                 <i class="fa fa-map-marker"></i>{!! $value->location !!},
                             </a>
                         </h3>
@@ -119,20 +119,8 @@
                 <!-- Page navigation start -->
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
-                        <li>
-                            <a href="properties-list-rightside.html" aria-label="Previous">
-                                <span aria-hidden="true">«</span>
-                            </a>
-                        </li>
-                        <li><a href="properties-list-rightside.html">1 <span class="sr-only">(current)</span></a></li>
-                        <li><a href="properties-list-leftside.html">2</a></li>
-                        <li class="active"><a href="properties-list-fullwidth.html">3</a></li>
-                        <li>
-                            <a href="properties-list-fullwidth.html" aria-label="Next">
-                                <span aria-hidden="true">»</span>
-                            </a>
-                        </li>
-                    </ul>
+                        {!! $post->links() !!}                   
+                    </ul> 
                 </nav>
                 <!-- Page navigation end-->
             </div>

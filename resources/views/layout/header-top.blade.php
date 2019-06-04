@@ -14,7 +14,7 @@
                         <a href="{{route('user-profile')}}" class="sign-in"><i class="fa fa-user"></i> {{Auth::user()->username}}</a>
                     </li>
                     <li>
-                        <a href="{{route('getlogout')}}" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
+                        <a href="{{route('getLogout')}}" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
                     </li>
                     @else
                     <li>

@@ -98,12 +98,12 @@
                 <!-- table start -->
                 <table class="manage-table responsive-table">
                     <tbody>
-                    @foreach($myProperties as $value)
+                    @foreach($post as $value)
                     <tr>
                         <td class="title-container">
                             <img src="{!! $value->main_image !!}" alt="my-properties-1" class="img-responsive hidden-xs">
                             <div class="title">
-                                <h4><a href="#">{!! $value->name !!}</a></h4>
+                                <h4><a href="{{route('products',$value->slug)}}">{!! $value->name !!}</a></h4>
                                 <span><i class="fa fa-map-marker"></i> {!! $value->location !!}, </span>
                                 <span class="table-property-price">${!! $value->price !!}</span>
                             </div>
